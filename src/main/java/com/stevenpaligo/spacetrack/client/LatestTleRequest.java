@@ -155,7 +155,7 @@ public class LatestTleRequest {
     private Double semiMajorAxisKilometers;
 
     @JsonProperty("PERIOD")
-    private Optional<Double> period;
+    private Optional<Double> periodMinutes;
 
     @JsonProperty("APOGEE")
     private Double apogeeKilometers;
