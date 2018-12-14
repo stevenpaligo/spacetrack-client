@@ -2,8 +2,9 @@ package com.stevenpaligo.spacetrack.client.predicate;
 
 import java.time.Instant;
 import java.util.Date;
+import com.stevenpaligo.spacetrack.client.query.QueryField;
 
-public class InclusiveRange<T extends Enum<T>> implements Predicate<T> {
+public class InclusiveRange<T extends QueryField> implements Predicate<T> {
 
   private T field;
   private String lowerValue;
@@ -155,7 +156,7 @@ public class InclusiveRange<T extends Enum<T>> implements Predicate<T> {
 
 
   public String toQueryParameter() {
-    return field.toString() + "/" + lowerValue + "--" + upperValue;
+    return field.getQueryFieldName() + "/" + lowerValue + "--" + upperValue;
   }
 
 

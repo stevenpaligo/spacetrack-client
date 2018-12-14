@@ -15,6 +15,9 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
+import com.stevenpaligo.spacetrack.client.query.Limit;
+import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.query.Sort;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,18 +26,18 @@ import lombok.Setter;
 import lombok.Singular;
 
 @Builder
-public class LaunchSiteRequest {
+public class LaunchSiteQuery {
 
   @NonNull
   private CredentialProvider credentials;
 
   @Singular
-  private Collection<Predicate<LaunchSiteFields>> predicates;
+  private Collection<Predicate<LaunchSiteQueryField>> predicates;
 
   private Limit limit;
 
   @Singular
-  private List<Sort<LaunchSiteFields>> sorts;
+  private List<Sort<LaunchSiteQueryField>> sorts;
 
   @Singular
   private Set<String> favorites;
@@ -42,17 +45,32 @@ public class LaunchSiteRequest {
 
   public List<LaunchSite> execute() throws JsonParseException, JsonMappingException, IOException {
 
-    // create a request
-    Request<LaunchSiteFields, LaunchSite> request = new Request<>(credentials, "launch_site", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    // create a query
+    Query<LaunchSiteQueryField, LaunchSite> query = new Query<>(credentials, "launch_site", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
-    // execute the request and return the results
-    return request.execute();
+    // execute the query and return the results
+    return query.execute();
   }
 
 
-  public static enum LaunchSiteFields {
-    SITE_CODE, LAUNCH_SITE
+  public static enum LaunchSiteQueryField implements QueryField {
+
+    SITE_CODE {
+
+      @Override
+      public String getQueryFieldName() {
+        return "SITE_CODE";
+      }
+    },
+
+    SITE_NAME {
+
+      @Override
+      public String getQueryFieldName() {
+        return "LAUNCH_SITE";
+      }
+    }
   }
 
 

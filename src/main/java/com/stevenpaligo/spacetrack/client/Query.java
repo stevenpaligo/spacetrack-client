@@ -17,6 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.json.JsonSanitizer;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
+import com.stevenpaligo.spacetrack.client.query.Limit;
+import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.query.Sort;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -24,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-class Request<T extends Enum<T>, R> {
+class Query<T extends QueryField, R> {
 
   @NonNull
   private CredentialProvider credentials;
@@ -45,7 +48,7 @@ class Request<T extends Enum<T>, R> {
   private Set<String> favorites;
 
 
-  public String getQuery() {
+  public String getQueryString() {
 
     StringBuilder builder = new StringBuilder("https://www.space-track.org/basicspacedata/query");
     builder.append("/class/").append(queryClass);
@@ -81,7 +84,7 @@ class Request<T extends Enum<T>, R> {
     try {
 
       String userName = credentials.getUserName();
-      String query = getQuery();
+      String query = getQueryString();
       log.debug("Querying SpaceTrack (user: {}, query: {})", userName, query);
 
 
@@ -103,6 +106,7 @@ class Request<T extends Enum<T>, R> {
 
       // read the entire response
       String response = IOUtils.toString(connection.getInputStream(), Charset.forName("UTF-8"));
+      // TODO: throw an exception if the response is not a 200
 
 
       // ensure the response is well-formed JSON

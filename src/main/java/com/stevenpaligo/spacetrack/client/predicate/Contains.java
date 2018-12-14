@@ -1,35 +1,22 @@
 package com.stevenpaligo.spacetrack.client.predicate;
 
-public class Contains<T extends Enum<T>> implements Predicate<T> {
+import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.NonNull;
+
+public class Contains<T extends QueryField> implements Predicate<T> {
 
   private T field;
   private String value;
 
 
-  public Contains(T field, String value) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (value == null) {
-      throw new IllegalArgumentException("The value is null");
-    }
-
+  public Contains(@NonNull T field, @NonNull String value) {
 
     this.field = field;
     this.value = value;
   }
 
 
-  public Contains(T field, Number value) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (value == null) {
-      throw new IllegalArgumentException("The value is null");
-    }
-
+  public Contains(@NonNull T field, @NonNull Number value) {
 
     this.field = field;
     this.value = value.toString();
@@ -37,6 +24,6 @@ public class Contains<T extends Enum<T>> implements Predicate<T> {
 
 
   public String toQueryParameter() {
-    return field.toString() + "/~~" + value;
+    return field.getQueryFieldName() + "/~~" + value;
   }
 }

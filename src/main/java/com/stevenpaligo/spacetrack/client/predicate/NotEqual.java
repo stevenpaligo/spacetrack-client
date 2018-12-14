@@ -2,8 +2,9 @@ package com.stevenpaligo.spacetrack.client.predicate;
 
 import java.time.Instant;
 import java.util.Date;
+import com.stevenpaligo.spacetrack.client.query.QueryField;
 
-public class NotEqual<T extends Enum<T>> implements Predicate<T> {
+public class NotEqual<T extends QueryField> implements Predicate<T> {
 
   private T field;
   private String value;
@@ -85,7 +86,7 @@ public class NotEqual<T extends Enum<T>> implements Predicate<T> {
 
 
   public String toQueryParameter() {
-    return field.toString() + "/<>" + value;
+    return field.getQueryFieldName() + "/<>" + value;
   }
 
 

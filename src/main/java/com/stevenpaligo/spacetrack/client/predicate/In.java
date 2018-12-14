@@ -7,8 +7,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import com.stevenpaligo.spacetrack.client.query.QueryField;
 
-public class In<T extends Enum<T>> implements Predicate<T> {
+public class In<T extends QueryField> implements Predicate<T> {
 
   private T field;
   private String values;
@@ -77,6 +78,6 @@ public class In<T extends Enum<T>> implements Predicate<T> {
 
 
   public String toQueryParameter() {
-    return field.toString() + "/" + values;
+    return field.getQueryFieldName() + "/" + values;
   }
 }

@@ -1,6 +1,8 @@
 package com.stevenpaligo.spacetrack.client.predicate;
 
-public class IsNotNull<T extends Enum<T>> implements Predicate<T> {
+import com.stevenpaligo.spacetrack.client.query.QueryField;
+
+public class IsNotNull<T extends QueryField> implements Predicate<T> {
 
   private T field;
 
@@ -18,6 +20,6 @@ public class IsNotNull<T extends Enum<T>> implements Predicate<T> {
 
 
   public String toQueryParameter() {
-    return field.toString() + "/<>null-val";
+    return field.getQueryFieldName() + "/<>null-val";
   }
 }

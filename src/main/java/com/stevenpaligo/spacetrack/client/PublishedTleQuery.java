@@ -16,6 +16,9 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
+import com.stevenpaligo.spacetrack.client.query.Limit;
+import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.query.Sort;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,18 +27,18 @@ import lombok.Setter;
 import lombok.Singular;
 
 @Builder
-public class PublishedTleRequest {
+public class PublishedTleQuery {
 
   @NonNull
   private CredentialProvider credentials;
 
   @Singular
-  private Collection<Predicate<PublishedTleFields>> predicates;
+  private Collection<Predicate<PublishedTleQueryField>> predicates;
 
   private Limit limit;
 
   @Singular
-  private List<Sort<PublishedTleFields>> sorts;
+  private List<Sort<PublishedTleQueryField>> sorts;
 
   @Singular
   private Set<String> favorites;
@@ -43,17 +46,40 @@ public class PublishedTleRequest {
 
   public List<PublishedTle> execute() throws JsonParseException, JsonMappingException, IOException {
 
-    // create a request
-    Request<PublishedTleFields, PublishedTle> request = new Request<>(credentials, "tle_publish", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    // create a query
+    Query<PublishedTleQueryField, PublishedTle> query = new Query<>(credentials, "tle_publish", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
-    // execute the request and return the results
-    return request.execute();
+    // execute the query and return the results
+    return query.execute();
   }
 
 
-  public static enum PublishedTleFields {
-    PUBLISH_EPOCH, TLE_LINE1, TLE_LINE2
+  public static enum PublishedTleQueryField implements QueryField {
+
+    PUBLISH_TIME {
+
+      @Override
+      public String getQueryFieldName() {
+        return "PUBLISH_EPOCH";
+      }
+    },
+
+    TLE_LINE1 {
+
+      @Override
+      public String getQueryFieldName() {
+        return "TLE_LINE1";
+      }
+    },
+
+    TLE_LINE2 {
+
+      @Override
+      public String getQueryFieldName() {
+        return "TLE_LINE2";
+      }
+    }
   }
 
 

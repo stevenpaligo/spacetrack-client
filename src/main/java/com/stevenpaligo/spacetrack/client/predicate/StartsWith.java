@@ -1,6 +1,8 @@
 package com.stevenpaligo.spacetrack.client.predicate;
 
-public class StartsWith<T extends Enum<T>> implements Predicate<T> {
+import com.stevenpaligo.spacetrack.client.query.QueryField;
+
+public class StartsWith<T extends QueryField> implements Predicate<T> {
 
   private T field;
   private String value;
@@ -37,6 +39,6 @@ public class StartsWith<T extends Enum<T>> implements Predicate<T> {
 
 
   public String toQueryParameter() {
-    return field.toString() + "/^" + value;
+    return field.getQueryFieldName() + "/^" + value;
   }
 }
