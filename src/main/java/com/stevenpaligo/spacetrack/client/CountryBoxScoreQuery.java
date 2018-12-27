@@ -46,7 +46,8 @@ public class CountryBoxScoreQuery {
   public List<CountryBoxScore> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // create a query
-    Query<CountryBoxScoreQueryField, CountryBoxScore> query = new Query<>(credentials, "boxscore", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    Query<CountryBoxScoreQueryField, CountryBoxScore> query =
+        new Query<>(CountryBoxScore.class, credentials, "boxscore", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
     // execute the query and return the results

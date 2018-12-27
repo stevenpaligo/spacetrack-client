@@ -3,6 +3,7 @@ package com.stevenpaligo.spacetrack.client.predicate;
 import java.time.Instant;
 import java.util.Date;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.NonNull;
 
 public class InclusiveRange<T extends QueryField> implements Predicate<T> {
 
@@ -11,17 +12,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   private String upperValue;
 
 
-  public InclusiveRange(T field, Number lowerValue, Number upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull Number lowerValue, @NonNull Number upperValue) {
 
     this.field = field;
     this.lowerValue = lowerValue.toString();
@@ -29,17 +20,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  public InclusiveRange(T field, Date lowerValue, Date upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull Date lowerValue, @NonNull Date upperValue) {
 
     this.field = field;
     this.lowerValue = PredicateFormatter.format(Instant.ofEpochMilli(lowerValue.getTime()));
@@ -47,17 +28,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  public InclusiveRange(T field, CurrentDateTimeOffset lowerValue, Date upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset lowerValue, @NonNull Date upperValue) {
 
     this.field = field;
     this.lowerValue = toValue(lowerValue);
@@ -65,17 +36,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  public InclusiveRange(T field, Date lowerValue, CurrentDateTimeOffset upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull Date lowerValue, @NonNull CurrentDateTimeOffset upperValue) {
 
     this.field = field;
     this.lowerValue = PredicateFormatter.format(Instant.ofEpochMilli(lowerValue.getTime()));
@@ -83,17 +44,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  public InclusiveRange(T field, Instant lowerValue, Instant upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull Instant lowerValue, @NonNull Instant upperValue) {
 
     this.field = field;
     this.lowerValue = PredicateFormatter.format(lowerValue);
@@ -101,17 +52,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  public InclusiveRange(T field, CurrentDateTimeOffset lowerValue, Instant upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset lowerValue, @NonNull Instant upperValue) {
 
     this.field = field;
     this.lowerValue = toValue(lowerValue);
@@ -119,17 +60,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  public InclusiveRange(T field, Instant lowerValue, CurrentDateTimeOffset upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull Instant lowerValue, @NonNull CurrentDateTimeOffset upperValue) {
 
     this.field = field;
     this.lowerValue = PredicateFormatter.format(lowerValue);
@@ -137,17 +68,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  public InclusiveRange(T field, CurrentDateTimeOffset lowerValue, CurrentDateTimeOffset upperValue) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (lowerValue == null) {
-      throw new IllegalArgumentException("The lower value is null");
-    } else if (upperValue == null) {
-      throw new IllegalArgumentException("The upper value is null");
-    }
-
+  public InclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset lowerValue, @NonNull CurrentDateTimeOffset upperValue) {
 
     this.field = field;
     this.lowerValue = toValue(lowerValue);
@@ -160,7 +81,7 @@ public class InclusiveRange<T extends QueryField> implements Predicate<T> {
   }
 
 
-  private static String toValue(CurrentDateTimeOffset currentDateTimeOffset) {
+  private static String toValue(@NonNull CurrentDateTimeOffset currentDateTimeOffset) {
 
     if (currentDateTimeOffset.getOffsetDays() < 0.0) {
       return "now" + currentDateTimeOffset.getOffsetDays().toString();

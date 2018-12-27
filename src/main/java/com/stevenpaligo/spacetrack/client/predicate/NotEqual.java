@@ -3,6 +3,7 @@ package com.stevenpaligo.spacetrack.client.predicate;
 import java.time.Instant;
 import java.util.Date;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.NonNull;
 
 public class NotEqual<T extends QueryField> implements Predicate<T> {
 
@@ -10,75 +11,35 @@ public class NotEqual<T extends QueryField> implements Predicate<T> {
   private String value;
 
 
-  public NotEqual(T field, String value) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (value == null) {
-      throw new IllegalArgumentException("The value is null");
-    }
-
+  public NotEqual(@NonNull T field, @NonNull String value) {
 
     this.field = field;
     this.value = value;
   }
 
 
-  public NotEqual(T field, Number value) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (value == null) {
-      throw new IllegalArgumentException("The value is null");
-    }
-
+  public NotEqual(@NonNull T field, @NonNull Number value) {
 
     this.field = field;
     this.value = value.toString();
   }
 
 
-  public NotEqual(T field, Date value) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (value == null) {
-      throw new IllegalArgumentException("The value is null");
-    }
-
+  public NotEqual(@NonNull T field, @NonNull Date value) {
 
     this.field = field;
     this.value = PredicateFormatter.format(Instant.ofEpochMilli(value.getTime()));
   }
 
 
-  public NotEqual(T field, Instant value) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (value == null) {
-      throw new IllegalArgumentException("The value is null");
-    }
-
+  public NotEqual(@NonNull T field, @NonNull Instant value) {
 
     this.field = field;
     this.value = PredicateFormatter.format(value);
   }
 
 
-  public NotEqual(T field, CurrentDateTimeOffset currentDateTimeOffset) {
-
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (currentDateTimeOffset == null) {
-      throw new IllegalArgumentException("The current date/time offset is null");
-    }
-
+  public NotEqual(@NonNull T field, @NonNull CurrentDateTimeOffset currentDateTimeOffset) {
 
     this.field = field;
     this.value = toValue(currentDateTimeOffset);
@@ -90,7 +51,7 @@ public class NotEqual<T extends QueryField> implements Predicate<T> {
   }
 
 
-  private static String toValue(CurrentDateTimeOffset currentDateTimeOffset) {
+  private static String toValue(@NonNull CurrentDateTimeOffset currentDateTimeOffset) {
 
     if (currentDateTimeOffset.getOffsetDays() < 0.0) {
       return "now" + currentDateTimeOffset.getOffsetDays().toString();

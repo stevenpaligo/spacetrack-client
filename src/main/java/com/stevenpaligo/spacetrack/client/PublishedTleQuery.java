@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.collections4.SetUtils;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,7 +48,7 @@ public class PublishedTleQuery {
   public List<PublishedTle> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // create a query
-    Query<PublishedTleQueryField, PublishedTle> query = new Query<>(credentials, "tle_publish", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    Query<PublishedTleQueryField, PublishedTle> query = new Query<>(PublishedTle.class, credentials, "tle_publish", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
     // execute the query and return the results
@@ -90,6 +91,7 @@ public class PublishedTleQuery {
   public static class PublishedTle {
 
     @JsonProperty("PUBLISH_EPOCH")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "UTC")
     private Instant publishTime;
 
     @JsonProperty("TLE_LINE1")

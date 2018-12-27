@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.NonNull;
 
 public class In<T extends QueryField> implements Predicate<T> {
 
@@ -15,37 +16,31 @@ public class In<T extends QueryField> implements Predicate<T> {
   private String values;
 
 
-  public In(T field, String... values) {
+  public In(@NonNull T field, @NonNull String... values) {
     this(field, Arrays.asList(values), String.class);
   }
 
 
-  public In(T field, Date... values) {
+  public In(@NonNull T field, @NonNull Date... values) {
     this(field, Arrays.asList(values), Date.class);
   }
 
 
-  public In(T field, Instant... values) {
+  public In(@NonNull T field, @NonNull Instant... values) {
     this(field, Arrays.asList(values), Instant.class);
   }
 
 
-  public In(T field, Number... values) {
+  public In(@NonNull T field, @NonNull Number... values) {
     this(field, Arrays.asList(values), Number.class);
   }
 
 
   @SuppressWarnings("unchecked")
-  public <V> In(T field, Collection<V> values, Class<V> valueType) {
+  public <V> In(@NonNull T field, @NonNull Collection<V> values, @NonNull Class<V> valueType) {
 
-    // validate
-    if (field == null) {
-      throw new IllegalArgumentException("The field parameter is null");
-    } else if (values == null) {
-      throw new IllegalArgumentException("The values collection is null");
-    } else if (valueType == null) {
-      throw new IllegalArgumentException("The value type is null");
-    } else if (valueType != String.class && valueType != Date.class && valueType != Instant.class && Number.class.isAssignableFrom(valueType) == false) {
+    // more validation
+    if (valueType != String.class && valueType != Date.class && valueType != Instant.class && Number.class.isAssignableFrom(valueType) == false) {
       throw new IllegalArgumentException("The values collection does not contain strings, numbers, dates, or instants: " + valueType);
     }
 

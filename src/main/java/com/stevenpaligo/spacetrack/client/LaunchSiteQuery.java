@@ -46,7 +46,7 @@ public class LaunchSiteQuery {
   public List<LaunchSite> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // create a query
-    Query<LaunchSiteQueryField, LaunchSite> query = new Query<>(credentials, "launch_site", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    Query<LaunchSiteQueryField, LaunchSite> query = new Query<>(LaunchSite.class, credentials, "launch_site", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
     // execute the query and return the results

@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.collections4.SetUtils;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,7 +48,7 @@ public class SatCatQuery {
   public List<SatCat> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // create a query
-    Query<SatCatQueryField, SatCat> query = new Query<>(credentials, "satcat", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    Query<SatCatQueryField, SatCat> query = new Query<>(SatCat.class, credentials, "satcat", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
     // execute the query and return the results
@@ -273,12 +274,14 @@ public class SatCatQuery {
     private String country;
 
     @JsonProperty("LAUNCH")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "UTC")
     private Optional<Instant> launchDate;
 
     @JsonProperty("SITE")
     private Optional<String> launchSite;
 
     @JsonProperty("DECAY")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "UTC")
     private Optional<Instant> decayDate;
 
     @JsonProperty("PERIOD")

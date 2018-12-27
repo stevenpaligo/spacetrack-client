@@ -10,6 +10,7 @@ import java.util.Set;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.collections4.SetUtils;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,7 +49,7 @@ public class TleQuery {
   public List<Tle> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // create a query
-    Query<TleQueryField, Tle> query = new Query<>(credentials, "tle", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    Query<TleQueryField, Tle> query = new Query<>(Tle.class, credentials, "tle", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
     // execute the query and return the results
@@ -336,6 +337,7 @@ public class TleQuery {
     private Optional<String> internationalDesignator;
 
     @JsonProperty("EPOCH")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
     private Instant epochYmdHms;
 
     @JsonProperty("EPOCH_MICROSECONDS")

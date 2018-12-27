@@ -11,9 +11,12 @@ import java.util.Set;
 import javax.net.ssl.HttpsURLConnection;
 import org.apache.commons.io.IOUtils;
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.json.JsonSanitizer;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
@@ -28,6 +31,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 class Query<T extends QueryField, R> {
+
+  private static final ObjectMapper jsonMapper;
+
+
+  static {
+
+    // instantiate and configure the JSON mapper
+    jsonMapper = new ObjectMapper().registerModule(new Jdk8Module()).registerModule(new JavaTimeModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+  }
+
+
+  @NonNull
+  private Class<R> resultType;
 
   @NonNull
   private CredentialProvider credentials;
@@ -114,8 +130,8 @@ class Query<T extends QueryField, R> {
 
 
       // convert the response to a list of the return data type
-      final ObjectMapper mapper = new ObjectMapper();
-      List<R> results = mapper.readValue(wellFormedResponse, new TypeReference<List<R>>() {});
+      JavaType listType = jsonMapper.getTypeFactory().constructCollectionType(List.class, resultType);
+      List<R> results = jsonMapper.readValue(wellFormedResponse, listType);
 
       log.debug("SpaceTrack returned {} {} results", results.size(), queryClass);
 
