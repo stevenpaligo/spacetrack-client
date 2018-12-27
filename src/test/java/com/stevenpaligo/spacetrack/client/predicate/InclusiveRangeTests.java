@@ -180,7 +180,7 @@ public class InclusiveRangeTests {
     assertEquals("NORAD_CAT_ID/2018-01-02 03:04:05.678--now+5.0", new InclusiveRange<>(new TestQueryField(), Instant.parse("2018-01-02T03:04:05.678Z"), new CurrentDateTimeOffset(5.0)).toQueryParameter());
 
 
-    // offset values
+    // offset values (positive and negative)
     assertEquals("NORAD_CAT_ID/now-5.0--now+5.0", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), new CurrentDateTimeOffset(5.0)).toQueryParameter());
   }
 
