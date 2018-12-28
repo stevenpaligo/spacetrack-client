@@ -1,6 +1,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -168,34 +169,34 @@ public class CountryBoxScoreQuery {
     private Optional<String> spadocCountryDesignator;
 
     @JsonProperty("ORBITAL_TBA")
-    private Optional<Long> orbitalUnassignedTypeCount;
+    private Optional<BigInteger> orbitalUnassignedTypeCount;
 
     @JsonProperty("ORBITAL_PAYLOAD_COUNT")
-    private Optional<Long> orbitalPayloadCount;
+    private Optional<BigInteger> orbitalPayloadCount;
 
     @JsonProperty("ORBITAL_ROCKET_BODY_COUNT")
-    private Optional<Long> orbitalRocketBodyCount;
+    private Optional<BigInteger> orbitalRocketBodyCount;
 
     @JsonProperty("ORBITAL_DEBRIS_COUNT")
-    private Optional<Long> orbitalDebrisCount;
+    private Optional<BigInteger> orbitalDebrisCount;
 
     @JsonProperty("ORBITAL_TOTAL_COUNT")
-    private Optional<Long> orbitalTotalCount;
+    private Optional<BigInteger> orbitalTotalCount;
 
     @JsonProperty("DECAYED_PAYLOAD_COUNT")
-    private Optional<Long> decayedPayloadCount;
+    private Optional<BigInteger> decayedPayloadCount;
 
     @JsonProperty("DECAYED_ROCKET_BODY_COUNT")
-    private Optional<Long> decayedRocketBodyCount;
+    private Optional<BigInteger> decayedRocketBodyCount;
 
     @JsonProperty("DECAYED_DEBRIS_COUNT")
-    private Optional<Long> decayedDebrisCount;
+    private Optional<BigInteger> decayedDebrisCount;
 
     @JsonProperty("DECAYED_TOTAL_COUNT")
-    private Optional<Long> decayedTotalCount;
+    private Optional<BigInteger> decayedTotalCount;
 
     @JsonProperty("COUNTRY_TOTAL")
-    private Optional<Long> totalCount;
+    private Long totalCount;
 
   }
 }

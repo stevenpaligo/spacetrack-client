@@ -139,7 +139,7 @@ public class LatestTleQuery {
       }
     },
 
-    MEAN_MOTION {
+    MEAN_MOTION_REVS_PER_DAY {
 
       @Override
       public String getQueryFieldName() {
@@ -155,7 +155,7 @@ public class LatestTleQuery {
       }
     },
 
-    INCLINATION {
+    INCLINATION_DEGREES {
 
       @Override
       public String getQueryFieldName() {
@@ -163,7 +163,7 @@ public class LatestTleQuery {
       }
     },
 
-    RIGHT_ASC_OF_NODE {
+    RIGHT_ASC_OF_NODE_DEGREES {
 
       @Override
       public String getQueryFieldName() {
@@ -171,7 +171,7 @@ public class LatestTleQuery {
       }
     },
 
-    ARG_OF_PERIGEE {
+    ARG_OF_PERIGEE_DEGREES {
 
       @Override
       public String getQueryFieldName() {
@@ -179,7 +179,7 @@ public class LatestTleQuery {
       }
     },
 
-    MEAN_ANOMALY {
+    MEAN_ANOMALY_DEGREES {
 
       @Override
       public String getQueryFieldName() {
@@ -227,7 +227,7 @@ public class LatestTleQuery {
       }
     },
 
-    MEAN_MOTION_DDOT {
+    MEAN_MOTION_DOUBLE_DOT {
 
       @Override
       public String getQueryFieldName() {
@@ -283,7 +283,7 @@ public class LatestTleQuery {
       }
     },
 
-    SEMI_MAJOR_AXIS {
+    SEMI_MAJOR_AXIS_KILOMETERS {
 
       @Override
       public String getQueryFieldName() {
@@ -291,7 +291,7 @@ public class LatestTleQuery {
       }
     },
 
-    PERIOD {
+    PERIOD_MINUTES {
 
       @Override
       public String getQueryFieldName() {
@@ -299,7 +299,7 @@ public class LatestTleQuery {
       }
     },
 
-    APOGEE_HEIGHT {
+    APOGEE_HEIGHT_KILOMETERS {
 
       @Override
       public String getQueryFieldName() {
@@ -307,7 +307,7 @@ public class LatestTleQuery {
       }
     },
 
-    PERIGEE_HEIGHT {
+    PERIGEE_HEIGHT_KILOMETERS {
 
       @Override
       public String getQueryFieldName() {

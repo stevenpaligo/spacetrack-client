@@ -2,6 +2,7 @@ package com.stevenpaligo.spacetrack.client;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -29,27 +30,27 @@ import lombok.Setter;
 import lombok.Singular;
 
 @Builder
-public class SatCatQuery {
+public class SatCatDebutQuery {
 
   @NonNull
   private CredentialProvider credentials;
 
   @Singular
-  private Collection<Predicate<SatCatQueryField>> predicates;
+  private Collection<Predicate<SatCatDebutQueryField>> predicates;
 
   private Limit limit;
 
   @Singular
-  private List<Sort<SatCatQueryField>> sorts;
+  private List<Sort<SatCatDebutQueryField>> sorts;
 
   @Singular
   private Set<String> favorites;
 
 
-  public List<SatCat> execute() throws JsonParseException, JsonMappingException, IOException {
+  public List<SatCatDebut> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // create a query
-    Query<SatCatQueryField, SatCat> query = new Query<>(SatCat.class, credentials, "satcat", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    Query<SatCatDebutQueryField, SatCatDebut> query = new Query<>(SatCatDebut.class, credentials, "satcat_debut", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
     // execute the query and return the results
@@ -57,7 +58,7 @@ public class SatCatQuery {
   }
 
 
-  public static enum SatCatQueryField implements QueryField {
+  public static enum SatCatDebutQueryField implements QueryField {
 
     INTERNATIONAL_DESIGNATOR {
 
@@ -88,6 +89,14 @@ public class SatCatQuery {
       @Override
       public String getQueryFieldName() {
         return "SATNAME";
+      }
+    },
+
+    DEBUT_TIME {
+
+      @Override
+      public String getQueryFieldName() {
+        return "DEBUT";
       }
     },
 
@@ -257,7 +266,7 @@ public class SatCatQuery {
   @Setter
   @NoArgsConstructor
   @JsonInclude(value = Include.NON_NULL)
-  public static class SatCat {
+  public static class SatCatDebut {
 
     @JsonProperty("INTLDES")
     private String internationalDesignator;
@@ -270,6 +279,9 @@ public class SatCatQuery {
 
     @JsonProperty("SATNAME")
     private String satName;
+
+    @JsonProperty("DEBUT")
+    private Optional<Instant> debutTime;
 
     @JsonProperty("COUNTRY")
     private String country;

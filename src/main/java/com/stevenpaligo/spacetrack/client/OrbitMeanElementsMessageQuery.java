@@ -2,7 +2,6 @@ package com.stevenpaligo.spacetrack.client;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +9,6 @@ import java.util.Set;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.collections4.SetUtils;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -29,27 +27,28 @@ import lombok.Setter;
 import lombok.Singular;
 
 @Builder
-public class TleQuery {
+public class OrbitMeanElementsMessageQuery {
 
   @NonNull
   private CredentialProvider credentials;
 
   @Singular
-  private Collection<Predicate<TleQueryField>> predicates;
+  private Collection<Predicate<OrbitMeanElementsMessageQueryField>> predicates;
 
   private Limit limit;
 
   @Singular
-  private List<Sort<TleQueryField>> sorts;
+  private List<Sort<OrbitMeanElementsMessageQueryField>> sorts;
 
   @Singular
   private Set<String> favorites;
 
 
-  public List<Tle> execute() throws JsonParseException, JsonMappingException, IOException {
+  public List<OrbitMeanElementsMessage> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // create a query
-    Query<TleQueryField, Tle> query = new Query<>(Tle.class, credentials, "tle", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    Query<OrbitMeanElementsMessageQueryField, OrbitMeanElementsMessage> query =
+        new Query<>(OrbitMeanElementsMessage.class, credentials, "omm", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
 
 
     // execute the query and return the results
@@ -57,13 +56,29 @@ public class TleQuery {
   }
 
 
-  public static enum TleQueryField implements QueryField {
+  public static enum OrbitMeanElementsMessageQueryField implements QueryField {
+
+    CCSDS_OMM_VERSION {
+
+      @Override
+      public String getQueryFieldName() {
+        return "CCSDS_OMM_VERS";
+      }
+    },
 
     COMMENT {
 
       @Override
       public String getQueryFieldName() {
         return "COMMENT";
+      }
+    },
+
+    CREATE_TIME {
+
+      @Override
+      public String getQueryFieldName() {
+        return "CREATION_DATE";
       }
     },
 
@@ -75,14 +90,6 @@ public class TleQuery {
       }
     },
 
-    CATALOG_NUMBER {
-
-      @Override
-      public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
-      }
-    },
-
     OBJECT_NAME {
 
       @Override
@@ -91,43 +98,51 @@ public class TleQuery {
       }
     },
 
-    OBJECT_TYPE {
+    OBJECT_ID {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_TYPE";
+        return "OBJECT_ID";
       }
     },
 
-    CLASSIFICATION {
+    CENTER_NAME {
 
       @Override
       public String getQueryFieldName() {
-        return "CLASSIFICATION_TYPE";
+        return "CENTER_NAME";
       }
     },
 
-    INTERNATIONAL_DESIGNATOR {
+    REFERENCE_FRAME {
 
       @Override
       public String getQueryFieldName() {
-        return "INTLDES";
+        return "REF_FRAME";
       }
     },
 
-    EPOCH_YMD_HMS {
+    TIME_SYSTEM {
+
+      @Override
+      public String getQueryFieldName() {
+        return "TIME_SYSTEM";
+      }
+    },
+
+    MEAN_ELEMENT_THEORY {
+
+      @Override
+      public String getQueryFieldName() {
+        return "MEAN_ELEMENT_THEORY";
+      }
+    },
+
+    EPOCH {
 
       @Override
       public String getQueryFieldName() {
         return "EPOCH";
-      }
-    },
-
-    EPOCH_MICROSECONDS {
-
-      @Override
-      public String getQueryFieldName() {
-        return "EPOCH_MICROSECONDS";
       }
     },
 
@@ -187,6 +202,22 @@ public class TleQuery {
       }
     },
 
+    CLASSIFICATION {
+
+      @Override
+      public String getQueryFieldName() {
+        return "CLASSIFICATION_TYPE";
+      }
+    },
+
+    CATALOG_NUMBER {
+
+      @Override
+      public String getQueryFieldName() {
+        return "NORAD_CAT_ID";
+      }
+    },
+
     ELEMENT_SET_NUMBER {
 
       @Override
@@ -227,19 +258,11 @@ public class TleQuery {
       }
     },
 
-    FILE_NUMBER {
-
-      @Override
-      public String getQueryFieldName() {
-        return "FILE";
-      }
-    },
-
     TLE_LINE0 {
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE0";
+        return "USER_DEFINED_TLE_LINE0";
       }
     },
 
@@ -247,7 +270,7 @@ public class TleQuery {
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE1";
+        return "USER_DEFINED_TLE_LINE1";
       }
     },
 
@@ -255,55 +278,7 @@ public class TleQuery {
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE2";
-      }
-    },
-
-    OBJECT_ID {
-
-      @Override
-      public String getQueryFieldName() {
-        return "OBJECT_ID";
-      }
-    },
-
-    OBJECT_NUMBER {
-
-      @Override
-      public String getQueryFieldName() {
-        return "OBJECT_NUMBER";
-      }
-    },
-
-    SEMI_MAJOR_AXIS_KILOMETERS {
-
-      @Override
-      public String getQueryFieldName() {
-        return "SEMIMAJOR_AXIS";
-      }
-    },
-
-    PERIOD_MINUTES {
-
-      @Override
-      public String getQueryFieldName() {
-        return "PERIOD";
-      }
-    },
-
-    APOGEE_HEIGHT_KILOMETERS {
-
-      @Override
-      public String getQueryFieldName() {
-        return "APOGEE";
-      }
-    },
-
-    PERIGEE_HEIGHT_KILOMETERS {
-
-      @Override
-      public String getQueryFieldName() {
-        return "PERIGEE";
+        return "USER_DEFINED_TLE_LINE2";
       }
     }
   }
@@ -313,35 +288,40 @@ public class TleQuery {
   @Setter
   @NoArgsConstructor
   @JsonInclude(value = Include.NON_NULL)
-  public static class Tle {
+  public static class OrbitMeanElementsMessage {
+
+    @JsonProperty("CCSDS_OMM_VERS")
+    private String ccsdsOmmVersion;
 
     @JsonProperty("COMMENT")
     private String comment;
 
+    @JsonProperty("CREATION_DATE")
+    private Instant createTime;
+
     @JsonProperty("ORIGINATOR")
     private String originator;
-
-    @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
 
     @JsonProperty("OBJECT_NAME")
     private String objectName;
 
-    @JsonProperty("OBJECT_TYPE")
-    private Optional<String> objectType;
+    @JsonProperty("OBJECT_ID")
+    private Optional<String> objectId;
 
-    @JsonProperty("CLASSIFICATION_TYPE")
-    private String classification;
+    @JsonProperty("CENTER_NAME")
+    private String centerName;
 
-    @JsonProperty("INTLDES")
-    private Optional<String> internationalDesignator;
+    @JsonProperty("REF_FRAME")
+    private String referenceFrame;
+
+    @JsonProperty("TIME_SYSTEM")
+    private String timeSystem;
+
+    @JsonProperty("MEAN_ELEMENT_THEORY")
+    private String meanElementTheory;
 
     @JsonProperty("EPOCH")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant epochYmdHms;
-
-    @JsonProperty("EPOCH_MICROSECONDS")
-    private Integer epochMicroseconds;
+    private String epoch;
 
     @JsonProperty("MEAN_MOTION")
     private Double meanMotionRevsPerDay;
@@ -364,6 +344,12 @@ public class TleQuery {
     @JsonProperty("EPHEMERIS_TYPE")
     private Integer ephemerisType;
 
+    @JsonProperty("CLASSIFICATION_TYPE")
+    private String classification;
+
+    @JsonProperty("NORAD_CAT_ID")
+    private Integer catalogNumber;
+
     @JsonProperty("ELEMENT_SET_NO")
     private Integer elementSetNumber;
 
@@ -379,39 +365,14 @@ public class TleQuery {
     @JsonProperty("MEAN_MOTION_DDOT")
     private Double meanMotionDoubleDot;
 
-    @JsonProperty("FILE")
-    private Integer fileNumber;
-
-    @JsonProperty("TLE_LINE0")
+    @JsonProperty("USER_DEFINED_TLE_LINE0")
     private String tleLine0;
 
-    @JsonProperty("TLE_LINE1")
+    @JsonProperty("USER_DEFINED_TLE_LINE1")
     private String tleLine1;
 
-    @JsonProperty("TLE_LINE2")
+    @JsonProperty("USER_DEFINED_TLE_LINE2")
     private String tleLine2;
 
-    @JsonProperty("OBJECT_ID")
-    private Optional<String> objectId;
-
-    @JsonProperty("OBJECT_NUMBER")
-    private Integer objectNumber;
-
-    @JsonProperty("SEMIMAJOR_AXIS")
-    private Double semiMajorAxisKilometers;
-
-    @JsonProperty("PERIOD")
-    private Optional<Double> periodMinutes;
-
-    @JsonProperty("APOGEE")
-    private Double apogeeHeightKilometers;
-
-    @JsonProperty("PERIGEE")
-    private Double perigeeHeightKilometers;
-
-
-    public Instant getEpoch() {
-      return getEpochYmdHms().plus(getEpochMicroseconds(), ChronoUnit.MICROS);
-    }
   }
 }
