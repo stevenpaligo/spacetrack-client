@@ -1,6 +1,5 @@
 package com.stevenpaligo.spacetrack.client;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collection;
@@ -14,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.stevenpaligo.spacetrack.client.SatCatChangeQuery.SatCatChange;
+import com.stevenpaligo.spacetrack.client.SatCatChangeQuery.SatCatChangeQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
@@ -28,32 +27,13 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.Singular;
 
-@Builder
-public class SatCatChangeQuery {
+public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChange> {
 
-  @NonNull
-  private CredentialProvider credentials;
+  @Builder
+  public SatCatChangeQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull SatCatChangeQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<SatCatChangeQueryField>> sorts,
+      @NonNull @Singular Set<@NonNull String> favorites) {
 
-  @Singular
-  private Collection<Predicate<SatCatChangeQueryField>> predicates;
-
-  private Limit limit;
-
-  @Singular
-  private List<Sort<SatCatChangeQueryField>> sorts;
-
-  @Singular
-  private Set<String> favorites;
-
-
-  public List<SatCatChange> execute() throws JsonParseException, JsonMappingException, IOException {
-
-    // create a query
-    Query<SatCatChangeQueryField, SatCatChange> query = new Query<>(SatCatChange.class, credentials, "satcat_change", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
-
-
-    // execute the query and return the results
-    return query.execute();
+    super(SatCatChange.class, credentials, "satcat_change", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
   }
 
 

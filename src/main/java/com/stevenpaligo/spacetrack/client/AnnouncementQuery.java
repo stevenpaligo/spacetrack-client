@@ -1,6 +1,5 @@
 package com.stevenpaligo.spacetrack.client;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.List;
@@ -12,8 +11,8 @@ import org.apache.commons.collections4.SetUtils;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.stevenpaligo.spacetrack.client.AnnouncementQuery.Announcement;
+import com.stevenpaligo.spacetrack.client.AnnouncementQuery.AnnouncementQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
@@ -26,32 +25,13 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.Singular;
 
-@Builder
-public class AnnouncementQuery {
+public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcement> {
 
-  @NonNull
-  private CredentialProvider credentials;
+  @Builder
+  public AnnouncementQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull AnnouncementQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<AnnouncementQueryField>> sorts,
+      @NonNull @Singular Set<@NonNull String> favorites) {
 
-  @Singular
-  private Collection<Predicate<AnnouncementQueryField>> predicates;
-
-  private Limit limit;
-
-  @Singular
-  private List<Sort<AnnouncementQueryField>> sorts;
-
-  @Singular
-  private Set<String> favorites;
-
-
-  public List<Announcement> execute() throws JsonParseException, JsonMappingException, IOException {
-
-    // create a query
-    Query<AnnouncementQueryField, Announcement> query = new Query<>(Announcement.class, credentials, "announcement", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
-
-
-    // execute the query and return the results
-    return query.execute();
+    super(Announcement.class, credentials, "announcement", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
   }
 
 

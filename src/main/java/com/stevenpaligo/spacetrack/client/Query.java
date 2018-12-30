@@ -23,14 +23,13 @@ import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import com.stevenpaligo.spacetrack.client.query.Sort;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
-class Query<T extends QueryField, R> {
+@AllArgsConstructor
+public abstract class Query<T extends QueryField, R> {
 
   private static final ObjectMapper jsonMapper;
 
@@ -55,7 +54,7 @@ class Query<T extends QueryField, R> {
   private Collection<Predicate<T>> predicates;
 
   @NonNull
-  private Optional<Limit> limits;
+  private Optional<Limit> limit;
 
   @NonNull
   private List<Sort<T>> sorts;
@@ -73,8 +72,8 @@ class Query<T extends QueryField, R> {
       builder.append("/").append(predicate.toQueryParameter());
     }
 
-    if (limits.isPresent()) {
-      builder.append("/").append(limits.get().toQueryParameter());
+    if (limit.isPresent()) {
+      builder.append("/").append(limit.get().toQueryParameter());
     }
 
     for (Sort<T> sort : sorts) {

@@ -1,6 +1,5 @@
 package com.stevenpaligo.spacetrack.client;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.List;
@@ -12,8 +11,8 @@ import org.apache.commons.collections4.SetUtils;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessage;
+import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessageQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
@@ -26,33 +25,13 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.Singular;
 
-@Builder
-public class OrbitMeanElementsMessageQuery {
+public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessageQueryField, OrbitMeanElementsMessage> {
 
-  @NonNull
-  private CredentialProvider credentials;
+  @Builder
+  public OrbitMeanElementsMessageQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull OrbitMeanElementsMessageQueryField>> predicates, Limit limit,
+      @NonNull @Singular List<@NonNull Sort<OrbitMeanElementsMessageQueryField>> sorts, @NonNull @Singular Set<@NonNull String> favorites) {
 
-  @Singular
-  private Collection<Predicate<OrbitMeanElementsMessageQueryField>> predicates;
-
-  private Limit limit;
-
-  @Singular
-  private List<Sort<OrbitMeanElementsMessageQueryField>> sorts;
-
-  @Singular
-  private Set<String> favorites;
-
-
-  public List<OrbitMeanElementsMessage> execute() throws JsonParseException, JsonMappingException, IOException {
-
-    // create a query
-    Query<OrbitMeanElementsMessageQueryField, OrbitMeanElementsMessage> query =
-        new Query<>(OrbitMeanElementsMessage.class, credentials, "omm", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
-
-
-    // execute the query and return the results
-    return query.execute();
+    super(OrbitMeanElementsMessage.class, credentials, "omm", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
   }
 
 

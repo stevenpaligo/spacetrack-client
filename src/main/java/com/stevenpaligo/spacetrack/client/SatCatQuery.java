@@ -1,6 +1,5 @@
 package com.stevenpaligo.spacetrack.client;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collection;
@@ -14,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCat;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
@@ -28,32 +27,13 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.Singular;
 
-@Builder
-public class SatCatQuery {
+public class SatCatQuery extends Query<SatCatQueryField, SatCat> {
 
-  @NonNull
-  private CredentialProvider credentials;
+  @Builder
+  public SatCatQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull SatCatQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<SatCatQueryField>> sorts,
+      @NonNull @Singular Set<@NonNull String> favorites) {
 
-  @Singular
-  private Collection<Predicate<SatCatQueryField>> predicates;
-
-  private Limit limit;
-
-  @Singular
-  private List<Sort<SatCatQueryField>> sorts;
-
-  @Singular
-  private Set<String> favorites;
-
-
-  public List<SatCat> execute() throws JsonParseException, JsonMappingException, IOException {
-
-    // create a query
-    Query<SatCatQueryField, SatCat> query = new Query<>(SatCat.class, credentials, "satcat", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
-
-
-    // execute the query and return the results
-    return query.execute();
+    super(SatCat.class, credentials, "satcat", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
   }
 
 

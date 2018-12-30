@@ -1,6 +1,5 @@
 package com.stevenpaligo.spacetrack.client;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
@@ -14,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTle;
+import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTleQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
@@ -28,32 +27,13 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.Singular;
 
-@Builder
-public class LatestTleQuery {
+public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle> {
 
-  @NonNull
-  private CredentialProvider credentials;
+  @Builder
+  public LatestTleQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull LatestTleQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<LatestTleQueryField>> sorts,
+      @NonNull @Singular Set<@NonNull String> favorites) {
 
-  @Singular
-  private Collection<Predicate<LatestTleQueryField>> predicates;
-
-  private Limit limit;
-
-  @Singular
-  private List<Sort<LatestTleQueryField>> sorts;
-
-  @Singular
-  private Set<String> favorites;
-
-
-  public List<LatestTle> execute() throws JsonParseException, JsonMappingException, IOException {
-
-    // create a query
-    Query<LatestTleQueryField, LatestTle> query = new Query<>(LatestTle.class, credentials, "tle_latest", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
-
-
-    // execute the query and return the results
-    return query.execute();
+    super(LatestTle.class, credentials, "tle_latest", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
   }
 
 
