@@ -14,8 +14,8 @@ import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
 
 public class PublishedTleQueryTests {
 
-  private static final String SPACE_TRACK_USER_NAME_PROPERTY = "space.track.user.name";
-  private static final String SPACE_TRACK_PASSWORD_PROPERTY = "space.track.password";
+  private static final String SPACETRACK_USER_NAME_PROPERTY = "spacetrack.user.name";
+  private static final String SPACETRACK_PASSWORD_PROPERTY = "spacetrack.password";
 
 
   private static CredentialProvider credentials;
@@ -24,21 +24,21 @@ public class PublishedTleQueryTests {
   @BeforeAll
   protected static void init() throws Exception {
 
-    // verify the Space Track credentials are available as system properties
-    if (System.getProperty(SPACE_TRACK_USER_NAME_PROPERTY) == null) {
-      throw new Exception("The Space Track user name is missing from the system properties (" + SPACE_TRACK_USER_NAME_PROPERTY + ")");
-    } else if (System.getProperty(SPACE_TRACK_PASSWORD_PROPERTY) == null) {
-      throw new Exception("The Space Track password is missing from the system properties (" + SPACE_TRACK_PASSWORD_PROPERTY + ")");
+    // verify the SpaceTrack credentials are available as system properties
+    if (System.getProperty(SPACETRACK_USER_NAME_PROPERTY) == null) {
+      throw new Exception("The SpaceTrack user name is missing from the system properties (" + SPACETRACK_USER_NAME_PROPERTY + ")");
+    } else if (System.getProperty(SPACETRACK_PASSWORD_PROPERTY) == null) {
+      throw new Exception("The SpaceTrack password is missing from the system properties (" + SPACETRACK_PASSWORD_PROPERTY + ")");
     }
 
 
-    // save the Space Track credentials
-    credentials = new DefaultCredentialProvider(System.getProperty(SPACE_TRACK_USER_NAME_PROPERTY), System.getProperty(SPACE_TRACK_PASSWORD_PROPERTY));
+    // save the SpaceTrack credentials
+    credentials = new DefaultCredentialProvider(System.getProperty(SPACETRACK_USER_NAME_PROPERTY), System.getProperty(SPACETRACK_PASSWORD_PROPERTY));
   }
 
 
   @Test
-  @DisplayName("PublishedTleQuery: Result type matches the Space Track schema")
+  @DisplayName("PublishedTleQuery: Result type matches the SpaceTrack schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

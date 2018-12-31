@@ -15,16 +15,16 @@ IF "%CD%" == "%~dp0" (
 
 
 
-ECHO Getting the Space Track credentials...
+ECHO Getting the SpaceTrack credentials...
 
-IF NOT DEFINED SPACE_TRACK_USER_NAME (
-	SET /P SPACE_TRACK_USER_NAME="	User Name: "
+IF NOT DEFINED SPACETRACK_USER_NAME (
+	SET /P SPACETRACK_USER_NAME="-User Name: "
 ) ELSE (
     ECHO 	Using the existing user name
 )
 
-IF NOT DEFINED SPACE_TRACK_PASSWORD (
-	SET /P SPACE_TRACK_PASSWORD="	Password: "
+IF NOT DEFINED SPACETRACK_PASSWORD (
+	SET /P SPACETRACK_PASSWORD="-Password: "
 ) ELSE (
     ECHO 	Using the existing password
 )
@@ -35,7 +35,7 @@ ECHO.
 
 
 ECHO Running the build...
-mvn clean install -Dspace.track.user.name="%SPACE_TRACK_USER_NAME%" -Dspace.track.password="%SPACE_TRACK_PASSWORD%"
+mvn clean install -Dspacetrack.user.name="%SPACETRACK_USER_NAME%" -Dspacetrack.password="%SPACETRACK_PASSWORD%"
 
 
 
