@@ -18,6 +18,10 @@ import lombok.NonNull;
 
 public class Limit {
 
+  public static final Limit ONE = new Limit(1);
+  public static final Limit TEN = new Limit(10);
+
+
   private Integer maxResults;
   private Optional<Integer> offset;
 
@@ -52,7 +56,7 @@ public class Limit {
 
   public String toQueryParameter() {
 
-    String result = "limit/" + maxResults.toString();
+    String result = maxResults.toString();
 
     if (offset.isPresent()) {
       result += "," + offset.get().toString();

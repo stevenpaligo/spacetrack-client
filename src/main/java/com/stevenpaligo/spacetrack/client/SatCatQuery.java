@@ -15,38 +15,25 @@ package com.stevenpaligo.spacetrack.client;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.ListUtils;
-import org.apache.commons.collections4.SetUtils;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCat;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
-import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
-import com.stevenpaligo.spacetrack.client.predicate.Predicate;
-import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.query.Sort;
-import lombok.Builder;
+import com.stevenpaligo.spacetrack.client.util.BooleanYesNoDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
-import lombok.Singular;
 
-public class SatCatQuery extends Query<SatCatQueryField, SatCat> {
+public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
-  @Builder
-  public SatCatQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull SatCatQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<SatCatQueryField>> sorts,
-      @NonNull @Singular Set<@NonNull String> favorites) {
+  public SatCatQuery() {
 
-    super(SatCat.class, credentials, "satcat", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    super("satcat", SatCat.class);
   }
 
 
@@ -315,6 +302,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat> {
     private String launchPiece;
 
     @JsonProperty("CURRENT")
+    @JsonDeserialize(using = BooleanYesNoDeserializer.class)
     private Boolean currentRecord;
 
     @JsonProperty("OBJECT_NAME")

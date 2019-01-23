@@ -15,38 +15,23 @@ package com.stevenpaligo.spacetrack.client;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.ListUtils;
-import org.apache.commons.collections4.SetUtils;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stevenpaligo.spacetrack.client.TleQuery.Tle;
 import com.stevenpaligo.spacetrack.client.TleQuery.TleQueryField;
-import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
-import com.stevenpaligo.spacetrack.client.predicate.Predicate;
-import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.query.Sort;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
-import lombok.Singular;
 
-public class TleQuery extends Query<TleQueryField, Tle> {
+public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
-  @Builder
-  public TleQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull TleQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<TleQueryField>> sorts,
-      @NonNull @Singular Set<@NonNull String> favorites) {
+  public TleQuery() {
 
-    super(Tle.class, credentials, "tle", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    super("tle", Tle.class);
   }
 
 

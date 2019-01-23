@@ -14,9 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.net.URL;
-import java.util.Collections;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +22,9 @@ import com.stevenpaligo.spacetrack.client.TipMessageQuery.TipMessage;
 import com.stevenpaligo.spacetrack.client.TipMessageQuery.TipMessageQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
+import com.stevenpaligo.spacetrack.client.query.Limit;
+import com.stevenpaligo.spacetrack.client.query.Sort;
+import com.stevenpaligo.spacetrack.client.query.Sort.Direction;
 
 public class TipMessageQueryTests {
 
@@ -71,86 +72,11 @@ public class TipMessageQueryTests {
 
 
   @Test
-  @DisplayName("TipMessageQuery: Builder method parameter validation")
+  @DisplayName("TipMessageQuery: Successful call")
   public void test3() {
 
-    // a call to set the credentials is required
-    assertThrows(IllegalArgumentException.class, () -> {
-      TipMessageQuery.builder().build();
-    });
-
-
-    // the call to set the credentials will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      TipMessageQuery.builder().credentials(null).build();
-    });
-
-
-    // none of the following calls are required: favorite(...), favorites(...), limit(...), predicate(...), predicates(...), sort(...), sorts(...)
     assertDoesNotThrow(() -> {
-      TipMessageQuery.builder().credentials(credentials).build();
-    });
-
-
-    // the call to favorite(...) will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      TipMessageQuery.builder().credentials(credentials).favorite(null).build();
-    });
-
-
-    // the call to favorites(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      TipMessageQuery.builder().credentials(credentials).favorites(null).build();
-    });
-
-
-    // the call to favorites(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      TipMessageQuery.builder().credentials(credentials).favorites(Collections.emptyList()).build();
-    });
-
-
-    // the call to limit(...) will accept a null
-    assertDoesNotThrow(() -> {
-      TipMessageQuery.builder().credentials(credentials).limit(null).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to predicate(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // TipMessageQuery.builder().credentials(credentials).predicate(null).build();
-    // });
-
-
-    // the call to predicates(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      TipMessageQuery.builder().credentials(credentials).predicates(null).build();
-    });
-
-
-    // the call to predicates(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      TipMessageQuery.builder().credentials(credentials).predicates(Collections.emptyList()).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to sort(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // TipMessageQuery.builder().credentials(credentials).sort(null).build();
-    // });
-
-
-    // the call to sorts(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      TipMessageQuery.builder().credentials(credentials).sorts(null).build();
-    });
-
-
-    // the call to sorts(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      TipMessageQuery.builder().credentials(credentials).sorts(Collections.emptyList()).build();
+      new TipMessageQuery().setCredentials(credentials).addSort(new Sort<>(TipMessageQueryField.MESSAGE_EPOCH, Direction.DESC)).setLimit(Limit.ONE).execute();
     });
   }
 }

@@ -14,9 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.net.URL;
-import java.util.Collections;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +22,11 @@ import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMea
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessageQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
+import com.stevenpaligo.spacetrack.client.predicate.Equal;
+import com.stevenpaligo.spacetrack.client.predicate.Predicate;
+import com.stevenpaligo.spacetrack.client.query.Limit;
+import com.stevenpaligo.spacetrack.client.query.Sort;
+import com.stevenpaligo.spacetrack.client.query.Sort.Direction;
 
 public class OrbitMeanElementsMessageQueryTests {
 
@@ -71,86 +74,13 @@ public class OrbitMeanElementsMessageQueryTests {
 
 
   @Test
-  @DisplayName("OrbitMeanElementsMessageQuery: Builder method parameter validation")
+  @DisplayName("OrbitMeanElementsMessageQuery: Successful call")
   public void test3() {
 
-    // a call to set the credentials is required
-    assertThrows(IllegalArgumentException.class, () -> {
-      OrbitMeanElementsMessageQuery.builder().build();
-    });
-
-
-    // the call to set the credentials will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      OrbitMeanElementsMessageQuery.builder().credentials(null).build();
-    });
-
-
-    // none of the following calls are required: favorite(...), favorites(...), limit(...), predicate(...), predicates(...), sort(...), sorts(...)
     assertDoesNotThrow(() -> {
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).build();
-    });
 
-
-    // the call to favorite(...) will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).favorite(null).build();
-    });
-
-
-    // the call to favorites(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).favorites(null).build();
-    });
-
-
-    // the call to favorites(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).favorites(Collections.emptyList()).build();
-    });
-
-
-    // the call to limit(...) will accept a null
-    assertDoesNotThrow(() -> {
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).limit(null).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to predicate(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // OrbitMeanElementsMessageQuery.builder().credentials(credentials).predicate(null).build();
-    // });
-
-
-    // the call to predicates(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).predicates(null).build();
-    });
-
-
-    // the call to predicates(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).predicates(Collections.emptyList()).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to sort(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // OrbitMeanElementsMessageQuery.builder().credentials(credentials).sort(null).build();
-    // });
-
-
-    // the call to sorts(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).sorts(null).build();
-    });
-
-
-    // the call to sorts(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      OrbitMeanElementsMessageQuery.builder().credentials(credentials).sorts(Collections.emptyList()).build();
+      Predicate<OrbitMeanElementsMessageQueryField> predicate = new Equal<>(OrbitMeanElementsMessageQueryField.CATALOG_NUMBER, 25544);
+      new OrbitMeanElementsMessageQuery().setCredentials(credentials).addPredicate(predicate).addSort(new Sort<>(OrbitMeanElementsMessageQueryField.EPOCH, Direction.DESC)).setLimit(Limit.ONE).execute();
     });
   }
 }

@@ -16,38 +16,25 @@ package com.stevenpaligo.spacetrack.client;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.ListUtils;
-import org.apache.commons.collections4.SetUtils;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatDebutQuery.SatCatDebut;
 import com.stevenpaligo.spacetrack.client.SatCatDebutQuery.SatCatDebutQueryField;
-import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
-import com.stevenpaligo.spacetrack.client.predicate.Predicate;
-import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.query.Sort;
-import lombok.Builder;
+import com.stevenpaligo.spacetrack.client.util.BooleanYesNoDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
-import lombok.Singular;
 
-public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut> {
+public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, SatCatDebutQuery> {
 
-  @Builder
-  public SatCatDebutQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull SatCatDebutQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<SatCatDebutQueryField>> sorts,
-      @NonNull @Singular Set<@NonNull String> favorites) {
+  public SatCatDebutQuery() {
 
-    super(SatCatDebut.class, credentials, "satcat_debut", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    super("satcat_debut", SatCatDebut.class);
   }
 
 
@@ -274,6 +261,7 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut> 
     private String satName;
 
     @JsonProperty("DEBUT")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
     private Optional<Instant> debutTime;
 
     @JsonProperty("COUNTRY")
@@ -327,6 +315,7 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut> 
     private String launchPiece;
 
     @JsonProperty("CURRENT")
+    @JsonDeserialize(using = BooleanYesNoDeserializer.class)
     private Boolean currentRecord;
 
     @JsonProperty("OBJECT_NAME")

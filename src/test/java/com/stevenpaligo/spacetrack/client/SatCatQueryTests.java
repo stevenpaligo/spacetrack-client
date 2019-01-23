@@ -14,9 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.net.URL;
-import java.util.Collections;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +22,7 @@ import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCat;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
+import com.stevenpaligo.spacetrack.client.predicate.Equal;
 
 public class SatCatQueryTests {
 
@@ -71,86 +70,11 @@ public class SatCatQueryTests {
 
 
   @Test
-  @DisplayName("SatCatQuery: Builder method parameter validation")
+  @DisplayName("SatCatQuery: Successful call")
   public void test3() {
 
-    // a call to set the credentials is required
-    assertThrows(IllegalArgumentException.class, () -> {
-      SatCatQuery.builder().build();
-    });
-
-
-    // the call to set the credentials will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      SatCatQuery.builder().credentials(null).build();
-    });
-
-
-    // none of the following calls are required: favorite(...), favorites(...), limit(...), predicate(...), predicates(...), sort(...), sorts(...)
     assertDoesNotThrow(() -> {
-      SatCatQuery.builder().credentials(credentials).build();
-    });
-
-
-    // the call to favorite(...) will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      SatCatQuery.builder().credentials(credentials).favorite(null).build();
-    });
-
-
-    // the call to favorites(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      SatCatQuery.builder().credentials(credentials).favorites(null).build();
-    });
-
-
-    // the call to favorites(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      SatCatQuery.builder().credentials(credentials).favorites(Collections.emptyList()).build();
-    });
-
-
-    // the call to limit(...) will accept a null
-    assertDoesNotThrow(() -> {
-      SatCatQuery.builder().credentials(credentials).limit(null).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to predicate(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // SatCatQuery.builder().credentials(credentials).predicate(null).build();
-    // });
-
-
-    // the call to predicates(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      SatCatQuery.builder().credentials(credentials).predicates(null).build();
-    });
-
-
-    // the call to predicates(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      SatCatQuery.builder().credentials(credentials).predicates(Collections.emptyList()).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to sort(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // SatCatQuery.builder().credentials(credentials).sort(null).build();
-    // });
-
-
-    // the call to sorts(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      SatCatQuery.builder().credentials(credentials).sorts(null).build();
-    });
-
-
-    // the call to sorts(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      SatCatQuery.builder().credentials(credentials).sorts(Collections.emptyList()).build();
+      new SatCatQuery().setCredentials(credentials).addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
     });
   }
 }

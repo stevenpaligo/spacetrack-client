@@ -13,37 +13,21 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.ListUtils;
-import org.apache.commons.collections4.SetUtils;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSite;
 import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSiteQueryField;
-import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
-import com.stevenpaligo.spacetrack.client.predicate.Predicate;
-import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.query.Sort;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
-import lombok.Singular;
 
-public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite> {
+public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, LaunchSiteQuery> {
 
-  @Builder
-  public LaunchSiteQuery(@NonNull CredentialProvider credentials, @NonNull @Singular Collection<@NonNull Predicate<@NonNull LaunchSiteQueryField>> predicates, Limit limit, @NonNull @Singular List<@NonNull Sort<LaunchSiteQueryField>> sorts,
-      @NonNull @Singular Set<@NonNull String> favorites) {
+  public LaunchSiteQuery() {
 
-    super(LaunchSite.class, credentials, "launch_site", CollectionUtils.emptyIfNull(predicates), Optional.ofNullable(limit), ListUtils.emptyIfNull(sorts), SetUtils.emptyIfNull(favorites));
+    super("launch_site", LaunchSite.class);
   }
 
 

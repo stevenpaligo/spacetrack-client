@@ -14,9 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.net.URL;
-import java.util.Collections;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +22,8 @@ import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSite;
 import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSiteQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
+import com.stevenpaligo.spacetrack.client.predicate.Equal;
+import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 
 public class LaunchSiteQueryTests {
 
@@ -71,86 +71,13 @@ public class LaunchSiteQueryTests {
 
 
   @Test
-  @DisplayName("LaunchSiteQuery: Builder method parameter validation")
+  @DisplayName("LaunchSiteQuery: Successful call")
   public void test3() {
 
-    // a call to set the credentials is required
-    assertThrows(IllegalArgumentException.class, () -> {
-      LaunchSiteQuery.builder().build();
-    });
-
-
-    // the call to set the credentials will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      LaunchSiteQuery.builder().credentials(null).build();
-    });
-
-
-    // none of the following calls are required: favorite(...), favorites(...), limit(...), predicate(...), predicates(...), sort(...), sorts(...)
     assertDoesNotThrow(() -> {
-      LaunchSiteQuery.builder().credentials(credentials).build();
-    });
 
-
-    // the call to favorite(...) will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      LaunchSiteQuery.builder().credentials(credentials).favorite(null).build();
-    });
-
-
-    // the call to favorites(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      LaunchSiteQuery.builder().credentials(credentials).favorites(null).build();
-    });
-
-
-    // the call to favorites(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      LaunchSiteQuery.builder().credentials(credentials).favorites(Collections.emptyList()).build();
-    });
-
-
-    // the call to limit(...) will accept a null
-    assertDoesNotThrow(() -> {
-      LaunchSiteQuery.builder().credentials(credentials).limit(null).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to predicate(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // LaunchSiteQuery.builder().credentials(credentials).predicate(null).build();
-    // });
-
-
-    // the call to predicates(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      LaunchSiteQuery.builder().credentials(credentials).predicates(null).build();
-    });
-
-
-    // the call to predicates(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      LaunchSiteQuery.builder().credentials(credentials).predicates(Collections.emptyList()).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to sort(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // LaunchSiteQuery.builder().credentials(credentials).sort(null).build();
-    // });
-
-
-    // the call to sorts(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      LaunchSiteQuery.builder().credentials(credentials).sorts(null).build();
-    });
-
-
-    // the call to sorts(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      LaunchSiteQuery.builder().credentials(credentials).sorts(Collections.emptyList()).build();
+      Predicate<LaunchSiteQueryField> predicate = new Equal<>(LaunchSiteQueryField.SITE_CODE, "AFETR");
+      new LaunchSiteQuery().setCredentials(credentials).addPredicate(predicate).execute();
     });
   }
 }

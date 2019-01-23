@@ -14,9 +14,8 @@
 package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.net.URL;
-import java.util.Collections;
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +23,11 @@ import com.stevenpaligo.spacetrack.client.TleQuery.Tle;
 import com.stevenpaligo.spacetrack.client.TleQuery.TleQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
+import com.stevenpaligo.spacetrack.client.predicate.CurrentDateTimeOffset;
+import com.stevenpaligo.spacetrack.client.predicate.Equal;
+import com.stevenpaligo.spacetrack.client.predicate.GreaterThan;
+import com.stevenpaligo.spacetrack.client.predicate.Predicate;
+import com.stevenpaligo.spacetrack.client.query.Limit;
 
 public class TleQueryTests {
 
@@ -71,86 +75,14 @@ public class TleQueryTests {
 
 
   @Test
-  @DisplayName("TleQuery: Builder method parameter validation")
+  @DisplayName("TleQuery: Successful call")
   public void test3() {
 
-    // a call to set the credentials is required
-    assertThrows(IllegalArgumentException.class, () -> {
-      TleQuery.builder().build();
-    });
-
-
-    // the call to set the credentials will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      TleQuery.builder().credentials(null).build();
-    });
-
-
-    // none of the following calls are required: favorite(...), favorites(...), limit(...), predicate(...), predicates(...), sort(...), sorts(...)
     assertDoesNotThrow(() -> {
-      TleQuery.builder().credentials(credentials).build();
-    });
 
-
-    // the call to favorite(...) will not accept a null
-    assertThrows(IllegalArgumentException.class, () -> {
-      TleQuery.builder().credentials(credentials).favorite(null).build();
-    });
-
-
-    // the call to favorites(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      TleQuery.builder().credentials(credentials).favorites(null).build();
-    });
-
-
-    // the call to favorites(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      TleQuery.builder().credentials(credentials).favorites(Collections.emptyList()).build();
-    });
-
-
-    // the call to limit(...) will accept a null
-    assertDoesNotThrow(() -> {
-      TleQuery.builder().credentials(credentials).limit(null).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to predicate(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // TleQuery.builder().credentials(credentials).predicate(null).build();
-    // });
-
-
-    // the call to predicates(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      TleQuery.builder().credentials(credentials).predicates(null).build();
-    });
-
-
-    // the call to predicates(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      TleQuery.builder().credentials(credentials).predicates(Collections.emptyList()).build();
-    });
-
-
-    // TODO: this won't pass until Lombok is fixed
-    // the call to sort(...) will not accept a null
-    // assertThrows(IllegalArgumentException.class, () -> {
-    // TleQuery.builder().credentials(credentials).sort(null).build();
-    // });
-
-
-    // the call to sorts(...) will not accept a null
-    assertThrows(NullPointerException.class, () -> { // TODO: change to IllegalArgumentException if/when https://github.com/rzwitserloot/lombok/issues/1999 is worked
-      TleQuery.builder().credentials(credentials).sorts(null).build();
-    });
-
-
-    // the call to sorts(...) will accept an empty collection
-    assertDoesNotThrow(() -> {
-      TleQuery.builder().credentials(credentials).sorts(Collections.emptyList()).build();
+      Predicate<TleQueryField> predicate1 = new Equal<>(TleQueryField.CATALOG_NUMBER, 25544);
+      Predicate<TleQueryField> predicate2 = new GreaterThan<>(TleQueryField.EPOCH_YMD_HMS, new CurrentDateTimeOffset(-5.0));
+      new TleQuery().setCredentials(credentials).addPredicates(Arrays.asList(predicate1, predicate2)).setLimit(Limit.ONE).execute();
     });
   }
 }

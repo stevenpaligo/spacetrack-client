@@ -79,10 +79,10 @@ public class LimitTests {
   public void test2() {
 
     // max results only
-    assertEquals("limit/1", new Limit(1).toQueryParameter());
+    assertEquals("1", new Limit(1).toQueryParameter());
 
 
     // max results and offset
-    assertEquals("limit/1,2", new Limit(1, 2).toQueryParameter());
+    assertEquals("1,2", new Limit(1, 2).toQueryParameter());
   }
 }
