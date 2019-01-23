@@ -51,7 +51,7 @@ limitations under the License.
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
-    <jackson-databind.version>2.9.7</jackson-databind.version>
+    <jackson-databind.version>2.9.8</jackson-databind.version>
     <jackson-datatype-jdk8.version>${jackson-databind.version}</jackson-datatype-jdk8.version>
     <jackson-datatype-jsr310.version>${jackson-databind.version}</jackson-datatype-jsr310.version>
     <slf4j-api.version>1.7.25</slf4j-api.version>
