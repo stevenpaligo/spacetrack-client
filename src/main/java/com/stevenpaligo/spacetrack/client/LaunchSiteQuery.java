@@ -23,6 +23,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying launch sites from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, LaunchSiteQuery> {
 
   public LaunchSiteQuery() {
@@ -31,6 +37,12 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
   }
 
 
+  /**
+   * Fields referenced in "launch site" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.LaunchSiteQuery
+   */
   public static enum LaunchSiteQueryField implements QueryField {
 
     SITE_CODE {
@@ -51,6 +63,12 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
   }
 
 
+  /**
+   * Class representing results returned from "launch site" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.LaunchSiteQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

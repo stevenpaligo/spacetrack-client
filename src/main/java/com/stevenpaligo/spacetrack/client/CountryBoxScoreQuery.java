@@ -25,6 +25,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying countries' box scores from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, CountryBoxScore, CountryBoxScoreQuery> {
 
   public CountryBoxScoreQuery() {
@@ -33,6 +39,12 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
   }
 
 
+  /**
+   * Fields referenced in "country box score" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.CountryBoxScoreQuery
+   */
   public static enum CountryBoxScoreQueryField implements QueryField {
 
     COUNTRY {
@@ -133,6 +145,12 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
   }
 
 
+  /**
+   * Class representing results returned from "country box score" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.CountryBoxScoreQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

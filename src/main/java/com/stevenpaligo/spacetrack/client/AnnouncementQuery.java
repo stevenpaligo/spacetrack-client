@@ -25,6 +25,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying announcements from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcement, AnnouncementQuery> {
 
   public AnnouncementQuery() {
@@ -33,6 +39,12 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
   }
 
 
+  /**
+   * Fields referenced in "announcement" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.AnnouncementQuery
+   */
   public static enum AnnouncementQueryField implements QueryField {
 
     TYPE {
@@ -69,6 +81,12 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
   }
 
 
+  /**
+   * Class representing results returned from "announcement" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.AnnouncementQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

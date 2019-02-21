@@ -26,6 +26,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying Orbit Mean-Elements Messages from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ * @see <a href="https://public.ccsds.org/Pubs/502x0b2c1.pdf">CCSDS Recommended Standard 502.0-B-2</a>
+ */
 public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessageQueryField, OrbitMeanElementsMessage, OrbitMeanElementsMessageQuery> {
 
   public OrbitMeanElementsMessageQuery() {
@@ -34,6 +41,12 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
   }
 
 
+  /**
+   * Fields referenced in "Orbit Mean-Elements Messages" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery
+   */
   public static enum OrbitMeanElementsMessageQueryField implements QueryField {
 
     CCSDS_OMM_VERSION {
@@ -262,6 +275,12 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
   }
 
 
+  /**
+   * Class representing results returned from "Orbit Mean-Elements Messages" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

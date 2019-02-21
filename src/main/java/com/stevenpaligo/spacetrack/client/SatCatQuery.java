@@ -29,6 +29,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying satellite data from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
   public SatCatQuery() {
@@ -37,6 +43,12 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
   }
 
 
+  /**
+   * Fields referenced in "satellite data" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.SatCatQuery
+   */
   public static enum SatCatQueryField implements QueryField {
 
     INTERNATIONAL_DESIGNATOR {
@@ -233,6 +245,12 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
   }
 
 
+  /**
+   * Class representing results returned from "satellite data" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.SatCatQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

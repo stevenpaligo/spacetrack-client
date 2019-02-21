@@ -26,6 +26,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying predicted and historical satellite decay information from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
   public DecayQuery() {
@@ -34,6 +40,12 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
   }
 
 
+  /**
+   * Fields referenced in "decay information" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.DecayQuery
+   */
   public static enum DecayQueryField implements QueryField {
 
     CATALOG_NUMBER {
@@ -142,6 +154,12 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
   }
 
 
+  /**
+   * FClass representing results returned from "decay information" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.DecayQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

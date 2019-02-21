@@ -27,6 +27,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying the satellites' 5 latest TLEs from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, LatestTleQuery> {
 
   public LatestTleQuery() {
@@ -35,6 +41,12 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
   }
 
 
+  /**
+   * Fields referenced in "latest TLE" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.LatestTleQuery
+   */
   public static enum LatestTleQueryField implements QueryField {
 
     ORDINAL {
@@ -295,6 +307,12 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
   }
 
 
+  /**
+   * Class representing results returned from "latest TLE" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.LatestTleQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

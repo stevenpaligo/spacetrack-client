@@ -25,6 +25,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying TLEs by their publishing date from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTle, PublishedTleQuery> {
 
   public PublishedTleQuery() {
@@ -33,6 +39,12 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
   }
 
 
+  /**
+   * Fields referenced in "published TLE" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.PublishedTleQuery
+   */
   public static enum PublishedTleQueryField implements QueryField {
 
     PUBLISH_TIME {
@@ -61,6 +73,12 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
   }
 
 
+  /**
+   * Class representing results returned from "published TLE" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.PublishedTleQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

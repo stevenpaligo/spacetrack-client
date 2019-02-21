@@ -27,6 +27,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying recent changes to satellites from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChange, SatCatChangeQuery> {
 
   public SatCatChangeQuery() {
@@ -35,6 +41,12 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
   }
 
 
+  /**
+   * Fields referenced in "recent satellite changes" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.SatCatChangeQuery
+   */
   public static enum SatCatChangeQueryField implements QueryField {
 
     CATALOG_NUMBER {
@@ -143,6 +155,12 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
   }
 
 
+  /**
+   * Class representing results returned from "recent satellite changes" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.SatCatChangeQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor

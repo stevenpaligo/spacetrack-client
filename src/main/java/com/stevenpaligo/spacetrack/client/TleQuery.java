@@ -27,6 +27,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class for querying two-line element sets (TLEs) from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
   public TleQuery() {
@@ -35,6 +41,12 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
   }
 
 
+  /**
+   * Fields referenced in "TLE" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.TleQuery
+   */
   public static enum TleQueryField implements QueryField {
 
     COMMENT {
@@ -287,6 +299,12 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
   }
 
 
+  /**
+   * Class representing results returned from "TLE" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * 
+   * @author Steven Paligo
+   * @see com.stevenpaligo.spacetrack.client.TleQuery
+   */
   @Getter
   @Setter
   @NoArgsConstructor
