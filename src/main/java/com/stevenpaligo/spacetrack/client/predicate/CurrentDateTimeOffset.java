@@ -13,16 +13,30 @@
  */
 package com.stevenpaligo.spacetrack.client.predicate;
 
-import lombok.AccessLevel;
+import java.time.Duration;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NonNull;
 
-@Getter(AccessLevel.PACKAGE)
+/**
+ * A value that represents an offset from the current date/time
+ * 
+ * @author Steven Paligo
+ */
 @AllArgsConstructor
 public class CurrentDateTimeOffset {
 
   @NonNull
-  private Double offsetDays;
+  private Duration offset;
 
+
+  public String toQueryValue() {
+
+    double offsetDays = offset.toMillis() / 86400000.0;
+
+    if (offsetDays < 0.0) {
+      return "now" + offsetDays;
+    } else {
+      return "now+" + offsetDays;
+    }
+  }
 }

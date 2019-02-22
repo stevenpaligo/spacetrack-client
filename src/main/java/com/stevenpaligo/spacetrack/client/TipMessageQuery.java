@@ -13,9 +13,8 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
-import java.time.Instant;
 import java.util.Optional;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,6 +23,7 @@ import com.stevenpaligo.spacetrack.client.TipMessageQuery.TipMessage;
 import com.stevenpaligo.spacetrack.client.TipMessageQuery.TipMessageQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import com.stevenpaligo.spacetrack.client.util.OptionalBooleanYesNoDeserializer;
+import com.stevenpaligo.spacetrack.client.util.UtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -180,16 +180,16 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
     private Integer catalogNumber;
 
     @JsonProperty("MSG_EPOCH")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant messageEpoch;
+    @JsonDeserialize(using = UtcInstantDeserializer.class)
+    private UtcInstant messageEpoch;
 
     @JsonProperty("INSERT_EPOCH")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant insertEpoch;
+    @JsonDeserialize(using = UtcInstantDeserializer.class)
+    private UtcInstant insertEpoch;
 
     @JsonProperty("DECAY_EPOCH")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant decayEpoch;
+    @JsonDeserialize(using = UtcInstantDeserializer.class)
+    private UtcInstant decayEpoch;
 
     @JsonProperty("WINDOW")
     private Integer windowSizeMinutes;

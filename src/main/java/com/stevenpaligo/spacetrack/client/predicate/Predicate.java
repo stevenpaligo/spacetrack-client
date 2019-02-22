@@ -13,14 +13,20 @@
  */
 package com.stevenpaligo.spacetrack.client.predicate;
 
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 
+/**
+ * Represents a predicate used for filtering results
+ * 
+ * @author Steven Paligo
+ */
 public interface Predicate<T extends QueryField> {
 
-  final DateTimeFormatter PredicateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS").withZone(ZoneId.of("UTC"));
-
-
+  /**
+   * Get the URL component the represents this predicate
+   * 
+   * @return A non-null query parameter in the form of a URL component
+   */
   public String toQueryParameter();
+
 }

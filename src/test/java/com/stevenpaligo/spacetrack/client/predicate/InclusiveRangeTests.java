@@ -16,10 +16,13 @@ package com.stevenpaligo.spacetrack.client.predicate;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.threeten.extra.scale.TaiInstant;
+import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 
 public class InclusiveRangeTests {
@@ -54,7 +57,7 @@ public class InclusiveRangeTests {
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(null, new CurrentDateTimeOffset(-5.0), new Date());
+      new InclusiveRange<>(null, new CurrentDateTimeOffset(Duration.ofDays(-5)), new Date());
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
@@ -62,15 +65,15 @@ public class InclusiveRangeTests {
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), (Date) null);
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), (Date) null);
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(null, new Date(), new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(null, new Date(), new CurrentDateTimeOffset(Duration.ofDays(5)));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(new TestQueryField(), (Date) null, new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(new TestQueryField(), (Date) null, new CurrentDateTimeOffset(Duration.ofDays(5)));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
@@ -90,7 +93,7 @@ public class InclusiveRangeTests {
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(null, new CurrentDateTimeOffset(-5.0), Instant.now());
+      new InclusiveRange<>(null, new CurrentDateTimeOffset(Duration.ofDays(-5)), Instant.now());
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
@@ -98,15 +101,15 @@ public class InclusiveRangeTests {
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), (Instant) null);
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), (Instant) null);
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(null, Instant.now(), new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(null, Instant.now(), new CurrentDateTimeOffset(Duration.ofDays(5)));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(new TestQueryField(), (Instant) null, new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(new TestQueryField(), (Instant) null, new CurrentDateTimeOffset(Duration.ofDays(5)));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
@@ -114,15 +117,87 @@ public class InclusiveRangeTests {
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(null, new CurrentDateTimeOffset(-5.0), new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(null, UtcInstant.of(Instant.now()), UtcInstant.of(Instant.now().plusMillis(1000)));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(new TestQueryField(), (CurrentDateTimeOffset) null, new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(new TestQueryField(), (UtcInstant) null, UtcInstant.of(Instant.now().plusMillis(1000)));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), (CurrentDateTimeOffset) null);
+      new InclusiveRange<>(new TestQueryField(), UtcInstant.of(Instant.now()), (UtcInstant) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(null, new CurrentDateTimeOffset(Duration.ofDays(-5)), UtcInstant.of(Instant.now()));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), (CurrentDateTimeOffset) null, UtcInstant.of(Instant.now()));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), (UtcInstant) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(null, UtcInstant.of(Instant.now()), new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), (UtcInstant) null, new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), UtcInstant.of(Instant.now()), (CurrentDateTimeOffset) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(null, TaiInstant.of(Instant.now()), TaiInstant.of(Instant.now().plusMillis(1000)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), (TaiInstant) null, TaiInstant.of(Instant.now().plusMillis(1000)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), TaiInstant.of(Instant.now()), (TaiInstant) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(null, new CurrentDateTimeOffset(Duration.ofDays(-5)), TaiInstant.of(Instant.now()));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), (CurrentDateTimeOffset) null, TaiInstant.of(Instant.now()));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), (TaiInstant) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(null, TaiInstant.of(Instant.now()), new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), (TaiInstant) null, new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), TaiInstant.of(Instant.now()), (CurrentDateTimeOffset) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(null, new CurrentDateTimeOffset(Duration.ofDays(-5)), new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), (CurrentDateTimeOffset) null, new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), (CurrentDateTimeOffset) null);
     });
 
 
@@ -136,11 +211,11 @@ public class InclusiveRangeTests {
     });
 
     assertDoesNotThrow(() -> {
-      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), new Date());
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), new Date());
     });
 
     assertDoesNotThrow(() -> {
-      new InclusiveRange<>(new TestQueryField(), new Date(), new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(new TestQueryField(), new Date(), new CurrentDateTimeOffset(Duration.ofDays(5)));
     });
 
     assertDoesNotThrow(() -> {
@@ -148,15 +223,39 @@ public class InclusiveRangeTests {
     });
 
     assertDoesNotThrow(() -> {
-      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), Instant.now());
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), Instant.now());
     });
 
     assertDoesNotThrow(() -> {
-      new InclusiveRange<>(new TestQueryField(), Instant.now(), new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(new TestQueryField(), Instant.now(), new CurrentDateTimeOffset(Duration.ofDays(5)));
     });
 
     assertDoesNotThrow(() -> {
-      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), new CurrentDateTimeOffset(5.0));
+      new InclusiveRange<>(new TestQueryField(), UtcInstant.of(Instant.now()), UtcInstant.of(Instant.now().plusMillis(1000)));
+    });
+
+    assertDoesNotThrow(() -> {
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), UtcInstant.of(Instant.now()));
+    });
+
+    assertDoesNotThrow(() -> {
+      new InclusiveRange<>(new TestQueryField(), UtcInstant.of(Instant.now()), new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertDoesNotThrow(() -> {
+      new InclusiveRange<>(new TestQueryField(), TaiInstant.of(Instant.now()), TaiInstant.of(Instant.now().plusMillis(1000)));
+    });
+
+    assertDoesNotThrow(() -> {
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), TaiInstant.of(Instant.now()));
+    });
+
+    assertDoesNotThrow(() -> {
+      new InclusiveRange<>(new TestQueryField(), TaiInstant.of(Instant.now()), new CurrentDateTimeOffset(Duration.ofDays(5)));
+    });
+
+    assertDoesNotThrow(() -> {
+      new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), new CurrentDateTimeOffset(Duration.ofDays(5)));
     });
   }
 
@@ -174,11 +273,11 @@ public class InclusiveRangeTests {
 
 
     // one offset and one date value
-    assertEquals("NORAD_CAT_ID/now-5.0--1970-01-01 00:00:00.000", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), new Date(0)).toQueryParameter());
+    assertEquals("NORAD_CAT_ID/now-5.0--1970-01-01 00:00:00.000", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), new Date(0)).toQueryParameter());
 
 
     // one date and one offset value
-    assertEquals("NORAD_CAT_ID/1970-01-01 00:00:00.000--now+5.0", new InclusiveRange<>(new TestQueryField(), new Date(0), new CurrentDateTimeOffset(5.0)).toQueryParameter());
+    assertEquals("NORAD_CAT_ID/1970-01-01 00:00:00.000--now+5.0", new InclusiveRange<>(new TestQueryField(), new Date(0), new CurrentDateTimeOffset(Duration.ofDays(5))).toQueryParameter());
 
 
     // instant values
@@ -186,15 +285,40 @@ public class InclusiveRangeTests {
 
 
     // one offset and one instant value
-    assertEquals("NORAD_CAT_ID/now-5.0--2018-02-03 04:05:06.789", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), Instant.parse("2018-02-03T04:05:06.789Z")).toQueryParameter());
+    assertEquals("NORAD_CAT_ID/now-5.0--2018-02-03 04:05:06.789", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), Instant.parse("2018-02-03T04:05:06.789Z")).toQueryParameter());
 
 
     // one instant and one offset value
-    assertEquals("NORAD_CAT_ID/2018-01-02 03:04:05.678--now+5.0", new InclusiveRange<>(new TestQueryField(), Instant.parse("2018-01-02T03:04:05.678Z"), new CurrentDateTimeOffset(5.0)).toQueryParameter());
+    assertEquals("NORAD_CAT_ID/2018-01-02 03:04:05.678--now+5.0", new InclusiveRange<>(new TestQueryField(), Instant.parse("2018-01-02T03:04:05.678Z"), new CurrentDateTimeOffset(Duration.ofDays(5))).toQueryParameter());
+
+
+    // UTC instant values
+    assertEquals("NORAD_CAT_ID/2018-01-02 03:04:05.678--2018-02-03 04:05:06.789", new InclusiveRange<>(new TestQueryField(), UtcInstant.parse("2018-01-02T03:04:05.678Z"), UtcInstant.parse("2018-02-03T04:05:06.789Z")).toQueryParameter());
+
+
+    // one offset and one UTC instant value
+    assertEquals("NORAD_CAT_ID/now-5.0--2018-02-03 04:05:06.789", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), UtcInstant.parse("2018-02-03T04:05:06.789Z")).toQueryParameter());
+
+
+    // one UTC instant and one offset value
+    assertEquals("NORAD_CAT_ID/2018-01-02 03:04:05.678--now+5.0", new InclusiveRange<>(new TestQueryField(), UtcInstant.parse("2018-01-02T03:04:05.678Z"), new CurrentDateTimeOffset(Duration.ofDays(5))).toQueryParameter());
+
+
+    // TAI instant values
+    assertEquals("NORAD_CAT_ID/2018-01-02 03:04:05.678--2018-02-03 04:05:06.789",
+        new InclusiveRange<>(new TestQueryField(), TaiInstant.of(UtcInstant.parse("2018-01-02T03:04:05.678Z")), TaiInstant.of(UtcInstant.parse("2018-02-03T04:05:06.789Z"))).toQueryParameter());
+
+
+    // one offset and one TAI instant value
+    assertEquals("NORAD_CAT_ID/now-5.0--2018-02-03 04:05:06.789", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), TaiInstant.of(UtcInstant.parse("2018-02-03T04:05:06.789Z"))).toQueryParameter());
+
+
+    // one TAI instant and one offset value
+    assertEquals("NORAD_CAT_ID/2018-01-02 03:04:05.678--now+5.0", new InclusiveRange<>(new TestQueryField(), TaiInstant.of(UtcInstant.parse("2018-01-02T03:04:05.678Z")), new CurrentDateTimeOffset(Duration.ofDays(5))).toQueryParameter());
 
 
     // offset values (positive and negative)
-    assertEquals("NORAD_CAT_ID/now-5.0--now+5.0", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(-5.0), new CurrentDateTimeOffset(5.0)).toQueryParameter());
+    assertEquals("NORAD_CAT_ID/now-5.0--now+5.0", new InclusiveRange<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(-5)), new CurrentDateTimeOffset(Duration.ofDays(5))).toQueryParameter());
   }
 
 

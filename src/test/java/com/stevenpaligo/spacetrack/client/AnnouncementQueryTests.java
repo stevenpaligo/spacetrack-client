@@ -15,6 +15,7 @@ package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import java.net.URL;
+import java.time.Duration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -78,7 +79,7 @@ public class AnnouncementQueryTests {
 
     assertDoesNotThrow(() -> {
 
-      Predicate<AnnouncementQueryField> predicate = new GreaterThan<>(AnnouncementQueryField.START_TIME, new CurrentDateTimeOffset(-365.0));
+      Predicate<AnnouncementQueryField> predicate = new GreaterThan<>(AnnouncementQueryField.START_TIME, new CurrentDateTimeOffset(Duration.ofDays(-365)));
       new AnnouncementQuery().setCredentials(credentials).addPredicate(predicate).setLimit(Limit.ONE).execute();
     });
   }

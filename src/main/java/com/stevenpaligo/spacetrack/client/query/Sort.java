@@ -15,6 +15,11 @@ package com.stevenpaligo.spacetrack.client.query;
 
 import lombok.NonNull;
 
+/**
+ * A query clause for sorting the results returned from a query
+ * 
+ * @author Steven Paligo
+ */
 public class Sort<T extends QueryField> {
 
   public static enum Direction {

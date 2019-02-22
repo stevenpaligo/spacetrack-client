@@ -15,6 +15,7 @@ package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import java.net.URL;
+import java.time.Duration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,7 +81,7 @@ public class PublishedTleQueryTests {
 
     assertDoesNotThrow(() -> {
 
-      Predicate<PublishedTleQueryField> predicate = new GreaterThan<>(PublishedTleQueryField.PUBLISH_TIME, new CurrentDateTimeOffset(-0.01));
+      Predicate<PublishedTleQueryField> predicate = new GreaterThan<>(PublishedTleQueryField.PUBLISH_TIME, new CurrentDateTimeOffset(Duration.ofMinutes(-15)));
       new PublishedTleQuery().setCredentials(credentials).addPredicate(predicate).addSort(new Sort<>(PublishedTleQueryField.PUBLISH_TIME, Direction.DESC)).setLimit(Limit.ONE).execute();
     });
   }

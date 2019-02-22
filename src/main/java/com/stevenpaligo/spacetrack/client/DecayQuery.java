@@ -13,15 +13,16 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
-import java.time.Instant;
 import java.util.Optional;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.DecayQuery.Decay;
 import com.stevenpaligo.spacetrack.client.DecayQuery.DecayQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.OptionalUtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -191,8 +192,8 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
     private String country;
 
     @JsonProperty("MSG_EPOCH")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Optional<Instant> messageEpoch;
+    @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
+    private Optional<UtcInstant> messageEpoch;
 
     @JsonProperty("DECAY_EPOCH")
     private Optional<String> decayEpoch;

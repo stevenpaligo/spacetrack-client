@@ -15,9 +15,17 @@ package com.stevenpaligo.spacetrack.client.predicate;
 
 import java.time.Instant;
 import java.util.Date;
+import org.threeten.extra.scale.TaiInstant;
+import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.SpaceTrackDateTimeFormatter;
 import lombok.NonNull;
 
+/**
+ * A {@link Predicate} that filters results based on whether or not the given field equals the given value
+ * 
+ * @author Steven Paligo
+ */
 public class Equal<T extends QueryField> implements Predicate<T> {
 
   private T field;
@@ -38,38 +46,56 @@ public class Equal<T extends QueryField> implements Predicate<T> {
   }
 
 
+  /**
+   * Create the predicate from a {@link Date} (UTC-SLS)
+   * 
+   * <p>
+   * <strong>Note:</strong> The conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link #Equal(QueryField, UtcInstant)} or {@link #Equal(QueryField, TaiInstant)} if possible.
+   * </p>
+   */
   public Equal(@NonNull T field, @NonNull Date value) {
 
     this.field = field;
-    this.value = PredicateFormatter.format(Instant.ofEpochMilli(value.getTime()));
+    this.value = SpaceTrackDateTimeFormatter.format(value);
   }
 
 
+  /**
+   * Create the predicate from an {@link Instant} (UTC-SLS)
+   * 
+   * <p>
+   * <strong>Note:</strong> The conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link #Equal(QueryField, UtcInstant)} or {@link #Equal(QueryField, TaiInstant)} if possible.
+   * </p>
+   */
   public Equal(@NonNull T field, @NonNull Instant value) {
 
     this.field = field;
-    this.value = PredicateFormatter.format(value);
+    this.value = SpaceTrackDateTimeFormatter.format(value);
+  }
+
+
+  public Equal(@NonNull T field, @NonNull UtcInstant value) {
+
+    this.field = field;
+    this.value = SpaceTrackDateTimeFormatter.format(value);
+  }
+
+
+  public Equal(@NonNull T field, @NonNull TaiInstant value) {
+
+    this.field = field;
+    this.value = SpaceTrackDateTimeFormatter.format(value);
   }
 
 
   public Equal(@NonNull T field, @NonNull CurrentDateTimeOffset currentDateTimeOffset) {
 
     this.field = field;
-    this.value = toValue(currentDateTimeOffset);
+    this.value = currentDateTimeOffset.toQueryValue();
   }
 
 
   public String toQueryParameter() {
     return field.getQueryFieldName() + "/" + value;
-  }
-
-
-  private static String toValue(@NonNull CurrentDateTimeOffset currentDateTimeOffset) {
-
-    if (currentDateTimeOffset.getOffsetDays() < 0.0) {
-      return "now" + currentDateTimeOffset.getOffsetDays().toString();
-    } else {
-      return "now+" + currentDateTimeOffset.getOffsetDays().toString();
-    }
   }
 }

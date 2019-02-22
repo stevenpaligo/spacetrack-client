@@ -20,9 +20,17 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.threeten.extra.scale.TaiInstant;
+import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.SpaceTrackDateTimeFormatter;
 import lombok.NonNull;
 
+/**
+ * A {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+ * 
+ * @author Steven Paligo
+ */
 public class In<T extends QueryField> implements Predicate<T> {
 
   private T field;
@@ -34,13 +42,37 @@ public class In<T extends QueryField> implements Predicate<T> {
   }
 
 
+  /**
+   * Create the predicate from one or more {@link Date} (UTC-SLS) objects
+   * 
+   * <p>
+   * <strong>Note:</strong> The conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link #In(QueryField, UtcInstant...)} or {@link #In(QueryField, TaiInstant...)} if possible.
+   * </p>
+   */
   public In(@NonNull T field, @NonNull Date... values) {
     this(field, Arrays.asList(values), Date.class);
   }
 
 
+  /**
+   * Create the predicate from one or more {@link Instant} (UTC-SLS) objects
+   * 
+   * <p>
+   * <strong>Note:</strong> The conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link #In(QueryField, UtcInstant...)} or {@link #In(QueryField, TaiInstant...)} if possible.
+   * </p>
+   */
   public In(@NonNull T field, @NonNull Instant... values) {
     this(field, Arrays.asList(values), Instant.class);
+  }
+
+
+  public In(@NonNull T field, @NonNull UtcInstant... values) {
+    this(field, Arrays.asList(values), UtcInstant.class);
+  }
+
+
+  public In(@NonNull T field, @NonNull TaiInstant... values) {
+    this(field, Arrays.asList(values), TaiInstant.class);
   }
 
 
@@ -49,11 +81,19 @@ public class In<T extends QueryField> implements Predicate<T> {
   }
 
 
+  /**
+   * Create the predicate from a collection of values
+   * 
+   * <p>
+   * <strong>Note:</strong> If the values are {@link Date} or {@link Instant} objects, the conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link UtcInstant} or
+   * {@link TaiInstant} objects if possible.
+   * </p>
+   */
   @SuppressWarnings("unchecked")
   public <V> In(@NonNull T field, @NonNull Collection<V> values, @NonNull Class<V> valueType) {
 
     // more validation
-    if (valueType != String.class && valueType != Date.class && valueType != Instant.class && Number.class.isAssignableFrom(valueType) == false) {
+    if (valueType != String.class && valueType != Date.class && valueType != Instant.class && valueType != UtcInstant.class && valueType != TaiInstant.class && Number.class.isAssignableFrom(valueType) == false) {
       throw new IllegalArgumentException("The values collection does not contain strings, numbers, dates, or instants: " + valueType);
     }
 
@@ -74,9 +114,13 @@ public class In<T extends QueryField> implements Predicate<T> {
     if (valueType == String.class) {
       this.values = String.join(",", (Set<String>) uniqueValues);
     } else if (valueType == Date.class) {
-      this.values = uniqueValues.stream().map(v -> PredicateFormatter.format(Instant.ofEpochMilli(((Date) v).getTime()))).collect(Collectors.joining(","));
+      this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((Date) v)).collect(Collectors.joining(","));
     } else if (valueType == Instant.class) {
-      this.values = uniqueValues.stream().map(v -> PredicateFormatter.format((Instant) v)).collect(Collectors.joining(","));
+      this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((Instant) v)).collect(Collectors.joining(","));
+    } else if (valueType == UtcInstant.class) {
+      this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((UtcInstant) v)).collect(Collectors.joining(","));
+    } else if (valueType == TaiInstant.class) {
+      this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((TaiInstant) v)).collect(Collectors.joining(","));
     } else if (Number.class.isAssignableFrom(valueType)) {
       this.values = uniqueValues.stream().map(v -> ((Number) v).toString()).collect(Collectors.joining(","));
     } else {

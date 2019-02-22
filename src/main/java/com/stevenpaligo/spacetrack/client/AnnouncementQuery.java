@@ -13,14 +13,15 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
-import java.time.Instant;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.AnnouncementQuery.Announcement;
 import com.stevenpaligo.spacetrack.client.AnnouncementQuery.AnnouncementQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.UtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -100,12 +101,12 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
     private String text;
 
     @JsonProperty("announcement_start")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant startTime;
+    @JsonDeserialize(using = UtcInstantDeserializer.class)
+    private UtcInstant startTime;
 
     @JsonProperty("announcement_end")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant endTime;
+    @JsonDeserialize(using = UtcInstantDeserializer.class)
+    private UtcInstant endTime;
 
   }
 }

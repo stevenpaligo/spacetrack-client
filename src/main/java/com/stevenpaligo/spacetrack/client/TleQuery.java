@@ -13,16 +13,17 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.Duration;
 import java.util.Optional;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.TleQuery.Tle;
 import com.stevenpaligo.spacetrack.client.TleQuery.TleQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.UtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -333,8 +334,8 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
     private Optional<String> internationalDesignator;
 
     @JsonProperty("EPOCH")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant epochYmdHms;
+    @JsonDeserialize(using = UtcInstantDeserializer.class)
+    private UtcInstant epochYmdHms;
 
     @JsonProperty("EPOCH_MICROSECONDS")
     private Integer epochMicroseconds;
@@ -406,8 +407,8 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
     private Double perigeeHeightKilometers;
 
 
-    public Instant getEpoch() {
-      return getEpochYmdHms().plus(getEpochMicroseconds(), ChronoUnit.MICROS);
+    public UtcInstant getEpoch() {
+      return getEpochYmdHms().plus(Duration.ofNanos(getEpochMicroseconds() * 1000));
     }
   }
 }

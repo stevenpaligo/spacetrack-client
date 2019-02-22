@@ -41,6 +41,12 @@ import com.stevenpaligo.spacetrack.client.query.Sort;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Base class for querying from <a href="https://www.space-track.org/">Space-Track.org</a>. The class follows the builder pattern: the query is constructed using methods like
+ * {@link #addPredicate(com.stevenpaligo.spacetrack.client.predicate.Predicate)} and then executed with {@link #execute()}.
+ * 
+ * @author Steven Paligo
+ */
 @Slf4j
 public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
@@ -70,6 +76,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Adds credentials to the query
+   * 
+   * @param credentials A non-null object providing credentials for the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q setCredentials(@NonNull CredentialProvider credentials) {
 
@@ -78,6 +90,11 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Removes any predicates that have been added to the query
+   * 
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q clearPredicates() {
 
@@ -86,6 +103,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Adds a predicate to the query
+   * 
+   * @param predicate A non-null predicate to add to the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q addPredicate(@NonNull Predicate<T> predicate) {
 
@@ -94,6 +117,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Adds a collection of predicates to the query
+   * 
+   * @param predicates A non-null collection of predicates to add to the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q addPredicates(@NonNull Collection<Predicate<T>> predicates) {
 
@@ -102,6 +131,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Set or remove the query's result limit, based on whether or not the {@link Optional} is empty
+   * 
+   * @param limit A non-null {@link Optional} that may or may not contain a {@link Limit} object
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q setLimit(@NonNull Optional<Limit> limit) {
 
@@ -110,6 +145,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Set the query's result limit
+   * 
+   * @param limit A non-null {@link Limit} to set on the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q setLimit(@NonNull Limit limit) {
 
@@ -118,6 +159,11 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Removes any sorting fields that have been added to the query
+   * 
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q clearSorts() {
 
@@ -126,6 +172,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Adds a sorting field to the query. The order of the sorting fields does matter. They will be added to the query in the order of the calls to this method and {@link #addSorts(List)}.
+   * 
+   * @param sort A non-null sorting field to add to the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q addSort(@NonNull Sort<T> sort) {
 
@@ -134,6 +186,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Adds a collection of sorting fields to the query. The order of the sorting fields does matter. They will be added to the query in the order of the calls to this method and {@link #addSort(Sort)}.
+   * 
+   * @param sorts A non-null collection of sorting fields to add to the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q addSorts(@NonNull List<Sort<T>> sorts) {
 
@@ -142,6 +200,11 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Removes any satellite lists ("favorites") that have been added to the query
+   * 
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q clearFavorites() {
 
@@ -150,6 +213,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Adds a satellite list (a "favorite") to the query for use in filtering results
+   * 
+   * @param favorite The non-null name of a satellite list to add to the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q addFavorite(@NonNull String favorite) {
 
@@ -158,6 +227,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Adds a collection of satellite lists ("favorites") to the query for use in filtering results
+   * 
+   * @param favorites The non-null collection of satellite list names to add to the query
+   * @return This query, for use in the builder pattern
+   */
   @SuppressWarnings("unchecked")
   public Q addFavorites(@NonNull Collection<String> favorites) {
 
@@ -166,6 +241,15 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Gets the <a href="https://www.space-track.org/">Space-Track.org</a> URL that represents this query. This URL is the same as what will be generated by invoking {@link #execute()}.
+   * 
+   * <p>
+   * <strong>Note:</strong> This method does not need to be called prior to calling {@link #execute()}. That method will automatically generate the URL as necessary.
+   * </p>
+   * 
+   * @return The <a href="https://www.space-track.org/">Space-Track.org</a> URL generated from building this query.
+   */
   public String getQueryString() {
 
     // query class
@@ -211,6 +295,14 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
   }
 
 
+  /**
+   * Executes the query against the <a href="https://www.space-track.org/">Space-Track.org</a> API and returns the results
+   * 
+   * @return The results from executing the query
+   * @throws JsonParseException Space-Track.org returned results that are unable to be parsed
+   * @throws JsonMappingException Space-Track.org returned unexpected fields in the results
+   * @throws IOException The Space-Track.org API was unable to be queried successfully
+   */
   public List<R> execute() throws JsonParseException, JsonMappingException, IOException {
 
     // validate

@@ -22,6 +22,8 @@ import java.util.Arrays;
 import java.util.Date;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.threeten.extra.scale.TaiInstant;
+import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 
 public class InTests {
@@ -41,6 +43,14 @@ public class InTests {
 
     assertThrows(IllegalArgumentException.class, () -> {
       new In<>(null, Instant.now());
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new In<>(null, UtcInstant.of(Instant.now()));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new In<>(null, TaiInstant.of(Instant.now()));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
@@ -78,6 +88,14 @@ public class InTests {
     });
 
     assertDoesNotThrow(() -> {
+      new In<>(new TestQueryField(), UtcInstant.of(Instant.now()));
+    });
+
+    assertDoesNotThrow(() -> {
+      new In<>(new TestQueryField(), TaiInstant.of(Instant.now()));
+    });
+
+    assertDoesNotThrow(() -> {
       new In<>(new TestQueryField(), 6.0);
     });
 
@@ -103,6 +121,16 @@ public class InTests {
     // instant values
     assertTrue(Arrays.asList("NORAD_CAT_ID/2018-01-02 03:04:05.678,2018-02-03 04:05:06.789", "NORAD_CAT_ID/2018-02-03 04:05:06.789,2018-01-02 03:04:05.678")
         .contains(new In<>(new TestQueryField(), Instant.parse("2018-01-02T03:04:05.678Z"), Instant.parse("2018-02-03T04:05:06.789Z")).toQueryParameter()));
+
+
+    // UTC instant values
+    assertTrue(Arrays.asList("NORAD_CAT_ID/2018-01-02 03:04:05.678,2018-02-03 04:05:06.789", "NORAD_CAT_ID/2018-02-03 04:05:06.789,2018-01-02 03:04:05.678")
+        .contains(new In<>(new TestQueryField(), UtcInstant.parse("2018-01-02T03:04:05.678Z"), UtcInstant.parse("2018-02-03T04:05:06.789Z")).toQueryParameter()));
+
+
+    // TAI instant values
+    assertTrue(Arrays.asList("NORAD_CAT_ID/2018-01-02 03:04:05.678,2018-02-03 04:05:06.789", "NORAD_CAT_ID/2018-02-03 04:05:06.789,2018-01-02 03:04:05.678")
+        .contains(new In<>(new TestQueryField(), TaiInstant.of(UtcInstant.parse("2018-01-02T03:04:05.678Z")), TaiInstant.of(UtcInstant.parse("2018-02-03T04:05:06.789Z"))).toQueryParameter()));
 
 
     // number values

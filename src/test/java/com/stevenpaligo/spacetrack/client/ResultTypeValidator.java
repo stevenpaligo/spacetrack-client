@@ -18,11 +18,11 @@ import java.lang.reflect.ParameterizedType;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -143,7 +143,7 @@ public class ResultTypeValidator {
 
       } else if (schemaFieldType.equals("datetime")) {
 
-        if (resultFieldDataType != Instant.class) {
+        if (resultFieldDataType != UtcInstant.class) {
           throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
         }
 

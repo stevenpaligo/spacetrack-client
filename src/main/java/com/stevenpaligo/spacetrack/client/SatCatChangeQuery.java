@@ -13,16 +13,18 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Optional;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatChangeQuery.SatCatChange;
 import com.stevenpaligo.spacetrack.client.SatCatChangeQuery.SatCatChangeQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.OptionalUtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -208,8 +210,8 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
     private Optional<LocalDate> previousDecayDate;
 
     @JsonProperty("CHANGE_MADE")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Optional<Instant> updateTime;
+    @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
+    private Optional<UtcInstant> updateTime;
 
   }
 }

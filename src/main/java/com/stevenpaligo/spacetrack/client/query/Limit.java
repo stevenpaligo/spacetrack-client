@@ -16,6 +16,11 @@ package com.stevenpaligo.spacetrack.client.query;
 import java.util.Optional;
 import lombok.NonNull;
 
+/**
+ * A query clause for limiting the results returned from a query
+ * 
+ * @author Steven Paligo
+ */
 public class Limit {
 
   public static final Limit ONE = new Limit(1);

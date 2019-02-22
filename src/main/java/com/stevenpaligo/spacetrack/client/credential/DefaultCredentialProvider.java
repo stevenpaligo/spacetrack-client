@@ -17,6 +17,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 
+/**
+ * An implementation of the {@link CredentialProvider} interface to hold explicitly stated credentials
+ * 
+ * @author Steven Paligo
+ */
 @Getter
 @AllArgsConstructor
 public class DefaultCredentialProvider implements CredentialProvider {

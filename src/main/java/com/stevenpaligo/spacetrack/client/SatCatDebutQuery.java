@@ -14,9 +14,9 @@
 package com.stevenpaligo.spacetrack.client;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Optional;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -26,6 +26,7 @@ import com.stevenpaligo.spacetrack.client.SatCatDebutQuery.SatCatDebut;
 import com.stevenpaligo.spacetrack.client.SatCatDebutQuery.SatCatDebutQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import com.stevenpaligo.spacetrack.client.util.BooleanYesNoDeserializer;
+import com.stevenpaligo.spacetrack.client.util.OptionalUtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -279,8 +280,8 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
     private String satName;
 
     @JsonProperty("DEBUT")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Optional<Instant> debutTime;
+    @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
+    private Optional<UtcInstant> debutTime;
 
     @JsonProperty("COUNTRY")
     private String country;

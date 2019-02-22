@@ -16,10 +16,13 @@ package com.stevenpaligo.spacetrack.client.predicate;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.threeten.extra.scale.TaiInstant;
+import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 
 public class EqualTests {
@@ -62,7 +65,23 @@ public class EqualTests {
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
-      new Equal<>(null, new CurrentDateTimeOffset(1.0));
+      new Equal<>(null, UtcInstant.of(Instant.now()));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new Equal<>(new TestQueryField(), (UtcInstant) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new Equal<>(null, TaiInstant.of(Instant.now()));
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new Equal<>(new TestQueryField(), (TaiInstant) null);
+    });
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      new Equal<>(null, new CurrentDateTimeOffset(Duration.ofDays(1)));
     });
 
     assertThrows(IllegalArgumentException.class, () -> {
@@ -88,7 +107,15 @@ public class EqualTests {
     });
 
     assertDoesNotThrow(() -> {
-      new Equal<>(new TestQueryField(), new CurrentDateTimeOffset(1.0));
+      new Equal<>(new TestQueryField(), UtcInstant.of(Instant.now()));
+    });
+
+    assertDoesNotThrow(() -> {
+      new Equal<>(new TestQueryField(), TaiInstant.of(Instant.now()));
+    });
+
+    assertDoesNotThrow(() -> {
+      new Equal<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(1)));
     });
   }
 
@@ -113,12 +140,16 @@ public class EqualTests {
     assertEquals("NORAD_CAT_ID/2018-12-14 06:26:28.123", new Equal<>(new TestQueryField(), Instant.ofEpochMilli(1544768788123L)).toQueryParameter());
 
 
-    // positive offset value
-    assertEquals("NORAD_CAT_ID/now+1.0", new Equal<>(new TestQueryField(), new CurrentDateTimeOffset(1.0)).toQueryParameter());
+    // UTC instant value
+    assertEquals("NORAD_CAT_ID/2018-12-14 06:26:28.123", new Equal<>(new TestQueryField(), UtcInstant.parse("2018-12-14T06:26:28.123Z")).toQueryParameter());
 
 
-    // negative offset value
-    assertEquals("NORAD_CAT_ID/now-1.0", new Equal<>(new TestQueryField(), new CurrentDateTimeOffset(-1.0)).toQueryParameter());
+    // TAI instant value
+    assertEquals("NORAD_CAT_ID/2018-12-14 06:26:28.123", new Equal<>(new TestQueryField(), TaiInstant.of(UtcInstant.parse("2018-12-14T06:26:28.123Z"))).toQueryParameter());
+
+
+    // offset value
+    assertEquals("NORAD_CAT_ID/now+1.0", new Equal<>(new TestQueryField(), new CurrentDateTimeOffset(Duration.ofDays(1))).toQueryParameter());
   }
 
 

@@ -16,6 +16,7 @@ package com.stevenpaligo.spacetrack.client.predicate;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.time.Duration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,7 @@ public class CurrentDateTimeOffsetTests {
 
     // allowed value
     assertDoesNotThrow(() -> {
-      new CurrentDateTimeOffset(1.0);
+      new CurrentDateTimeOffset(Duration.ofDays(1));
     });
   }
 
@@ -42,7 +43,13 @@ public class CurrentDateTimeOffsetTests {
   @DisplayName("CurrentDateTimeOffset: Correct contents")
   public void test2() {
 
-    // string value
-    assertEquals((Double) 1.0, new CurrentDateTimeOffset(1.0).getOffsetDays());
+    // verify the query value when the offset is specified in days
+    assertEquals("now+1.0", new CurrentDateTimeOffset(Duration.ofDays(1)).toQueryValue());
+    assertEquals("now-1.0", new CurrentDateTimeOffset(Duration.ofDays(-1)).toQueryValue());
+
+
+    // verify the query value when the offset is specified in units smaller than a day
+    assertEquals("now+0.020833333333333332", new CurrentDateTimeOffset(Duration.ofMinutes(30)).toQueryValue());
+    assertEquals("now-0.020833333333333332", new CurrentDateTimeOffset(Duration.ofMinutes(-30)).toQueryValue());
   }
 }

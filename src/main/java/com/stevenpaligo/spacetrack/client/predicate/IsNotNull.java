@@ -16,6 +16,11 @@ package com.stevenpaligo.spacetrack.client.predicate;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.NonNull;
 
+/**
+ * A {@link Predicate} that filters results based on whether or not the given field is not null
+ * 
+ * @author Steven Paligo
+ */
 public class IsNotNull<T extends QueryField> implements Predicate<T> {
 
   private T field;

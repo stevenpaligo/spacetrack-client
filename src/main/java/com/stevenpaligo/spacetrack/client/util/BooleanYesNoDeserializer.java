@@ -24,7 +24,7 @@ public class BooleanYesNoDeserializer extends StdDeserializer<Boolean> {
   @Override
   public Boolean deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
 
-    String stringValue = jsonParser.getValueAsString();
+    String stringValue = jsonParser.getText();
 
 
     // decode the value

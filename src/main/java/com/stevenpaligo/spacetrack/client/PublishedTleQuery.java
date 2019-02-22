@@ -13,14 +13,15 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
-import java.time.Instant;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.PublishedTleQuery.PublishedTle;
 import com.stevenpaligo.spacetrack.client.PublishedTleQuery.PublishedTleQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.UtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -86,8 +87,8 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
   public static class PublishedTle {
 
     @JsonProperty("PUBLISH_EPOCH")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Instant publishTime;
+    @JsonDeserialize(using = UtcInstantDeserializer.class)
+    private UtcInstant publishTime;
 
     @JsonProperty("TLE_LINE1")
     private String tleLine1;
