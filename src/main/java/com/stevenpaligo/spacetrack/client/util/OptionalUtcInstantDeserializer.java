@@ -10,9 +10,6 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 public class OptionalUtcInstantDeserializer extends StdDeserializer<Optional<UtcInstant>> {
 
-  // TODO: move this to a common module
-
-
   private static final long serialVersionUID = 1L;
 
 
