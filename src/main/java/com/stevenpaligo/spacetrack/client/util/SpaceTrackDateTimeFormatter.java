@@ -20,7 +20,7 @@ public class SpaceTrackDateTimeFormatter {
    * <strong>Note:</strong> The conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link #format(UtcInstant)} or {@link #format(TaiInstant)} if possible.
    * </p>
    * 
-   * @param instant A non-null date
+   * @param date A non-null date
    * @return The UTC string corresponding to the date
    */
   public static String format(@NonNull Date date) {
