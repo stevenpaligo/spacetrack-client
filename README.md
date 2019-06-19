@@ -34,15 +34,25 @@ The following is a quick "Hello World" example of querying data. The example que
 
 ```java {.line-numbers}
 /*
-Define the credentials for the service call. SpaceTrack Client includes the `DefaultCredentialProvider` class which takes and stores the credentials as simple strings. If a different implementation is required (e.g. store an encrypted password), just implement the `CredentialProvider` interface and pass that to the query instead. The implementation can be anything as long as it can provide the credentials as they should be passed to Space-Track.org.
+   Define the credentials for the service call. SpaceTrack Client includes the `DefaultCredentialProvider`
+   class which takes and stores the credentials as simple strings. If a different implementation is
+   required (e.g. store an encrypted password), just implement the `CredentialProvider` interface and pass
+   that to the query instead. The implementation can be anything as long as it can provide the credentials
+   as they should be passed to Space-Track.org.
 */
 CredentialProvider credentials = new DefaultCredentialProvider("user", "password");
 
 
 /*
-Query for the International Space Station's satellite record (catalog number 25544). Start by instantiating the query class that represents Space-Track.org's "request class" (SatCatQuery, TleQuery, etc.). Next, set the credential object on the query. Then set any predicates, limits, sorting, etc. that define how the query functions. In this example, the query is searching for the satellite whose catalog number is equal to 25544. Finally, call the `execute()` method to run the query and return results as deserialized data model objects.
+   Query for the International Space Station's satellite record (catalog number 25544). Start by
+   instantiating the query class that represents Space-Track.org's "request class" (SatCatQuery, TleQuery,
+   etc.). Next, set the credential object on the query. Then set any predicates, limits, sorting, etc. that
+   define how the query functions. In this example, the query is searching for the satellite whose catalog
+   number is equal to 25544. Finally, call the `execute()` method to run the query and return results as
+   deserialized data model objects.
 */
-List<SatCat> results = new SatCatQuery().setCredentials(credentials).addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
+List<SatCat> results = new SatCatQuery().setCredentials(credentials)
+  .addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
 
 
 /*
@@ -51,8 +61,12 @@ Print out the apogee height
 SatCat internationalSpaceStation = results.get(0);
 
 if (internationalSpaceStation.getApogeeHeightKilometers().isPresent()) {
-  System.out.println("The International Space Station's apogee height is: " + internationalSpaceStation.getApogeeHeightKilometers().get() + " kilometers");
+
+  long apogeeHeightKm = internationalSpaceStation.getApogeeHeightKilometers().get();
+  System.out.println("The International Space Station's apogee height is: " + apogeeHeightKm + " kilometers");
+
 } else {
+
   System.out.println("The International Space Station's apogee height is: unknown");
 }
 ```
@@ -63,7 +77,7 @@ See the JavaDoc for more information.
 
 ## Contributions
 
-Contributions are always welcome and should be coordinated through the [GitHub Issues](https://github.com/stevenpaligo/spacetrack-client/issues) system.
+Contributions (bug reports, feature requests, etc.) are always welcome and should be coordinated through the [GitHub Issues](https://github.com/stevenpaligo/spacetrack-client/issues) system.
 
 
 
