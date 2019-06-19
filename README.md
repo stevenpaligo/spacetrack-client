@@ -25,7 +25,7 @@ To include SpaceTrack Client in a [Maven](https://maven.apache.org/) project, ad
 </dependencies>
 ```
 
-For non-Maven projects, download the JAR from the [Maven Central](http://repo1.maven.org/maven2/com/stevenpaligo/spacetrack-client/) repository. The list of dependencies can be found in the pom.xml file (see the source on [GitHub](https://github.com/stevenpaligo/spacetrack-client))
+For non-Maven projects, download the JAR from Maven's [Central Repository](http://repo1.maven.org/maven2/com/stevenpaligo/spacetrack-client/). The list of dependencies can be found in the pom.xml file (see the source on [GitHub](https://github.com/stevenpaligo/spacetrack-client))
 
 
 
