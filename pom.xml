@@ -16,12 +16,12 @@ limitations under the License.
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.stevenpaligo.spacetrack</groupId>
+  <groupId>com.stevenpaligo</groupId>
   <artifactId>spacetrack-client</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <name>SpaceTrack Service Client</name>
-  <description>Java service client for Space-Track.org</description>
+  <name>SpaceTrack Client</name>
+  <description>Java client for the Space-Track.org REST API</description>
   <url>https://github.com/stevenpaligo/spacetrack-client</url>
 
   <inceptionYear>2018</inceptionYear>

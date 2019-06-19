@@ -17,7 +17,7 @@ To include SpaceTrack Client in a [Maven](https://maven.apache.org/) project, ad
 <dependencies>
   ...
   <dependency>
-    <groupId>com.stevenpaligo.spacetrack</groupId>
+    <groupId>com.stevenpaligo</groupId>
     <artifactId>spacetrack-client</artifactId>
     <version>1.0.0</version>
   </dependency>
@@ -25,7 +25,7 @@ To include SpaceTrack Client in a [Maven](https://maven.apache.org/) project, ad
 </dependencies>
 ```
 
-For non-Maven projects, download the JAR from the [Maven Central](http://repo1.maven.org/maven2/com/stevenpaligo/spacetrack/spacetrack-client/) repository. The list of dependencies can be found in the pom.xml file (see the source on [GitHub](https://github.com/stevenpaligo/spacetrack-client))
+For non-Maven projects, download the JAR from the [Maven Central](http://repo1.maven.org/maven2/com/stevenpaligo/spacetrack-client/) repository. The list of dependencies can be found in the pom.xml file (see the source on [GitHub](https://github.com/stevenpaligo/spacetrack-client))
 
 
 
@@ -63,7 +63,7 @@ SatCat internationalSpaceStation = results.get(0);
 if (internationalSpaceStation.getApogeeHeightKilometers().isPresent()) {
 
   long apogeeHeightKm = internationalSpaceStation.getApogeeHeightKilometers().get();
-  System.out.println("The International Space Station's apogee height is: " + apogeeHeightKm + " kilometers");
+  System.out.println("The International Space Station's apogee height is: " + apogeeHeightKm + " km");
 
 } else {
 
