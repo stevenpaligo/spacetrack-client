@@ -22,7 +22,7 @@ To include SpaceTrack Client in a [Maven](https://maven.apache.org/) project, ad
   <dependency>
     <groupId>com.stevenpaligo</groupId>
     <artifactId>spacetrack-client</artifactId>
-    <version>1.0.0</version>
+    <version>${spacetrack-client.version}</version>
   </dependency>
   ...
 </dependencies>
