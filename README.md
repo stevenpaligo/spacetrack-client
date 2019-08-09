@@ -3,6 +3,7 @@ This project is a Java client for querying space data (satellites, two-line elem
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.stevenpaligo/spacetrack-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.stevenpaligo/spacetrack-client)
 [![Javadoc](https://javadoc.io/badge/com.stevenpaligo/spacetrack-client.svg)](http://www.javadoc.io/doc/com.stevenpaligo/spacetrack-client)
+[![License](https://img.shields.io/badge/license-Apache%202-blue)](https://opensource.org/licenses/Apache-2.0)
 
 
 
