@@ -75,6 +75,7 @@ limitations under the License.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <delombok.output.directory>${project.build.directory}/generated-sources/delombok</delombok.output.directory>
 
 
     <jackson-databind.version>2.10.1</jackson-databind.version>
@@ -166,6 +167,28 @@ limitations under the License.
 
     <plugins>
 
+      <!-- Generate a version of the source code without Lombok -->
+      <plugin>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok-maven-plugin</artifactId>
+        <version>1.18.10.0</version>
+        <executions>
+          <execution>
+            <id>delombok</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>delombok</goal>
+            </goals>
+            <configuration>
+              <addOutputDirectory>false</addOutputDirectory>
+              <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+              <outputDirectory>${delombok.output.directory}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+
       <!-- Include all test files -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -210,6 +233,7 @@ limitations under the License.
             </goals>
             <configuration>
               <doclint>none</doclint>
+              <sourcepath>${delombok.output.directory}</sourcepath>
             </configuration>
           </execution>
         </executions>
