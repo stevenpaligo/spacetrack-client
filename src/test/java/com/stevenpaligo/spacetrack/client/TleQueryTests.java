@@ -14,6 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Arrays;
@@ -85,5 +86,24 @@ public class TleQueryTests {
       Predicate<TleQueryField> predicate2 = new GreaterThan<>(TleQueryField.EPOCH_YMD_HMS, new CurrentDateTimeOffset(Duration.ofDays(-5)));
       new TleQuery().setCredentials(credentials).addPredicates(Arrays.asList(predicate1, predicate2)).setLimit(Limit.ONE).execute();
     });
+  }
+
+
+  @Test
+  @DisplayName("TleQuery: Calculation of apogee/perigee radius")
+  public void test4() {
+
+    // setup
+    Tle tle = new Tle();
+    tle.setEccentricity(0.0006616);
+    tle.setSemiMajorAxisKilometers(6794.632);
+
+
+    // apogee radius
+    assertEquals(6799.127, tle.getApogeeRadiusKilometers(), 0.001);
+
+
+    // perigee radius
+    assertEquals(6790.137, tle.getPerigeeRadiusKilometers(), 0.001);
   }
 }

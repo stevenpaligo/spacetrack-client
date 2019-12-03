@@ -410,15 +410,31 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
     @JsonProperty("PERIOD")
     private Optional<Double> periodMinutes;
 
+    /**
+     * Approximate height of the apogee assuming a spherical Earth with radius 6378.135 km
+     */
     @JsonProperty("APOGEE")
     private Double apogeeHeightKilometers;
 
+    /**
+     * Approximate height of the perigee assuming a spherical Earth with radius 6378.135 km
+     */
     @JsonProperty("PERIGEE")
     private Double perigeeHeightKilometers;
 
 
     public Instant getEpoch() {
       return getEpochYmdHms().plus(getEpochMicroseconds(), ChronoUnit.MICROS);
+    }
+
+
+    public Double getApogeeRadiusKilometers() {
+      return (getSemiMajorAxisKilometers() * (1.0 + getEccentricity()));
+    }
+
+
+    public Double getPerigeeRadiusKilometers() {
+      return (getSemiMajorAxisKilometers() * (1.0 - getEccentricity()));
     }
   }
 }
