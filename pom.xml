@@ -16,15 +16,19 @@ limitations under the License.
 
   <modelVersion>4.0.0</modelVersion>
 
+
   <groupId>com.stevenpaligo</groupId>
   <artifactId>spacetrack-client</artifactId>
   <version>1.1.0</version>
+
 
   <name>SpaceTrack Client</name>
   <description>Java client for the Space-Track.org REST API</description>
   <url>https://github.com/stevenpaligo/spacetrack-client</url>
 
+
   <inceptionYear>2018</inceptionYear>
+
 
   <licenses>
     <license>
@@ -34,11 +38,13 @@ limitations under the License.
     </license>
   </licenses>
 
+
   <scm>
     <connection>scm:git:git://github.com/stevenpaligo/spacetrack-client.git</connection>
     <developerConnection>scm:git:ssh://github.com:stevenpaligo/spacetrack-client.git</developerConnection>
     <url>https://github.com/stevenpaligo/spacetrack-client.git</url>
   </scm>
+
 
   <developers>
     <developer>
@@ -47,12 +53,14 @@ limitations under the License.
     </developer>
   </developers>
 
+
   <distributionManagement>
 
     <snapshotRepository>
       <id>ossrh-com.stevenpaligo</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
+
 
     <repository>
       <id>ossrh-com.stevenpaligo</id>
@@ -61,19 +69,22 @@ limitations under the License.
 
   </distributionManagement>
 
+
   <properties>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
-    <jackson-databind.version>2.10.0</jackson-databind.version>
+
+    <jackson-databind.version>2.10.1</jackson-databind.version>
     <jackson-datatype-jdk8.version>${jackson-databind.version}</jackson-datatype-jdk8.version>
     <jackson-datatype-jsr310.version>${jackson-databind.version}</jackson-datatype-jsr310.version>
-    <slf4j-api.version>1.7.28</slf4j-api.version>
+    <slf4j-api.version>1.7.29</slf4j-api.version>
     <slf4j-simple.version>${slf4j-api.version}</slf4j-simple.version>
 
   </properties>
+
 
   <dependencies>
 
@@ -83,11 +94,13 @@ limitations under the License.
       <version>${jackson-databind.version}</version>
     </dependency>
 
+
     <dependency>
      <groupId>com.fasterxml.jackson.datatype</groupId>
      <artifactId>jackson-datatype-jdk8</artifactId>
      <version>${jackson-datatype-jdk8.version}</version>
     </dependency>
+
 
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -95,11 +108,13 @@ limitations under the License.
       <version>${jackson-datatype-jsr310.version}</version>
     </dependency>
 
+
     <dependency>
       <groupId>com.mikesamuel</groupId>
       <artifactId>json-sanitizer</artifactId>
       <version>1.2.0</version>
     </dependency>
+
 
     <dependency>
       <groupId>commons-io</groupId>
@@ -107,24 +122,28 @@ limitations under the License.
       <version>2.6</version>
     </dependency>
 
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.3.2</version>
+      <version>5.5.2</version>
       <scope>test</scope>
     </dependency>
+
 
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.4</version>
+      <version>1.18.10</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>${slf4j-api.version}</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -133,6 +152,7 @@ limitations under the License.
       <scope>test</scope>
     </dependency>
 
+
     <dependency>
       <groupId>org.threeten</groupId>
       <artifactId>threeten-extra</artifactId>
@@ -140,6 +160,7 @@ limitations under the License.
     </dependency>
 
   </dependencies>
+
 
   <build>
 
@@ -157,6 +178,7 @@ limitations under the License.
         </configuration>
       </plugin>
 
+
       <!-- Generate a source code JAR -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -172,6 +194,7 @@ limitations under the License.
           </execution>
         </executions>
       </plugin>
+
 
       <!-- Generate a JavaDoc JAR -->
       <plugin>
@@ -192,6 +215,7 @@ limitations under the License.
         </executions>
       </plugin>
 
+
       <!-- Sign all of the attached artifacts -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -207,6 +231,7 @@ limitations under the License.
           </execution>
         </executions>
       </plugin>
+
 
       <!-- Deploy all of the attached artifacts -->
       <plugin>
