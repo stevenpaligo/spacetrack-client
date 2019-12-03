@@ -411,13 +411,13 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
     private Optional<Double> periodMinutes;
 
     /**
-     * Approximate height of the apogee assuming a spherical Earth with radius 6378.135 km
+     * Approximate height of the apogee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
     @JsonProperty("APOGEE")
     private Double apogeeHeightKilometers;
 
     /**
-     * Approximate height of the perigee assuming a spherical Earth with radius 6378.135 km
+     * Approximate height of the perigee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
     @JsonProperty("PERIGEE")
     private Double perigeeHeightKilometers;
