@@ -60,7 +60,7 @@ List<SatCat> results = new SatCatQuery().setCredentials(credentials)
 
 
 /*
-Print out the apogee height
+   Print out the apogee height
 */
 SatCat internationalSpaceStation = results.get(0);
 
