@@ -232,7 +232,6 @@ limitations under the License.
               <goal>jar</goal>
             </goals>
             <configuration>
-              <doclint>none</doclint>
               <notimestamp>true</notimestamp>
               <sourcepath>${delombok.output.directory}</sourcepath>
             </configuration>
