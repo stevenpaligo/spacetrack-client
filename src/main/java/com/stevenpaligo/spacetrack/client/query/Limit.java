@@ -14,6 +14,7 @@
 package com.stevenpaligo.spacetrack.client.query;
 
 import java.util.Optional;
+import lombok.Getter;
 import lombok.NonNull;
 
 /**
@@ -21,6 +22,7 @@ import lombok.NonNull;
  * 
  * @author Steven Paligo
  */
+@Getter
 public class Limit {
 
   public static final Limit ONE = new Limit(1);

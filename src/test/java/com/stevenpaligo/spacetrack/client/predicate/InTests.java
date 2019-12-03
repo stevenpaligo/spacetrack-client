@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.EqualsAndHashCode;
 
 public class InTests {
 
@@ -150,6 +151,20 @@ public class InTests {
   }
 
 
+  @Test
+  @DisplayName("In: Getters")
+  public void test4() {
+
+    // field
+    assertEquals(new TestQueryField(), new In<>(new TestQueryField(), "ABC").getField());
+
+
+    // values
+    assertEquals("ABC", new In<>(new TestQueryField(), "ABC").getValues());
+  }
+
+
+  @EqualsAndHashCode
   private static class TestQueryField implements QueryField {
 
     @Override

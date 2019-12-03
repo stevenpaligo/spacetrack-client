@@ -14,6 +14,7 @@
 package com.stevenpaligo.spacetrack.client.predicate;
 
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.Getter;
 import lombok.NonNull;
 
 /**
@@ -21,6 +22,7 @@ import lombok.NonNull;
  * 
  * @author Steven Paligo
  */
+@Getter
 public class Contains<T extends QueryField> implements Predicate<T> {
 
   private T field;

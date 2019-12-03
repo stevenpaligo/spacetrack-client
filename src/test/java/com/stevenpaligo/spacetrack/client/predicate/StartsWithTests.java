@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.EqualsAndHashCode;
 
 public class StartsWithTests {
 
@@ -68,6 +69,20 @@ public class StartsWithTests {
   }
 
 
+  @Test
+  @DisplayName("StartsWith: Getters")
+  public void test3() {
+
+    // field
+    assertEquals(new TestQueryField(), new StartsWith<>(new TestQueryField(), "ABC").getField());
+
+
+    // value
+    assertEquals("ABC", new StartsWith<>(new TestQueryField(), "ABC").getValue());
+  }
+
+
+  @EqualsAndHashCode
   private static class TestQueryField implements QueryField {
 
     @Override

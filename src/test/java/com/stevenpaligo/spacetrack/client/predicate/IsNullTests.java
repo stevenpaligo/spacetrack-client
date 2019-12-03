@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.EqualsAndHashCode;
 
 public class IsNullTests {
 
@@ -47,6 +48,16 @@ public class IsNullTests {
   }
 
 
+  @Test
+  @DisplayName("IsNull: Getters")
+  public void test3() {
+
+    // field
+    assertEquals(new TestQueryField(), new IsNull<>(new TestQueryField()).getField());
+  }
+
+
+  @EqualsAndHashCode
   private static class TestQueryField implements QueryField {
 
     @Override

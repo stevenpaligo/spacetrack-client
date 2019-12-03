@@ -52,4 +52,13 @@ public class CurrentDateTimeOffsetTests {
     assertEquals("now+0.020833333333333332", new CurrentDateTimeOffset(Duration.ofMinutes(30)).toQueryValue());
     assertEquals("now-0.020833333333333332", new CurrentDateTimeOffset(Duration.ofMinutes(-30)).toQueryValue());
   }
+
+
+  @Test
+  @DisplayName("CurrentDateTimeOffset: Getters")
+  public void test3() {
+
+    // offset
+    assertEquals(Duration.ofDays(1), new CurrentDateTimeOffset(Duration.ofDays(1)).getOffset());
+  }
 }

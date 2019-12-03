@@ -16,6 +16,7 @@ package com.stevenpaligo.spacetrack.client.query;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -84,5 +85,22 @@ public class LimitTests {
 
     // max results and offset
     assertEquals("1,2", new Limit(1, 2).toQueryParameter());
+  }
+
+
+  @Test
+  @DisplayName("Limit: Getters")
+  public void test3() {
+
+    // max results
+    assertEquals((Integer) 1, new Limit(1, 2).getMaxResults());
+
+
+    // null offset
+    assertEquals(Optional.empty(), new Limit(1).getOffset());
+
+
+    // non-null offset
+    assertEquals(Optional.of(2), new Limit(1, 2).getOffset());
   }
 }

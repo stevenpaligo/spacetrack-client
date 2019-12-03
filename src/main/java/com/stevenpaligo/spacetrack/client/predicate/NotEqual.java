@@ -19,6 +19,7 @@ import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import com.stevenpaligo.spacetrack.client.util.SpaceTrackDateTimeFormatter;
+import lombok.Getter;
 import lombok.NonNull;
 
 /**
@@ -26,6 +27,7 @@ import lombok.NonNull;
  * 
  * @author Steven Paligo
  */
+@Getter
 public class NotEqual<T extends QueryField> implements Predicate<T> {
 
   private T field;

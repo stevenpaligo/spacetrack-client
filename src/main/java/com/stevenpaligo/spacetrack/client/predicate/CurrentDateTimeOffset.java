@@ -15,6 +15,7 @@ package com.stevenpaligo.spacetrack.client.predicate;
 
 import java.time.Duration;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NonNull;
 
 /**
@@ -22,6 +23,7 @@ import lombok.NonNull;
  * 
  * @author Steven Paligo
  */
+@Getter
 @AllArgsConstructor
 public class CurrentDateTimeOffset {
 

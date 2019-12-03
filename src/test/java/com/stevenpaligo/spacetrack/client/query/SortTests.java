@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.stevenpaligo.spacetrack.client.query.Sort.Direction;
+import lombok.EqualsAndHashCode;
 
 public class SortTests {
 
@@ -64,6 +65,20 @@ public class SortTests {
   }
 
 
+  @Test
+  @DisplayName("Sort: Getters")
+  public void test3() {
+
+    // field
+    assertEquals(new TestQueryField(), new Sort<>(new TestQueryField(), Direction.ASC).getField());
+
+
+    // direction
+    assertEquals(Direction.ASC, new Sort<>(new TestQueryField(), Direction.ASC).getDirection());
+  }
+
+
+  @EqualsAndHashCode
   private static class TestQueryField implements QueryField {
 
     @Override

@@ -24,6 +24,7 @@ import org.junit.jupiter.api.Test;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.EqualsAndHashCode;
 
 public class InclusiveRangeTests {
 
@@ -322,6 +323,24 @@ public class InclusiveRangeTests {
   }
 
 
+  @Test
+  @DisplayName("InclusiveRange: Getters")
+  public void test3() {
+
+    // field
+    assertEquals(new TestQueryField(), new InclusiveRange<>(new TestQueryField(), 1, 2).getField());
+
+
+    // lower value
+    assertEquals("1", new InclusiveRange<>(new TestQueryField(), 1, 2).getLowerValue());
+
+
+    // upper value
+    assertEquals("2", new InclusiveRange<>(new TestQueryField(), 1, 2).getUpperValue());
+  }
+
+
+  @EqualsAndHashCode
   private static class TestQueryField implements QueryField {
 
     @Override

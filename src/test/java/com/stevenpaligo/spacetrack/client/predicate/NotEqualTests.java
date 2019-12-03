@@ -24,6 +24,7 @@ import org.junit.jupiter.api.Test;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import lombok.EqualsAndHashCode;
 
 public class NotEqualTests {
 
@@ -153,6 +154,20 @@ public class NotEqualTests {
   }
 
 
+  @Test
+  @DisplayName("NotEqual: Getters")
+  public void test3() {
+
+    // field
+    assertEquals(new TestQueryField(), new NotEqual<>(new TestQueryField(), "ABC").getField());
+
+
+    // value
+    assertEquals("ABC", new NotEqual<>(new TestQueryField(), "ABC").getValue());
+  }
+
+
+  @EqualsAndHashCode
   private static class TestQueryField implements QueryField {
 
     @Override

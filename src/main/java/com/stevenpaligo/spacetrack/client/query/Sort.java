@@ -13,6 +13,7 @@
  */
 package com.stevenpaligo.spacetrack.client.query;
 
+import lombok.Getter;
 import lombok.NonNull;
 
 /**
@@ -20,6 +21,7 @@ import lombok.NonNull;
  * 
  * @author Steven Paligo
  */
+@Getter
 public class Sort<T extends QueryField> {
 
   public static enum Direction {
