@@ -36,7 +36,7 @@ public class CurrentDateTimeOffset {
     double offsetDays = offset.toMillis() / 86400000.0; // TODO: this assumes a certain number of seconds in a day, which will not be correct on days with leap seconds
 
     if (offsetDays < 0.0) {
-      return "now" + offsetDays;
+      return "now" + offsetDays; // no hyphen is needed because the offset is negative
     } else {
       return "now+" + offsetDays;
     }
