@@ -19,8 +19,6 @@ import java.util.Optional;
 import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatDebutQuery.SatCatDebut;
@@ -265,7 +263,6 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
   @Getter
   @Setter
   @NoArgsConstructor
-  @JsonInclude(value = Include.NON_NULL)
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class SatCatDebut {
 

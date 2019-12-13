@@ -18,8 +18,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCat;
@@ -255,7 +253,6 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
   @Getter
   @Setter
   @NoArgsConstructor
-  @JsonInclude(value = Include.NON_NULL)
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class SatCat {
 

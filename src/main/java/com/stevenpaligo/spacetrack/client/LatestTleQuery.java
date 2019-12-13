@@ -18,8 +18,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTle;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTleQueryField;
@@ -317,7 +315,6 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
   @Getter
   @Setter
   @NoArgsConstructor
-  @JsonInclude(value = Include.NON_NULL)
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class LatestTle {
 

@@ -16,8 +16,6 @@ package com.stevenpaligo.spacetrack.client;
 import java.util.Optional;
 import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessage;
@@ -286,7 +284,6 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
   @Getter
   @Setter
   @NoArgsConstructor
-  @JsonInclude(value = Include.NON_NULL)
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class OrbitMeanElementsMessage {
 

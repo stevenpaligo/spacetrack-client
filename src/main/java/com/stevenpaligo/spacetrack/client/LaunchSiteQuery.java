@@ -14,8 +14,6 @@
 package com.stevenpaligo.spacetrack.client;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSite;
 import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSiteQueryField;
@@ -73,7 +71,6 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
   @Getter
   @Setter
   @NoArgsConstructor
-  @JsonInclude(value = Include.NON_NULL)
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class LaunchSite {
 
