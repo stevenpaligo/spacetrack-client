@@ -266,7 +266,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
     private Integer catalogNumber;
 
     @JsonProperty("OBJECT_TYPE")
-    private String objectType;
+    private Optional<String> objectType;
 
     @JsonProperty("SATNAME")
     private String satName;

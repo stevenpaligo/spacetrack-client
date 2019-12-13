@@ -276,7 +276,7 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
     private Integer catalogNumber;
 
     @JsonProperty("OBJECT_TYPE")
-    private String objectType;
+    private Optional<String> objectType;
 
     @JsonProperty("SATNAME")
     private String satName;
