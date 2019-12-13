@@ -145,27 +145,27 @@ public class QueryTests {
   public void test2() {
 
     // none of the following calls are required: addPredicate(...), addPredicates(...), setLimit(...), addSort(...), addSorts(...), addFavorite(...), addFavorites(...)
-    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/format/json", new SatCatQuery().getQueryString());
+    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/format/json/emptyresult/show", new SatCatQuery().getQueryString());
 
 
     // addPredicate(...) and addPredicates(...)
     SatCatQuery query =
         new SatCatQuery().addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).addPredicates(Arrays.asList(new Equal<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR, "1998-067A"), new Equal<>(SatCatQueryField.OBJECT_TYPE, "PAYLOAD")));
-    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/NORAD_CAT_ID/25544/INTLDES/1998-067A/OBJECT_TYPE/PAYLOAD/format/json", query.getQueryString());
+    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/NORAD_CAT_ID/25544/INTLDES/1998-067A/OBJECT_TYPE/PAYLOAD/format/json/emptyresult/show", query.getQueryString());
 
 
     // setLimit(...)
-    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/limit/1/format/json", new SatCatQuery().setLimit(Limit.ONE).getQueryString());
+    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/limit/1/format/json/emptyresult/show", new SatCatQuery().setLimit(Limit.ONE).getQueryString());
 
 
     // addSort(...) and addSorts(...)
     query = new SatCatQuery().addSort(new Sort<>(SatCatQueryField.COUNTRY)).addSorts(Arrays.asList(new Sort<>(SatCatQueryField.LAUNCH_YEAR), new Sort<>(SatCatQueryField.CATALOG_NUMBER)));
-    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/orderby/COUNTRY asc,LAUNCH_YEAR asc,NORAD_CAT_ID asc/format/json", query.getQueryString());
+    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/orderby/COUNTRY asc,LAUNCH_YEAR asc,NORAD_CAT_ID asc/format/json/emptyresult/show", query.getQueryString());
 
 
     // addFavorite(...) and addFavorites(...)
     query = new SatCatQuery().addFavorite("Amateur").addFavorites(Arrays.asList("Navigation", "Special_Interest"));
-    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/favorites/Amateur,Navigation,Special_Interest/format/json", query.getQueryString());
+    assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/favorites/Amateur,Navigation,Special_Interest/format/json/emptyresult/show", query.getQueryString());
   }
 
 
@@ -190,7 +190,8 @@ public class QueryTests {
     assertEquals(1, satellites.size());
     assertEquals("1998-067A", satellites.get(0).getInternationalDesignator());
     assertEquals((Integer) 25544, satellites.get(0).getCatalogNumber());
-    assertEquals("PAYLOAD", satellites.get(0).getObjectType());
+    assertTrue(satellites.get(0).getObjectType().isPresent()); // if this isn't true, the next line will fail
+    assertEquals("PAYLOAD", satellites.get(0).getObjectType().get());
     assertEquals("ISS (ZARYA)", satellites.get(0).getSatName());
     assertEquals("ISS", satellites.get(0).getCountry());
     assertTrue(satellites.get(0).getLaunchDate().isPresent());
