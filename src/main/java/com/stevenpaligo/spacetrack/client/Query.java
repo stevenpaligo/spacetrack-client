@@ -288,7 +288,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
 
     // format
-    builder.append("/format/json");
+    builder.append("/format/json/emptyresult/show");
 
 
     return builder.toString();
@@ -342,6 +342,10 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
       String response = IOUtils.toString(connection.getInputStream(), Charset.forName("UTF-8"));
       log.debug("SpaceTrack response message: {}", connection.getResponseMessage());
       log.debug("SpaceTrack response body: {}", response);
+
+      if (response.length() == 0) {
+        throw new IOException("SpaceTrack returned an empty response");
+      }
 
       if (connection.getResponseCode() != HttpsURLConnection.HTTP_OK) {
         throw new IOException("SpaceTrack returned an unsuccessful response: " + connection.getResponseMessage());
