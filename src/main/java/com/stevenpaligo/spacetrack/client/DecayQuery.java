@@ -15,6 +15,7 @@ package com.stevenpaligo.spacetrack.client;
 
 import java.util.Optional;
 import org.threeten.extra.scale.UtcInstant;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -156,7 +157,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
 
   /**
-   * FClass representing results returned from "decay information" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
+   * Class representing results returned from "decay information" queries on <a href="https://www.space-track.org/">Space-Track.org</a>.
    * 
    * @author Steven Paligo
    * @see com.stevenpaligo.spacetrack.client.DecayQuery
@@ -165,6 +166,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
   @Setter
   @NoArgsConstructor
   @JsonInclude(value = Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Decay {
 
     @JsonProperty("NORAD_CAT_ID")

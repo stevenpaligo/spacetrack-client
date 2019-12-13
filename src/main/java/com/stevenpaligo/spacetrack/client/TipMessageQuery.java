@@ -15,6 +15,7 @@ package com.stevenpaligo.spacetrack.client;
 
 import java.util.Optional;
 import org.threeten.extra.scale.UtcInstant;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -174,6 +175,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
   @Setter
   @NoArgsConstructor
   @JsonInclude(value = Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class TipMessage {
 
     @JsonProperty("NORAD_CAT_ID")

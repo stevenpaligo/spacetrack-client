@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -255,6 +256,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
   @Setter
   @NoArgsConstructor
   @JsonInclude(value = Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class SatCat {
 
     @JsonProperty("INTLDES")

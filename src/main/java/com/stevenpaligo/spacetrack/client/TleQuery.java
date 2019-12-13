@@ -17,6 +17,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -309,6 +310,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
   @Setter
   @NoArgsConstructor
   @JsonInclude(value = Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Tle {
 
     @JsonProperty("COMMENT")

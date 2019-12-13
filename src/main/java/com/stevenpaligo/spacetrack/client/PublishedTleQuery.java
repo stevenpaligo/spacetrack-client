@@ -14,6 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import org.threeten.extra.scale.UtcInstant;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -84,6 +85,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
   @Setter
   @NoArgsConstructor
   @JsonInclude(value = Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class PublishedTle {
 
     @JsonProperty("PUBLISH_EPOCH")
