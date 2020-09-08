@@ -51,6 +51,7 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
   private static final ObjectMapper jsonMapper;
+  private static final Charset charsetUtf8 = Charset.forName("UTF-8");
 
 
   static {
@@ -334,12 +335,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
       String request = "identity=" + userName + "&password=" + credentials.getPassword() + "&query=" + queryString;
 
       outputStream = connection.getOutputStream();
-      outputStream.write(request.getBytes());
+      outputStream.write(request.getBytes(charsetUtf8));
       outputStream.flush();
 
 
       // read the entire response
-      String response = IOUtils.toString(connection.getInputStream(), Charset.forName("UTF-8"));
+      String response = IOUtils.toString(connection.getInputStream(), charsetUtf8);
       log.debug("SpaceTrack response message: {}", connection.getResponseMessage());
       log.debug("SpaceTrack response body: {}", response);
 

@@ -294,6 +294,14 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
       public String getQueryFieldName() {
         return "PERIGEE";
       }
+    },
+
+    DECAYED {
+
+      @Override
+      public String getQueryFieldName() {
+        return "DECAYED";
+      }
     }
   }
 
@@ -409,6 +417,9 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
      */
     @JsonProperty("PERIGEE")
     private Double perigeeHeightKilometers;
+
+    @JsonProperty("DECAYED")
+    private Optional<Integer> decayed;
 
 
     public Instant getEpoch() {

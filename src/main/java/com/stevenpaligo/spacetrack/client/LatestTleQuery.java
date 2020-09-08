@@ -302,6 +302,14 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
       public String getQueryFieldName() {
         return "PERIGEE";
       }
+    },
+
+    DECAYED {
+
+      @Override
+      public String getQueryFieldName() {
+        return "DECAYED";
+      }
     }
   }
 
@@ -420,6 +428,9 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
      */
     @JsonProperty("PERIGEE")
     private Double perigeeHeightKilometers;
+
+    @JsonProperty("DECAYED")
+    private Optional<Integer> decayed;
 
 
     public Instant getEpoch() {

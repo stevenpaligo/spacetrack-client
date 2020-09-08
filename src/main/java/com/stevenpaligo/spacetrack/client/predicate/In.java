@@ -14,6 +14,7 @@
 package com.stevenpaligo.spacetrack.client.predicate;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -39,8 +40,8 @@ public class In<T extends QueryField> implements Predicate<T> {
   private String values;
 
 
-  public In(@NonNull T field, @NonNull String... values) {
-    this(field, Arrays.asList(values), String.class);
+  public In(@NonNull T field, String... values) {
+    this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), String.class);
   }
 
 
@@ -51,8 +52,8 @@ public class In<T extends QueryField> implements Predicate<T> {
    * <strong>Note:</strong> The conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link #In(QueryField, UtcInstant...)} or {@link #In(QueryField, TaiInstant...)} if possible.
    * </p>
    */
-  public In(@NonNull T field, @NonNull Date... values) {
-    this(field, Arrays.asList(values), Date.class);
+  public In(@NonNull T field, Date... values) {
+    this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), Date.class);
   }
 
 
@@ -63,23 +64,23 @@ public class In<T extends QueryField> implements Predicate<T> {
    * <strong>Note:</strong> The conversion from UTC-SLS to UTC will not be completely accurate near a leap second. Use {@link #In(QueryField, UtcInstant...)} or {@link #In(QueryField, TaiInstant...)} if possible.
    * </p>
    */
-  public In(@NonNull T field, @NonNull Instant... values) {
-    this(field, Arrays.asList(values), Instant.class);
+  public In(@NonNull T field, Instant... values) {
+    this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), Instant.class);
   }
 
 
-  public In(@NonNull T field, @NonNull UtcInstant... values) {
-    this(field, Arrays.asList(values), UtcInstant.class);
+  public In(@NonNull T field, UtcInstant... values) {
+    this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), UtcInstant.class);
   }
 
 
-  public In(@NonNull T field, @NonNull TaiInstant... values) {
-    this(field, Arrays.asList(values), TaiInstant.class);
+  public In(@NonNull T field, TaiInstant... values) {
+    this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), TaiInstant.class);
   }
 
 
-  public In(@NonNull T field, @NonNull Number... values) {
-    this(field, Arrays.asList(values), Number.class);
+  public In(@NonNull T field, Number... values) {
+    this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), Number.class);
   }
 
 

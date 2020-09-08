@@ -78,10 +78,10 @@ limitations under the License.
     <delombok.output.directory>${project.build.directory}/generated-sources/delombok</delombok.output.directory>
 
 
-    <jackson-databind.version>2.10.1</jackson-databind.version>
+    <jackson-databind.version>2.11.2</jackson-databind.version>
     <jackson-datatype-jdk8.version>${jackson-databind.version}</jackson-datatype-jdk8.version>
     <jackson-datatype-jsr310.version>${jackson-databind.version}</jackson-datatype-jsr310.version>
-    <slf4j-api.version>1.7.29</slf4j-api.version>
+    <slf4j-api.version>1.7.30</slf4j-api.version>
     <slf4j-simple.version>${slf4j-api.version}</slf4j-simple.version>
 
   </properties>
@@ -113,21 +113,21 @@ limitations under the License.
     <dependency>
       <groupId>com.mikesamuel</groupId>
       <artifactId>json-sanitizer</artifactId>
-      <version>1.2.0</version>
+      <version>1.2.1</version>
     </dependency>
 
 
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.6</version>
+      <version>2.7</version>
     </dependency>
 
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.5.2</version>
+      <version>5.6.2</version>
       <scope>test</scope>
     </dependency>
 
@@ -135,7 +135,7 @@ limitations under the License.
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.10</version>
+      <version>1.18.12</version>
     </dependency>
 
 
@@ -171,7 +171,7 @@ limitations under the License.
       <plugin>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok-maven-plugin</artifactId>
-        <version>1.18.10.0</version>
+        <version>1.18.12.0</version>
         <executions>
           <execution>
             <id>delombok</id>
@@ -193,7 +193,7 @@ limitations under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M3</version>
+        <version>3.0.0-M5</version>
         <configuration>
           <includes>
             <include>**/*.java</include>
@@ -206,7 +206,7 @@ limitations under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -223,7 +223,7 @@ limitations under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -237,6 +237,23 @@ limitations under the License.
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+
+      <!-- Run SpotBugs code quality checks -->
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.0.4</version>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>spotbugs</goal>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>      
       </plugin>
 
 
