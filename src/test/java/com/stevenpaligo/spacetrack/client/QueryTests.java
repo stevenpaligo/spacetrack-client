@@ -189,7 +189,7 @@ public class QueryTests {
     List<SatCat> satellites = new SatCatQuery().setCredentials(credentials).addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
     assertEquals(1, satellites.size());
     assertEquals("1998-067A", satellites.get(0).getInternationalDesignator());
-    assertEquals((Integer) 25544, satellites.get(0).getCatalogNumber());
+    assertEquals((Integer) 25544, satellites.get(0).getCatalogNumber().get());
     assertTrue(satellites.get(0).getObjectType().isPresent()); // if this isn't true, the next line will fail
     assertEquals("PAYLOAD", satellites.get(0).getObjectType().get());
     assertEquals("ISS (ZARYA)", satellites.get(0).getSatName());
@@ -204,7 +204,7 @@ public class QueryTests {
     assertTrue(satellites.get(0).getCurrentRecord());
     assertEquals("ISS (ZARYA)", satellites.get(0).getObjectName());
     assertEquals("1998-067A", satellites.get(0).getObjectId());
-    assertEquals((Integer) 25544, satellites.get(0).getObjectNumber());
+    assertEquals((Integer) 25544, satellites.get(0).getObjectNumber().get());
 
 
     // incorrect credentials trigger an exception

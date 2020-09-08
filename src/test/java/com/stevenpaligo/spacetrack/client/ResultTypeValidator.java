@@ -27,6 +27,7 @@ import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.NonNull;
 
 public class ResultTypeValidator {
@@ -109,96 +110,99 @@ public class ResultTypeValidator {
       }
 
 
-      // verify the data types match
-      Class<?> resultFieldDataType;
+      // verify the data types match unless there is a custom deserializer
+      if (resultTypeField.isAnnotationPresent(JsonDeserialize.class) == false) {
 
-      if (resultTypeFieldOptional) {
-        resultFieldDataType = (Class<?>) ((ParameterizedType) resultTypeField.getGenericType()).getActualTypeArguments()[0];
-      } else {
-        resultFieldDataType = resultTypeField.getType();
-      }
+        Class<?> resultFieldDataType;
 
-      if (schemaFieldType.startsWith("bigint(")) {
-
-        if (resultFieldDataType != Long.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+        if (resultTypeFieldOptional) {
+          resultFieldDataType = (Class<?>) ((ParameterizedType) resultTypeField.getGenericType()).getActualTypeArguments()[0];
+        } else {
+          resultFieldDataType = resultTypeField.getType();
         }
 
-      } else if (schemaFieldType.equals("char(1)")) {
+        if (schemaFieldType.startsWith("bigint(")) {
 
-        if (resultFieldDataType != String.class && resultFieldDataType != Character.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          if (resultFieldDataType != Long.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.equals("char(1)")) {
+
+          if (resultFieldDataType != String.class && resultFieldDataType != Character.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.startsWith("char(")) {
+
+          if (resultFieldDataType != String.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.equals("date")) {
+
+          if (resultFieldDataType != LocalDate.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.equals("datetime")) {
+
+          if (resultFieldDataType != UtcInstant.class && resultFieldDataType != Instant.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.startsWith("decimal(") && schemaFieldType.endsWith(",0)")) {
+
+          if (resultFieldDataType != BigInteger.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.startsWith("decimal(")) {
+
+          if (resultFieldDataType != BigDecimal.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.startsWith("double(") || schemaFieldType.equals("double")) {
+
+          if (resultFieldDataType != Double.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.equals("enum('Y','N')")) {
+
+          if (resultFieldDataType != Boolean.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.startsWith("enum(")) {
+
+          if (resultFieldDataType != String.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.equals("float")) {
+
+          if (resultFieldDataType != Float.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.startsWith("int(") || schemaFieldType.startsWith("mediumint(") || schemaFieldType.startsWith("smallint(") || schemaFieldType.startsWith("tinyint(")) {
+
+          if (resultFieldDataType != Integer.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else if (schemaFieldType.startsWith("varchar(")) {
+
+          if (resultFieldDataType != String.class) {
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        } else {
+
+          throw new Exception("Unsupported schema field type: " + schemaFieldType);
         }
-
-      } else if (schemaFieldType.startsWith("char(")) {
-
-        if (resultFieldDataType != String.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.equals("date")) {
-
-        if (resultFieldDataType != LocalDate.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.equals("datetime")) {
-
-        if (resultFieldDataType != UtcInstant.class && resultFieldDataType != Instant.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.startsWith("decimal(") && schemaFieldType.endsWith(",0)")) {
-
-        if (resultFieldDataType != BigInteger.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.startsWith("decimal(")) {
-
-        if (resultFieldDataType != BigDecimal.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.startsWith("double(") || schemaFieldType.equals("double")) {
-
-        if (resultFieldDataType != Double.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.equals("enum('Y','N')")) {
-
-        if (resultFieldDataType != Boolean.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.startsWith("enum(")) {
-
-        if (resultFieldDataType != String.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.equals("float")) {
-
-        if (resultFieldDataType != Float.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.startsWith("int(") || schemaFieldType.startsWith("mediumint(") || schemaFieldType.startsWith("smallint(") || schemaFieldType.startsWith("tinyint(")) {
-
-        if (resultFieldDataType != Integer.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else if (schemaFieldType.startsWith("varchar(")) {
-
-        if (resultFieldDataType != String.class) {
-          throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
-        }
-
-      } else {
-
-        throw new Exception("Unsupported schema field type: " + schemaFieldType);
       }
     }
   }

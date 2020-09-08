@@ -157,7 +157,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
   public static class CountryBoxScore {
 
     @JsonProperty("COUNTRY")
-    private Optional<String> country;
+    private String country;
 
     @JsonProperty("SPADOC_CD")
     private Optional<String> spadocCountryDesignator;

@@ -270,7 +270,7 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
     private String internationalDesignator;
 
     @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
+    private Optional<Integer> catalogNumber;
 
     @JsonProperty("OBJECT_TYPE")
     private Optional<String> objectType;
@@ -343,7 +343,7 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
     private String objectId;
 
     @JsonProperty("OBJECT_NUMBER")
-    private Integer objectNumber;
+    private Optional<Integer> objectNumber;
 
   }
 }

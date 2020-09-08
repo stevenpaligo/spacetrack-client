@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessage;
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessageQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.DecimalToIntegerDeserializer;
 import com.stevenpaligo.spacetrack.client.util.UtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -253,7 +254,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "USER_DEFINED_TLE_LINE0";
+        return "TLE_LINE0";
       }
     },
 
@@ -261,7 +262,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "USER_DEFINED_TLE_LINE1";
+        return "TLE_LINE1";
       }
     },
 
@@ -269,7 +270,55 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "USER_DEFINED_TLE_LINE2";
+        return "TLE_LINE2";
+      }
+    },
+
+    SEMI_MAJOR_AXIS_KILOMETERS {
+
+      @Override
+      public String getQueryFieldName() {
+        return "SEMIMAJOR_AXIS";
+      }
+    },
+
+    PERIOD_MINUTES {
+
+      @Override
+      public String getQueryFieldName() {
+        return "PERIOD";
+      }
+    },
+
+    APOGEE_HEIGHT_KILOMETERS {
+
+      @Override
+      public String getQueryFieldName() {
+        return "APOAPSIS";
+      }
+    },
+
+    PERIGEE_HEIGHT_KILOMETERS {
+
+      @Override
+      public String getQueryFieldName() {
+        return "PERIAPSIS";
+      }
+    },
+
+    OBJECT_TYPE {
+
+      @Override
+      public String getQueryFieldName() {
+        return "OBJECT_TYPE";
+      }
+    },
+
+    DECAYED {
+
+      @Override
+      public String getQueryFieldName() {
+        return "DECAYED";
       }
     }
   }
@@ -319,7 +368,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private String meanElementTheory;
 
     @JsonProperty("EPOCH")
-    private String epoch;
+    private Optional<String> epoch;
 
     @JsonProperty("MEAN_MOTION")
     private Double meanMotionRevsPerDay;
@@ -346,7 +395,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private String classification;
 
     @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
+    private Optional<Integer> catalogNumber;
 
     @JsonProperty("ELEMENT_SET_NO")
     private Integer elementSetNumber;
@@ -363,14 +412,48 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     @JsonProperty("MEAN_MOTION_DDOT")
     private Double meanMotionDoubleDot;
 
-    @JsonProperty("USER_DEFINED_TLE_LINE0")
+    @JsonProperty("TLE_LINE0")
     private String tleLine0;
 
-    @JsonProperty("USER_DEFINED_TLE_LINE1")
+    @JsonProperty("TLE_LINE1")
     private String tleLine1;
 
-    @JsonProperty("USER_DEFINED_TLE_LINE2")
+    @JsonProperty("TLE_LINE2")
     private String tleLine2;
 
+    @JsonProperty("SEMIMAJOR_AXIS")
+    private Double semiMajorAxisKilometers;
+
+    @JsonProperty("PERIOD")
+    private Optional<Double> periodMinutes;
+
+    /**
+     * Approximate height of the apogee assuming two-body motion and a spherical Earth with radius 6378.135 km
+     */
+    @JsonProperty("APOAPSIS")
+    private Double apogeeHeightKilometers;
+
+    /**
+     * Approximate height of the perigee assuming two-body motion and a spherical Earth with radius 6378.135 km
+     */
+    @JsonProperty("PERIAPSIS")
+    private Double perigeeHeightKilometers;
+
+    @JsonProperty("OBJECT_TYPE")
+    private Optional<String> objectType;
+
+    @JsonProperty("DECAYED")
+    @JsonDeserialize(using = DecimalToIntegerDeserializer.class) // TODO: the Space-Track model says this type is "decimal(3,0)", which doesn't make sense at all
+    private Integer decayed;
+
+
+    public Double getApogeeRadiusKilometers() {
+      return (getSemiMajorAxisKilometers() * (1.0 + getEccentricity()));
+    }
+
+
+    public Double getPerigeeRadiusKilometers() {
+      return (getSemiMajorAxisKilometers() * (1.0 - getEccentricity()));
+    }
   }
 }

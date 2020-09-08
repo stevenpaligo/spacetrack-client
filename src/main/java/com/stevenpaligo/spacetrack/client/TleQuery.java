@@ -325,7 +325,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
     private String originator;
 
     @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
+    private Optional<Integer> catalogNumber;
 
     @JsonProperty("OBJECT_NAME")
     private String objectName;
@@ -398,7 +398,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
     private Optional<String> objectId;
 
     @JsonProperty("OBJECT_NUMBER")
-    private Integer objectNumber;
+    private Optional<Integer> objectNumber;
 
     @JsonProperty("SEMIMAJOR_AXIS")
     private Double semiMajorAxisKilometers;

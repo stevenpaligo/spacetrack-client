@@ -176,7 +176,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
   public static class TipMessage {
 
     @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
+    private Optional<Integer> catalogNumber;
 
     @JsonProperty("MSG_EPOCH")
     @JsonDeserialize(using = UtcInstantDeserializer.class)
@@ -219,7 +219,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
     private Optional<Boolean> highInterest;
 
     @JsonProperty("OBJECT_NUMBER")
-    private Integer objectNumber;
+    private Optional<Integer> objectNumber;
 
   }
 }

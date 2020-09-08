@@ -336,7 +336,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
     private String originator;
 
     @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
+    private Optional<Integer> catalogNumber;
 
     @JsonProperty("OBJECT_NAME")
     private String objectName;

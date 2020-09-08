@@ -13,6 +13,7 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
+import java.util.Optional;
 import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -69,6 +70,14 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
       public String getQueryFieldName() {
         return "TLE_LINE2";
       }
+    },
+
+    CATALOG_NUMBER {
+
+      @Override
+      public String getQueryFieldName() {
+        return "NORAD_CAT_ID";
+      }
     }
   }
 
@@ -94,6 +103,9 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
     @JsonProperty("TLE_LINE2")
     private String tleLine2;
+
+    @JsonProperty("NORAD_CAT_ID")
+    private Optional<Integer> catalogNumber;
 
   }
 }

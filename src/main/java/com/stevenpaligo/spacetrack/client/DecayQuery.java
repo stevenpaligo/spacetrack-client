@@ -167,10 +167,10 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
   public static class Decay {
 
     @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
+    private Optional<Integer> catalogNumber;
 
     @JsonProperty("OBJECT_NUMBER")
-    private Integer objectNumber;
+    private Optional<Integer> objectNumber;
 
     @JsonProperty("OBJECT_NAME")
     private String objectName;

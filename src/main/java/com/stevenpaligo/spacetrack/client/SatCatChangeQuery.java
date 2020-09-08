@@ -169,10 +169,10 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
   public static class SatCatChange {
 
     @JsonProperty("NORAD_CAT_ID")
-    private Integer catalogNumber;
+    private Optional<Integer> catalogNumber;
 
     @JsonProperty("OBJECT_NUMBER")
-    private Integer objectNumber;
+    private Optional<Integer> objectNumber;
 
     @JsonProperty("CURRENT_NAME")
     private String currentName;
