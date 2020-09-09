@@ -33,6 +33,7 @@ public class DecayQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(Decay.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/decay/format/json"));
     });
   }
@@ -43,6 +44,7 @@ public class DecayQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(DecayQueryField.class, Decay.class);
     });
   }

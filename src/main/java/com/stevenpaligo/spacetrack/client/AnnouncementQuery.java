@@ -51,6 +51,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
+
         return Announcement.TYPE_JSON_PROPERTY;
       }
     },
@@ -59,6 +60,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
+
         return Announcement.TEXT_JSON_PROPERTY;
       }
     },
@@ -67,6 +69,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
+
         return Announcement.START_TIME_JSON_PROPERTY;
       }
     },
@@ -75,6 +78,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
+
         return Announcement.END_TIME_JSON_PROPERTY;
       }
     }

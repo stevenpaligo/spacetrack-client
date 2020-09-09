@@ -36,6 +36,7 @@ public class OrbitMeanElementsMessageQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(OrbitMeanElementsMessage.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/omm/format/json"));
     });
   }
@@ -46,6 +47,7 @@ public class OrbitMeanElementsMessageQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(OrbitMeanElementsMessageQueryField.class, OrbitMeanElementsMessage.class);
     });
   }

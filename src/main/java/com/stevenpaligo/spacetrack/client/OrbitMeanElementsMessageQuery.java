@@ -54,6 +54,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.CCSDS_OMM_VERSION_JSON_PROPERTY;
       }
     },
@@ -62,6 +63,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.COMMENT_JSON_PROPERTY;
       }
     },
@@ -70,6 +72,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.CREATE_TIME_JSON_PROPERTY;
       }
     },
@@ -78,6 +81,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.ORIGINATOR_JSON_PROPERTY;
       }
     },
@@ -86,6 +90,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.OBJECT_NAME_JSON_PROPERTY;
       }
     },
@@ -94,6 +99,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.OBJECT_ID_JSON_PROPERTY;
       }
     },
@@ -102,6 +108,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.CENTER_NAME_JSON_PROPERTY;
       }
     },
@@ -110,6 +117,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.REFERENCE_FRAME_JSON_PROPERTY;
       }
     },
@@ -118,6 +126,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.TIME_SYSTEM_JSON_PROPERTY;
       }
     },
@@ -126,6 +135,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.MEAN_ELEMENT_THEORY_JSON_PROPERTY;
       }
     },
@@ -134,6 +144,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.EPOCH_JSON_PROPERTY;
       }
     },
@@ -142,6 +153,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.MEAN_MOTION_JSON_PROPERTY;
       }
     },
@@ -150,6 +162,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.ECCENTRICITY_JSON_PROPERTY;
       }
     },
@@ -158,6 +171,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.INCLINATION_JSON_PROPERTY;
       }
     },
@@ -166,6 +180,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.RIGHT_ASC_OF_NODE_JSON_PROPERTY;
       }
     },
@@ -174,6 +189,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.ARG_OF_PERIGEE_JSON_PROPERTY;
       }
     },
@@ -182,6 +198,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.MEAN_ANOMALY_JSON_PROPERTY;
       }
     },
@@ -190,6 +207,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.EPHEMERIS_TYPE_JSON_PROPERTY;
       }
     },
@@ -198,6 +216,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.CLASSIFICATION_JSON_PROPERTY;
       }
     },
@@ -206,6 +225,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
@@ -214,6 +234,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.ELEMENT_SET_NUMBER_JSON_PROPERTY;
       }
     },
@@ -222,6 +243,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.REV_NUMBER_JSON_PROPERTY;
       }
     },
@@ -230,6 +252,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.BSTAR_JSON_PROPERTY;
       }
     },
@@ -238,6 +261,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.MEAN_MOTION_DOT_JSON_PROPERTY;
       }
     },
@@ -246,6 +270,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY;
       }
     },
@@ -254,6 +279,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.TLE_LINE_0_JSON_PROPERTY;
       }
     },
@@ -262,6 +288,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.TLE_LINE_1_JSON_PROPERTY;
       }
     },
@@ -270,6 +297,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.TLE_LINE_2_JSON_PROPERTY;
       }
     },
@@ -278,6 +306,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.SEMI_MAJOR_AXIS_JSON_PROPERTY;
       }
     },
@@ -286,6 +315,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.PERIOD_JSON_PROPERTY;
       }
     },
@@ -294,6 +324,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.APOGEE_HEIGHT_JSON_PROPERTY;
       }
     },
@@ -302,6 +333,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.PERIGEE_HEIGHT_JSON_PROPERTY;
       }
     },
@@ -310,6 +342,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.OBJECT_TYPE_JSON_PROPERTY;
       }
     },
@@ -318,6 +351,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
+
         return OrbitMeanElementsMessage.DECAYED_JSON_PROPERTY;
       }
     }
@@ -484,11 +518,13 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
 
     public Double getApogeeRadiusKilometers() {
+
       return (getSemiMajorAxisKilometers() * (1.0 + getEccentricity()));
     }
 
 
     public Double getPerigeeRadiusKilometers() {
+
       return (getSemiMajorAxisKilometers() * (1.0 - getEccentricity()));
     }
   }

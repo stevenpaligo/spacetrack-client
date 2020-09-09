@@ -25,6 +25,7 @@ import lombok.NonNull;
 public class Sort<T extends QueryField> {
 
   public static enum Direction {
+
     ASC, DESC
   }
 
@@ -49,10 +50,15 @@ public class Sort<T extends QueryField> {
   public String toQueryParameter() {
 
     if (direction == Direction.ASC) {
+
       return field.getQueryFieldName() + " asc";
+
     } else if (direction == Direction.DESC) {
+
       return field.getQueryFieldName() + " desc";
+
     } else {
+
       throw new RuntimeException("Unsupported sort direction: " + direction);
     }
   }

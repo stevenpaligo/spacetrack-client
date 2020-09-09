@@ -52,6 +52,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
@@ -60,6 +61,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.OBJECT_NUMBER_JSON_PROPERTY;
       }
     },
@@ -68,6 +70,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.OBJECT_NAME_JSON_PROPERTY;
       }
     },
@@ -76,6 +79,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
@@ -84,6 +88,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.OBJECT_ID_JSON_PROPERTY;
       }
     },
@@ -92,6 +97,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.RCS_JSON_PROPERTY;
       }
     },
@@ -100,6 +106,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.RCS_CHARACTERIZATION_JSON_PROPERTY;
       }
     },
@@ -108,6 +115,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.COUNTRY_JSON_PROPERTY;
       }
     },
@@ -116,6 +124,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.MESSAGE_EPOCH_JSON_PROPERTY;
       }
     },
@@ -124,6 +133,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.DECAY_EPOCH_JSON_PROPERTY;
       }
     },
@@ -132,6 +142,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.SOURCE_JSON_PROPERTY;
       }
     },
@@ -140,6 +151,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.MESSAGE_TYPE_JSON_PROPERTY;
       }
     },
@@ -148,6 +160,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Decay.DECAY_STAGE_JSON_PROPERTY;
       }
     }

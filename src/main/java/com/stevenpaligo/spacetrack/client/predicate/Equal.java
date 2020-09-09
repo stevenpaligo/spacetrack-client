@@ -98,6 +98,7 @@ public class Equal<T extends QueryField> implements Predicate<T> {
 
 
   public String toQueryParameter() {
+
     return field.getQueryFieldName() + "/" + value;
   }
 }

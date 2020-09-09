@@ -23,6 +23,7 @@ import lombok.NonNull;
 public class QueryFieldEnumValidator {
 
   private QueryFieldEnumValidator() {
+
     // enforce static method usage
   }
 
@@ -38,6 +39,7 @@ public class QueryFieldEnumValidator {
       JsonProperty jsonProperty = resultTypeField.getAnnotation(JsonProperty.class);
 
       if (jsonProperty == null) {
+
         throw new Exception("One of the result type fields does not have a @JsonProperty annotation: " + resultTypeField.getName());
       }
 
@@ -46,6 +48,7 @@ public class QueryFieldEnumValidator {
       String jsonName = jsonProperty.value();
 
       if (jsonName.equals(JsonProperty.USE_DEFAULT_NAME)) {
+
         throw new Exception("One of the result type fields does not declare a JSON property name in its @JsonProperty annotation: " + resultTypeField.getName());
       }
 
@@ -54,6 +57,7 @@ public class QueryFieldEnumValidator {
       Field previouslyMappedField = jsonNameToResultTypeField.put(jsonName, resultTypeField);
 
       if (previouslyMappedField != null) {
+
         throw new Exception("One of the result type fields has a duplicate JSON property name in its @JsonProperty annotation: " + resultTypeField.getName());
       }
     }
@@ -61,6 +65,7 @@ public class QueryFieldEnumValidator {
 
     // verify the query field enum matches the result type
     if (queryFieldEnum.getEnumConstants().length != jsonNameToResultTypeField.size()) {
+
       throw new Exception("The query field enum and result type have different numbers of fields (query field enum: " + queryFieldEnum.getEnumConstants().length + ", result type: " + jsonNameToResultTypeField.size() + ")");
     }
 
@@ -74,12 +79,14 @@ public class QueryFieldEnumValidator {
       Field resultTypeField = jsonNameToResultTypeField.get(enumValueQueryFieldName);
 
       if (resultTypeField == null) {
+
         throw new Exception("A query field enum value does not exist in the result type: " + enumValueName);
       }
 
 
       // verify the enum value's name matches the result type field's name
       if (enumValueName.replace("_", "").toLowerCase().equals(resultTypeField.getName().toLowerCase()) == false) {
+
         throw new Exception("A query field enum value's name does not match the name of the corresponding field in the result type: " + enumValueName);
       }
     }

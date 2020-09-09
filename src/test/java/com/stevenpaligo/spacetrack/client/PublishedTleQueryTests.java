@@ -38,6 +38,7 @@ public class PublishedTleQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(PublishedTle.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/tle_publish/format/json"));
     });
   }
@@ -48,6 +49,7 @@ public class PublishedTleQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(PublishedTleQueryField.class, PublishedTle.class);
     });
   }

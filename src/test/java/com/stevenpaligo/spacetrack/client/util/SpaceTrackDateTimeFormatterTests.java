@@ -31,6 +31,7 @@ public class SpaceTrackDateTimeFormatterTests {
 
     // a null value is not allowed
     assertThrows(IllegalArgumentException.class, () -> {
+
       SpaceTrackDateTimeFormatter.format((Date) null);
     });
 
@@ -46,6 +47,7 @@ public class SpaceTrackDateTimeFormatterTests {
 
     // a null value is not allowed
     assertThrows(IllegalArgumentException.class, () -> {
+
       SpaceTrackDateTimeFormatter.format((Instant) null);
     });
 
@@ -61,6 +63,7 @@ public class SpaceTrackDateTimeFormatterTests {
 
     // a null value is not allowed
     assertThrows(IllegalArgumentException.class, () -> {
+
       SpaceTrackDateTimeFormatter.format((UtcInstant) null);
     });
 
@@ -96,6 +99,7 @@ public class SpaceTrackDateTimeFormatterTests {
 
     // a null value is not allowed
     assertThrows(IllegalArgumentException.class, () -> {
+
       SpaceTrackDateTimeFormatter.format((TaiInstant) null);
     });
 

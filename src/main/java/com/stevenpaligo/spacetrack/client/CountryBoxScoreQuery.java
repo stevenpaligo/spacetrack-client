@@ -50,6 +50,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.COUNTRY_JSON_PROPERTY;
       }
     },
@@ -58,6 +59,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.SPADOC_COUNTRY_DESIGNATOR_JSON_PROPERTY;
       }
     },
@@ -66,6 +68,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.ORBITAL_UNASSIGNED_TYPE_COUNT_JSON_PROPERTY;
       }
     },
@@ -74,6 +77,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.ORBITAL_PAYLOAD_COUNT_JSON_PROPERTY;
       }
     },
@@ -82,6 +86,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.ORBITAL_ROCKET_BODY_COUNT_JSON_PROPERTY;
       }
     },
@@ -90,6 +95,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.ORBITAL_DEBRIS_COUNT_JSON_PROPERTY;
       }
     },
@@ -98,6 +104,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.ORBITAL_TOTAL_COUNT_JSON_PROPERTY;
       }
     },
@@ -106,6 +113,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.DECAYED_PAYLOAD_COUNT_JSON_PROPERTY;
       }
     },
@@ -114,6 +122,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.DECAYED_ROCKET_BODY_COUNT_JSON_PROPERTY;
       }
     },
@@ -122,6 +131,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.DECAYED_DEBRIS_COUNT_JSON_PROPERTY;
       }
     },
@@ -130,6 +140,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.DECAYED_TOTAL_COUNT_JSON_PROPERTY;
       }
     },
@@ -138,6 +149,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
+
         return CountryBoxScore.TOTAL_COUNT_JSON_PROPERTY;
       }
     }

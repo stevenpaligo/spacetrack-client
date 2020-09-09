@@ -34,6 +34,7 @@ public class LatestTleQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(LatestTle.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/tle_latest/format/json"));
     });
   }
@@ -44,6 +45,7 @@ public class LatestTleQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(LatestTleQueryField.class, LatestTle.class);
     });
   }

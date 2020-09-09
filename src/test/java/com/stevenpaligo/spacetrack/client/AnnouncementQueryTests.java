@@ -36,6 +36,7 @@ public class AnnouncementQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(Announcement.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/announcement/format/json"));
     });
   }
@@ -46,6 +47,7 @@ public class AnnouncementQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(AnnouncementQueryField.class, Announcement.class);
     });
   }

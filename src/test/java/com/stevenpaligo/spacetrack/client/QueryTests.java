@@ -47,72 +47,84 @@ public class QueryTests {
 
     // the call to set the credentials will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().setCredentials(null);
     });
 
 
     // the call to addPredicate(...) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().addPredicate(null);
     });
 
 
     // the call to addPredicates(...) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().addPredicates(null);
     });
 
 
     // the call to addPredicates(...) will accept an empty collection
     assertDoesNotThrow(() -> {
+
       new AnnouncementQuery().addPredicates(Collections.emptyList());
     });
 
 
     // the call to setLimit(Optional) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().setLimit((Optional<Limit>) null);
     });
 
 
     // the call to setLimit(Limit) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().setLimit((Limit) null);
     });
 
 
     // the call to addSort(...) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().addSort(null);
     });
 
 
     // the call to addSorts(...) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().addSorts(null);
     });
 
 
     // the call to addSorts(...) will accept an empty collection
     assertDoesNotThrow(() -> {
+
       new AnnouncementQuery().addSorts(Collections.emptyList());
     });
 
 
     // the call to addFavorite(...) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().addFavorite(null);
     });
 
 
     // the call to addFavorites(...) will not accept a null
     assertThrows(IllegalArgumentException.class, () -> {
+
       new AnnouncementQuery().addFavorites(null);
     });
 
 
     // the call to addFavorites(...) will accept an empty collection
     assertDoesNotThrow(() -> {
+
       new AnnouncementQuery().addFavorites(Collections.emptySet());
     });
   }
@@ -129,6 +141,7 @@ public class QueryTests {
     // addPredicate(...) and addPredicates(...)
     SatCatQuery query =
         new SatCatQuery().addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).addPredicates(Arrays.asList(new Equal<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR, "1998-067A"), new Equal<>(SatCatQueryField.OBJECT_TYPE, "PAYLOAD")));
+
     assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/NORAD_CAT_ID/25544/INTLDES/1998-067A/OBJECT_TYPE/PAYLOAD/format/json/emptyresult/show", query.getQueryString());
 
 
@@ -138,11 +151,13 @@ public class QueryTests {
 
     // addSort(...) and addSorts(...)
     query = new SatCatQuery().addSort(new Sort<>(SatCatQueryField.COUNTRY)).addSorts(Arrays.asList(new Sort<>(SatCatQueryField.LAUNCH_YEAR), new Sort<>(SatCatQueryField.CATALOG_NUMBER)));
+
     assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/orderby/COUNTRY asc,LAUNCH_YEAR asc,NORAD_CAT_ID asc/format/json/emptyresult/show", query.getQueryString());
 
 
     // addFavorite(...) and addFavorites(...)
     query = new SatCatQuery().addFavorite("Amateur").addFavorites(Arrays.asList("Navigation", "Special_Interest"));
+
     assertEquals("https://www.space-track.org/basicspacedata/query/class/satcat/favorites/Amateur,Navigation,Special_Interest/format/json/emptyresult/show", query.getQueryString());
   }
 
@@ -153,12 +168,14 @@ public class QueryTests {
 
     // a call to set the credentials is required
     assertThrows(IllegalStateException.class, () -> {
+
       new AnnouncementQuery().execute();
     });
 
 
     // a successful call does not throw an exception
     assertDoesNotThrow(() -> {
+
       new SatCatQuery().setCredentials(credentials).addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
     });
 
@@ -187,12 +204,14 @@ public class QueryTests {
 
     // incorrect credentials trigger an exception
     assertThrows(IOException.class, () -> {
+
       new SatCatQuery().setCredentials(badCredentials).addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
     });
 
 
     // an incorrect query triggers an exception
     assertThrows(IOException.class, () -> {
+
       new SatCatQuery().setCredentials(credentials).addPredicate(new IncorrectEqualPredicate<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
     });
   }
@@ -201,11 +220,14 @@ public class QueryTests {
   private static class IncorrectEqualPredicate<T extends QueryField> extends Equal<T> {
 
     public IncorrectEqualPredicate(@NonNull T field, @NonNull Number value) {
+
       super(field, value);
     }
 
+
     @Override
     public String toQueryParameter() {
+
       return "wrongWRONGwrong";
     }
   }

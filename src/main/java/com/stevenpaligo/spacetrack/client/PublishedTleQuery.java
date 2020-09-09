@@ -52,6 +52,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
+
         return PublishedTle.PUBLISH_TIME_JSON_PROPERTY;
       }
     },
@@ -60,6 +61,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
+
         return PublishedTle.TLE_LINE_1_JSON_PROPERTY;
       }
     },
@@ -68,6 +70,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
+
         return PublishedTle.TLE_LINE_2_JSON_PROPERTY;
       }
     },
@@ -76,6 +79,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
+
         return PublishedTle.CATALOG_NUMBER_JSON_PROPERTY;
       }
     }

@@ -13,11 +13,13 @@ public class UtcInstantDeserializer extends StdDeserializer<UtcInstant> {
 
 
   public UtcInstantDeserializer() {
+
     this(null);
   }
 
 
   public UtcInstantDeserializer(Class<UtcInstant> clazz) {
+
     super(clazz);
   }
 

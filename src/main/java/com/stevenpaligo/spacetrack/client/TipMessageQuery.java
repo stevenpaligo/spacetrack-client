@@ -53,6 +53,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
@@ -61,6 +62,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.MESSAGE_EPOCH_JSON_PROPERTY;
       }
     },
@@ -69,6 +71,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.INSERT_EPOCH_JSON_PROPERTY;
       }
     },
@@ -77,6 +80,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.DECAY_EPOCH_JSON_PROPERTY;
       }
     },
@@ -85,6 +89,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.WINDOW_SIZE_JSON_PROPERTY;
       }
     },
@@ -93,6 +98,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.REV_NUMBER_JSON_PROPERTY;
       }
     },
@@ -101,6 +107,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.DIRECTION_JSON_PROPERTY;
       }
     },
@@ -109,6 +116,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.TEN_KM_LATITUDE_JSON_PROPERTY;
       }
     },
@@ -117,6 +125,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.TEN_KM_LONGITUDE_JSON_PROPERTY;
       }
     },
@@ -125,6 +134,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.INCLINATION_JSON_PROPERTY;
       }
     },
@@ -133,6 +143,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.NEXT_REPORT_TIME_JSON_PROPERTY;
       }
     },
@@ -141,6 +152,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.MESSAGE_ID_JSON_PROPERTY;
       }
     },
@@ -149,6 +161,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.HIGH_INTEREST_JSON_PROPERTY;
       }
     },
@@ -157,6 +170,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
+
         return TipMessage.OBJECT_NUMBER_JSON_PROPERTY;
       }
     }

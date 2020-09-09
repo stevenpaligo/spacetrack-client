@@ -34,6 +34,7 @@ public class TipMessageQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(TipMessage.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/tip/format/json"));
     });
   }
@@ -44,6 +45,7 @@ public class TipMessageQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(TipMessageQueryField.class, TipMessage.class);
     });
   }
@@ -54,6 +56,7 @@ public class TipMessageQueryTests {
   public void test3() {
 
     assertDoesNotThrow(() -> {
+
       new TipMessageQuery().setCredentials(credentials).addSort(new Sort<>(TipMessageQueryField.MESSAGE_EPOCH, Direction.DESC)).setLimit(Limit.ONE).execute();
     });
   }

@@ -29,11 +29,13 @@ public class IsNull<T extends QueryField> implements Predicate<T> {
 
 
   public IsNull(@NonNull T field) {
+
     this.field = field;
   }
 
 
   public String toQueryParameter() {
+
     return field.getQueryFieldName() + "/null-val";
   }
 }

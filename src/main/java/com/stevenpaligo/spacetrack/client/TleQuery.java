@@ -52,6 +52,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.COMMENT_JSON_PROPERTY;
       }
     },
@@ -60,6 +61,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.ORIGINATOR_JSON_PROPERTY;
       }
     },
@@ -68,6 +70,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
@@ -76,6 +79,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.OBJECT_NAME_JSON_PROPERTY;
       }
     },
@@ -84,6 +88,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.OBJECT_TYPE_JSON_PROPERTY;
       }
     },
@@ -92,6 +97,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.CLASSIFICATION_JSON_PROPERTY;
       }
     },
@@ -100,6 +106,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
@@ -108,6 +115,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.EPOCH_YMD_HMS_JSON_PROPERTY;
       }
     },
@@ -116,6 +124,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.EPOCH_MICROSECONDS_JSON_PROPERTY;
       }
     },
@@ -124,6 +133,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.MEAN_MOTION_JSON_PROPERTY;
       }
     },
@@ -132,6 +142,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.ECCENTRICITY_JSON_PROPERTY;
       }
     },
@@ -140,6 +151,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.INCLINATION_JSON_PROPERTY;
       }
     },
@@ -148,6 +160,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.RIGHT_ASC_OF_NODE_JSON_PROPERTY;
       }
     },
@@ -156,6 +169,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.ARG_OF_PERIGEE_JSON_PROPERTY;
       }
     },
@@ -164,6 +178,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.MEAN_ANOMALY_JSON_PROPERTY;
       }
     },
@@ -172,6 +187,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.EPHEMERIS_TYPE_JSON_PROPERTY;
       }
     },
@@ -180,6 +196,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.ELEMENT_SET_NUMBER_JSON_PROPERTY;
       }
     },
@@ -188,6 +205,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.REV_NUMBER_JSON_PROPERTY;
       }
     },
@@ -196,6 +214,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.BSTAR_JSON_PROPERTY;
       }
     },
@@ -204,6 +223,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.MEAN_MOTION_DOT_JSON_PROPERTY;
       }
     },
@@ -212,6 +232,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY;
       }
     },
@@ -220,6 +241,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.FILE_NUMBER_JSON_PROPERTY;
       }
     },
@@ -228,6 +250,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.TLE_LINE_0_JSON_PROPERTY;
       }
     },
@@ -236,6 +259,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.TLE_LINE_1_JSON_PROPERTY;
       }
     },
@@ -244,6 +268,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.TLE_LINE_2_JSON_PROPERTY;
       }
     },
@@ -252,6 +277,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.OBJECT_ID_JSON_PROPERTY;
       }
     },
@@ -260,6 +286,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.OBJECT_NUMBER_JSON_PROPERTY;
       }
     },
@@ -268,6 +295,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.SEMI_MAJOR_AXIS_JSON_PROPERTY;
       }
     },
@@ -276,6 +304,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.PERIOD_JSON_PROPERTY;
       }
     },
@@ -284,6 +313,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.APOGEE_HEIGHT_JSON_PROPERTY;
       }
     },
@@ -292,6 +322,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.PERIGEE_HEIGHT_JSON_PROPERTY;
       }
     },
@@ -300,6 +331,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
+
         return Tle.DECAYED_JSON_PROPERTY;
       }
     }
@@ -457,16 +489,19 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
 
     public Instant getEpoch() {
+
       return getEpochYmdHms().plus(getEpochMicroseconds(), ChronoUnit.MICROS);
     }
 
 
     public Double getApogeeRadiusKilometers() {
+
       return (getSemiMajorAxisKilometers() * (1.0 + getEccentricity()));
     }
 
 
     public Double getPerigeeRadiusKilometers() {
+
       return (getSemiMajorAxisKilometers() * (1.0 - getEccentricity()));
     }
   }

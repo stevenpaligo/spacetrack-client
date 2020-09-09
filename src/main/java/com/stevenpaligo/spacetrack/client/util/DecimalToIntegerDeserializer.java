@@ -12,11 +12,13 @@ public class DecimalToIntegerDeserializer extends StdDeserializer<Integer> {
 
 
   public DecimalToIntegerDeserializer() {
+
     this(null);
   }
 
 
   public DecimalToIntegerDeserializer(Class<?> clazz) {
+
     super(clazz);
   }
 

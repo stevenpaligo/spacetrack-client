@@ -87,6 +87,7 @@ public class StartsWithTests {
 
     @Override
     public String getQueryFieldName() {
+
       return "NORAD_CAT_ID";
     }
   }

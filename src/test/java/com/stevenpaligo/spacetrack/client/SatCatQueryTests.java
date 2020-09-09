@@ -32,6 +32,7 @@ public class SatCatQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(SatCat.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/satcat/format/json"));
     });
   }
@@ -42,6 +43,7 @@ public class SatCatQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(SatCatQueryField.class, SatCat.class);
     });
   }
@@ -52,6 +54,7 @@ public class SatCatQueryTests {
   public void test3() {
 
     assertDoesNotThrow(() -> {
+
       new SatCatQuery().setCredentials(credentials).addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
     });
   }

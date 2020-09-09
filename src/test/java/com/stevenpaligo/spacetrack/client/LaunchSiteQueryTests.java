@@ -33,6 +33,7 @@ public class LaunchSiteQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(LaunchSite.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/launch_site/format/json"));
     });
   }
@@ -43,6 +44,7 @@ public class LaunchSiteQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(LaunchSiteQueryField.class, LaunchSite.class);
     });
   }

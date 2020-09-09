@@ -36,6 +36,7 @@ public class SatCatDebutQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(SatCatDebut.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/satcat_debut/format/json"));
     });
   }
@@ -46,6 +47,7 @@ public class SatCatDebutQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(SatCatDebutQueryField.class, SatCatDebut.class);
     });
   }

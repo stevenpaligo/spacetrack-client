@@ -33,6 +33,7 @@ public class CountryBoxScoreQueryTests {
   public void test1() {
 
     assertDoesNotThrow(() -> {
+
       ResultTypeValidator.validate(CountryBoxScore.class, new URL("https://www.space-track.org/basicspacedata/modeldef/class/boxscore/format/json"));
     });
   }
@@ -43,6 +44,7 @@ public class CountryBoxScoreQueryTests {
   public void test2() {
 
     assertDoesNotThrow(() -> {
+
       QueryFieldEnumValidator.validate(CountryBoxScoreQueryField.class, CountryBoxScore.class);
     });
   }

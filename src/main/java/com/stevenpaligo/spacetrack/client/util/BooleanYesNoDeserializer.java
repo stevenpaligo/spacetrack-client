@@ -12,11 +12,13 @@ public class BooleanYesNoDeserializer extends StdDeserializer<Boolean> {
 
 
   public BooleanYesNoDeserializer() {
+
     this(null);
   }
 
 
   public BooleanYesNoDeserializer(Class<?> clazz) {
+
     super(clazz);
   }
 
@@ -29,10 +31,15 @@ public class BooleanYesNoDeserializer extends StdDeserializer<Boolean> {
 
     // decode the value
     if (stringValue.equals("Y")) {
+
       return Boolean.TRUE;
+
     } else if (stringValue.equals("N")) {
+
       return Boolean.FALSE;
+
     } else {
+
       throw new IOException("Unsupported boolean representation: " + stringValue);
     }
   }

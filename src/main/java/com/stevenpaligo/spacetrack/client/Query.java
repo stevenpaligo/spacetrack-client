@@ -260,12 +260,14 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
     // predicates
     for (Predicate<T> predicate : predicates) {
+
       builder.append("/").append(predicate.toQueryParameter());
     }
 
 
     // limit
     if (limit.isPresent()) {
+
       builder.append("/limit/").append(limit.get().toQueryParameter());
     }
 
@@ -277,6 +279,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
       builder.append(sorts.get(0).toQueryParameter());
 
       for (int i = 1; i < sorts.size(); i++) {
+
         builder.append(",").append(sorts.get(i).toQueryParameter());
       }
     }
@@ -284,6 +287,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
     // favorites
     if (favorites.size() > 0) {
+
       builder.append("/favorites/").append(String.join(",", favorites));
     }
 
@@ -308,6 +312,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
     // validate
     if (credentials == null) {
+
       throw new IllegalStateException("The credentials have not been set");
     }
 
@@ -345,10 +350,12 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
       log.debug("SpaceTrack response body: {}", response);
 
       if (response.length() == 0) {
+
         throw new IOException("SpaceTrack returned an empty response");
       }
 
       if (connection.getResponseCode() != HttpsURLConnection.HTTP_OK) {
+
         throw new IOException("SpaceTrack returned an unsuccessful response: " + connection.getResponseMessage());
       }
 
@@ -372,14 +379,20 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
       // clean up
       try {
+
         outputStream.close();
+
       } catch (Exception e) {
+
         log.error("An exception occurred while closing the SpaceTrack request stream", e);
       }
 
       try {
+
         connection.disconnect();
+
       } catch (Exception e) {
+
         log.error("An exception occurred while disconnecting from the SpaceTrack API", e);
       }
     }

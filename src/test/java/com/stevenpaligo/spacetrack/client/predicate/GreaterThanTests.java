@@ -172,6 +172,7 @@ public class GreaterThanTests {
 
     @Override
     public String getQueryFieldName() {
+
       return "NORAD_CAT_ID";
     }
   }

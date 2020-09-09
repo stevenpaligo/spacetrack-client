@@ -345,6 +345,7 @@ public class InclusiveRangeTests {
 
     @Override
     public String getQueryFieldName() {
+
       return "NORAD_CAT_ID";
     }
   }

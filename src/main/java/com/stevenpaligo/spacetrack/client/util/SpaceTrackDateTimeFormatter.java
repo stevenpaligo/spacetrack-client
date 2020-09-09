@@ -9,6 +9,7 @@ import lombok.NonNull;
 public class SpaceTrackDateTimeFormatter {
 
   private SpaceTrackDateTimeFormatter() {
+
     // prevent instantiation
   }
 
@@ -69,21 +70,25 @@ public class SpaceTrackDateTimeFormatter {
       switch (fractionalSeconds.length()) {
 
         case 0:
+
           result += "000";
           break;
 
 
         case 1:
+
           result += fractionalSeconds + "00";
           break;
 
 
         case 2:
+
           result += fractionalSeconds + "0";
           break;
 
 
         case 3:
+
           result += fractionalSeconds;
           break;
 

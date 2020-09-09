@@ -13,11 +13,13 @@ public class OptionalBooleanYesNoDeserializer extends StdDeserializer<Optional<B
 
 
   public OptionalBooleanYesNoDeserializer() {
+
     this(null);
   }
 
 
   public OptionalBooleanYesNoDeserializer(Class<?> clazz) {
+
     super(clazz);
   }
 
@@ -30,10 +32,15 @@ public class OptionalBooleanYesNoDeserializer extends StdDeserializer<Optional<B
 
     // decode the value
     if (stringValue.equals("Y")) {
+
       return Optional.of(Boolean.TRUE);
+
     } else if (stringValue.equals("N")) {
+
       return Optional.of(Boolean.FALSE);
+
     } else {
+
       throw new IOException("Unsupported boolean representation: " + stringValue);
     }
   }

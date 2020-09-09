@@ -172,6 +172,7 @@ public class NotEqualTests {
 
     @Override
     public String getQueryFieldName() {
+
       return "NORAD_CAT_ID";
     }
   }

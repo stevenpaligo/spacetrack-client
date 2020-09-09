@@ -54,6 +54,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
@@ -62,6 +63,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.OBJECT_NUMBER_JSON_PROPERTY;
       }
     },
@@ -70,6 +72,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.CURRENT_NAME_JSON_PROPERTY;
       }
     },
@@ -78,6 +81,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.PREVIOUS_NAME_JSON_PROPERTY;
       }
     },
@@ -86,6 +90,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.CURRENT_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
@@ -94,6 +99,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.PREVIOUS_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
@@ -102,6 +108,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.CURRENT_COUNTRY_JSON_PROPERTY;
       }
     },
@@ -110,6 +117,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.PREVIOUS_COUNTRY_JSON_PROPERTY;
       }
     },
@@ -118,6 +126,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.CURRENT_LAUNCH_DATE_JSON_PROPERTY;
       }
     },
@@ -126,6 +135,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.PREVIOUS_LAUNCH_DATE_JSON_PROPERTY;
       }
     },
@@ -134,6 +144,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.CURRENT_DECAY_DATE_JSON_PROPERTY;
       }
     },
@@ -142,6 +153,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.PREVIOUS_DECAY_DATE_JSON_PROPERTY;
       }
     },
@@ -150,6 +162,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
+
         return SatCatChange.UPDATE_TIME_JSON_PROPERTY;
       }
     }

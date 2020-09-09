@@ -48,6 +48,7 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
 
       @Override
       public String getQueryFieldName() {
+
         return LaunchSite.SITE_CODE_JSON_PROPERTY;
       }
     },
@@ -56,6 +57,7 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
 
       @Override
       public String getQueryFieldName() {
+
         return LaunchSite.SITE_NAME_JSON_PROPERTY;
       }
     }

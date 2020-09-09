@@ -41,6 +41,7 @@ public class In<T extends QueryField> implements Predicate<T> {
 
 
   public In(@NonNull T field, String... values) {
+
     this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), String.class);
   }
 
@@ -53,6 +54,7 @@ public class In<T extends QueryField> implements Predicate<T> {
    * </p>
    */
   public In(@NonNull T field, Date... values) {
+
     this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), Date.class);
   }
 
@@ -65,21 +67,25 @@ public class In<T extends QueryField> implements Predicate<T> {
    * </p>
    */
   public In(@NonNull T field, Instant... values) {
+
     this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), Instant.class);
   }
 
 
   public In(@NonNull T field, UtcInstant... values) {
+
     this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), UtcInstant.class);
   }
 
 
   public In(@NonNull T field, TaiInstant... values) {
+
     this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), TaiInstant.class);
   }
 
 
   public In(@NonNull T field, Number... values) {
+
     this(field, (values != null ? Arrays.asList(values) : new ArrayList<>()), Number.class);
   }
 
@@ -97,6 +103,7 @@ public class In<T extends QueryField> implements Predicate<T> {
 
     // more validation
     if (valueType != String.class && valueType != Date.class && valueType != Instant.class && valueType != UtcInstant.class && valueType != TaiInstant.class && Number.class.isAssignableFrom(valueType) == false) {
+
       throw new IllegalArgumentException("The values collection does not contain strings, numbers, dates, or instants: " + valueType);
     }
 
@@ -109,30 +116,47 @@ public class In<T extends QueryField> implements Predicate<T> {
     Set<V> uniqueValues;
 
     if (values instanceof Set) {
+
       uniqueValues = (Set<V>) values;
+
     } else {
+
       uniqueValues = new HashSet<>(values);
     }
 
     if (valueType == String.class) {
+
       this.values = String.join(",", (Set<String>) uniqueValues);
+
     } else if (valueType == Date.class) {
+
       this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((Date) v)).collect(Collectors.joining(","));
+
     } else if (valueType == Instant.class) {
+
       this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((Instant) v)).collect(Collectors.joining(","));
+
     } else if (valueType == UtcInstant.class) {
+
       this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((UtcInstant) v)).collect(Collectors.joining(","));
+
     } else if (valueType == TaiInstant.class) {
+
       this.values = uniqueValues.stream().map(v -> SpaceTrackDateTimeFormatter.format((TaiInstant) v)).collect(Collectors.joining(","));
+
     } else if (Number.class.isAssignableFrom(valueType)) {
+
       this.values = uniqueValues.stream().map(v -> ((Number) v).toString()).collect(Collectors.joining(","));
+
     } else {
+
       throw new RuntimeException("Unsupported value type: " + valueType);
     }
   }
 
 
   public String toQueryParameter() {
+
     return field.getQueryFieldName() + "/" + values;
   }
 }

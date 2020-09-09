@@ -37,6 +37,7 @@ public class Limit {
 
     // more validation
     if (maxResults <= 0) {
+
       throw new IllegalArgumentException("The maxResults parameter is not positive: " + maxResults);
     }
 
@@ -50,8 +51,11 @@ public class Limit {
 
     // more validation
     if (maxResults <= 0) {
+
       throw new IllegalArgumentException("The maxResults parameter is not positive: " + maxResults);
+
     } else if (offset < 0) {
+
       throw new IllegalArgumentException("The offset is not >= 0: " + offset);
     }
 
@@ -66,6 +70,7 @@ public class Limit {
     String result = maxResults.toString();
 
     if (offset.isPresent()) {
+
       result += "," + offset.get().toString();
     }
 
