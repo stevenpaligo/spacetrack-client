@@ -54,7 +54,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "INTLDES";
+        return SatCat.INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
 
@@ -62,7 +62,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return SatCat.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -70,7 +70,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_TYPE";
+        return SatCat.OBJECT_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -78,7 +78,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "SATNAME";
+        return SatCat.SAT_NAME_JSON_PROPERTY;
       }
     },
 
@@ -86,7 +86,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "COUNTRY";
+        return SatCat.COUNTRY_JSON_PROPERTY;
       }
     },
 
@@ -94,7 +94,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "LAUNCH";
+        return SatCat.LAUNCH_DATE_JSON_PROPERTY;
       }
     },
 
@@ -102,7 +102,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "SITE";
+        return SatCat.LAUNCH_SITE_JSON_PROPERTY;
       }
     },
 
@@ -110,7 +110,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "DECAY";
+        return SatCat.DECAY_DATE_JSON_PROPERTY;
       }
     },
 
@@ -118,7 +118,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "PERIOD";
+        return SatCat.PERIOD_JSON_PROPERTY;
       }
     },
 
@@ -126,7 +126,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "INCLINATION";
+        return SatCat.INCLINATION_JSON_PROPERTY;
       }
     },
 
@@ -134,7 +134,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "APOGEE";
+        return SatCat.APOGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -142,7 +142,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "PERIGEE";
+        return SatCat.PERIGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -150,7 +150,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "COMMENT";
+        return SatCat.COMMENT_JSON_PROPERTY;
       }
     },
 
@@ -158,7 +158,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "COMMENTCODE";
+        return SatCat.COMMENT_CODE_JSON_PROPERTY;
       }
     },
 
@@ -166,7 +166,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "RCSVALUE";
+        return SatCat.RCS_JSON_PROPERTY;
       }
     },
 
@@ -174,7 +174,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "RCS_SIZE";
+        return SatCat.RCS_CHARACTERIZATION_JSON_PROPERTY;
       }
     },
 
@@ -182,7 +182,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "FILE";
+        return SatCat.FILE_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -190,7 +190,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "LAUNCH_YEAR";
+        return SatCat.LAUNCH_YEAR_JSON_PROPERTY;
       }
     },
 
@@ -198,7 +198,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "LAUNCH_NUM";
+        return SatCat.LAUNCH_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -206,7 +206,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "LAUNCH_PIECE";
+        return SatCat.LAUNCH_PIECE_JSON_PROPERTY;
       }
     },
 
@@ -214,7 +214,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "CURRENT";
+        return SatCat.CURRENT_RECORD_JSON_PROPERTY;
       }
     },
 
@@ -222,7 +222,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NAME";
+        return SatCat.OBJECT_NAME_JSON_PROPERTY;
       }
     },
 
@@ -230,7 +230,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_ID";
+        return SatCat.OBJECT_ID_JSON_PROPERTY;
       }
     },
 
@@ -238,7 +238,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NUMBER";
+        return SatCat.OBJECT_NUMBER_JSON_PROPERTY;
       }
     }
   }
@@ -256,79 +256,105 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class SatCat {
 
-    @JsonProperty("INTLDES")
+    private static final String INTERNATIONAL_DESIGNATOR_JSON_PROPERTY = "INTLDES";
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+    private static final String OBJECT_TYPE_JSON_PROPERTY = "OBJECT_TYPE";
+    private static final String SAT_NAME_JSON_PROPERTY = "SATNAME";
+    private static final String COUNTRY_JSON_PROPERTY = "COUNTRY";
+    private static final String LAUNCH_DATE_JSON_PROPERTY = "LAUNCH";
+    private static final String LAUNCH_SITE_JSON_PROPERTY = "SITE";
+    private static final String DECAY_DATE_JSON_PROPERTY = "DECAY";
+    private static final String PERIOD_JSON_PROPERTY = "PERIOD";
+    private static final String INCLINATION_JSON_PROPERTY = "INCLINATION";
+    private static final String APOGEE_HEIGHT_JSON_PROPERTY = "APOGEE";
+    private static final String PERIGEE_HEIGHT_JSON_PROPERTY = "PERIGEE";
+    private static final String COMMENT_JSON_PROPERTY = "COMMENT";
+    private static final String COMMENT_CODE_JSON_PROPERTY = "COMMENTCODE";
+    private static final String RCS_JSON_PROPERTY = "RCSVALUE";
+    private static final String RCS_CHARACTERIZATION_JSON_PROPERTY = "RCS_SIZE";
+    private static final String FILE_NUMBER_JSON_PROPERTY = "FILE";
+    private static final String LAUNCH_YEAR_JSON_PROPERTY = "LAUNCH_YEAR";
+    private static final String LAUNCH_NUMBER_JSON_PROPERTY = "LAUNCH_NUM";
+    private static final String LAUNCH_PIECE_JSON_PROPERTY = "LAUNCH_PIECE";
+    private static final String CURRENT_RECORD_JSON_PROPERTY = "CURRENT";
+    private static final String OBJECT_NAME_JSON_PROPERTY = "OBJECT_NAME";
+    private static final String OBJECT_ID_JSON_PROPERTY = "OBJECT_ID";
+    private static final String OBJECT_NUMBER_JSON_PROPERTY = "OBJECT_NUMBER";
+
+
+    @JsonProperty(INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
     private String internationalDesignator;
 
-    @JsonProperty("NORAD_CAT_ID")
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
-    @JsonProperty("OBJECT_TYPE")
+    @JsonProperty(OBJECT_TYPE_JSON_PROPERTY)
     private Optional<String> objectType;
 
-    @JsonProperty("SATNAME")
+    @JsonProperty(SAT_NAME_JSON_PROPERTY)
     private String satName;
 
-    @JsonProperty("COUNTRY")
+    @JsonProperty(COUNTRY_JSON_PROPERTY)
     private String country;
 
-    @JsonProperty("LAUNCH")
+    @JsonProperty(LAUNCH_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     private Optional<LocalDate> launchDate;
 
-    @JsonProperty("SITE")
+    @JsonProperty(LAUNCH_SITE_JSON_PROPERTY)
     private Optional<String> launchSite;
 
-    @JsonProperty("DECAY")
+    @JsonProperty(DECAY_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     private Optional<LocalDate> decayDate;
 
-    @JsonProperty("PERIOD")
+    @JsonProperty(PERIOD_JSON_PROPERTY)
     private Optional<BigDecimal> periodMinutes;
 
-    @JsonProperty("INCLINATION")
+    @JsonProperty(INCLINATION_JSON_PROPERTY)
     private Optional<BigDecimal> inclinationDegrees;
 
-    @JsonProperty("APOGEE")
+    @JsonProperty(APOGEE_HEIGHT_JSON_PROPERTY)
     private Optional<Long> apogeeHeightKilometers;
 
-    @JsonProperty("PERIGEE")
+    @JsonProperty(PERIGEE_HEIGHT_JSON_PROPERTY)
     private Optional<Long> perigeeHeightKilometers;
 
-    @JsonProperty("COMMENT")
+    @JsonProperty(COMMENT_JSON_PROPERTY)
     private Optional<String> comment;
 
-    @JsonProperty("COMMENTCODE")
+    @JsonProperty(COMMENT_CODE_JSON_PROPERTY)
     private Optional<Integer> commentCode;
 
-    @JsonProperty("RCSVALUE")
+    @JsonProperty(RCS_JSON_PROPERTY)
     private Integer rcsMetersSquared;
 
-    @JsonProperty("RCS_SIZE")
+    @JsonProperty(RCS_CHARACTERIZATION_JSON_PROPERTY)
     private Optional<String> rcsCharacterization;
 
-    @JsonProperty("FILE")
+    @JsonProperty(FILE_NUMBER_JSON_PROPERTY)
     private Integer fileNumber;
 
-    @JsonProperty("LAUNCH_YEAR")
+    @JsonProperty(LAUNCH_YEAR_JSON_PROPERTY)
     private Integer launchYear;
 
-    @JsonProperty("LAUNCH_NUM")
+    @JsonProperty(LAUNCH_NUMBER_JSON_PROPERTY)
     private Integer launchNumber;
 
-    @JsonProperty("LAUNCH_PIECE")
+    @JsonProperty(LAUNCH_PIECE_JSON_PROPERTY)
     private String launchPiece;
 
-    @JsonProperty("CURRENT")
+    @JsonProperty(CURRENT_RECORD_JSON_PROPERTY)
     @JsonDeserialize(using = BooleanYesNoDeserializer.class)
     private Boolean currentRecord;
 
-    @JsonProperty("OBJECT_NAME")
+    @JsonProperty(OBJECT_NAME_JSON_PROPERTY)
     private String objectName;
 
-    @JsonProperty("OBJECT_ID")
+    @JsonProperty(OBJECT_ID_JSON_PROPERTY)
     private String objectId;
 
-    @JsonProperty("OBJECT_NUMBER")
+    @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
     private Optional<Integer> objectNumber;
 
   }

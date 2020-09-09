@@ -54,7 +54,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "CCSDS_OMM_VERS";
+        return OrbitMeanElementsMessage.CCSDS_OMM_VERSION_JSON_PROPERTY;
       }
     },
 
@@ -62,7 +62,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "COMMENT";
+        return OrbitMeanElementsMessage.COMMENT_JSON_PROPERTY;
       }
     },
 
@@ -70,7 +70,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "CREATION_DATE";
+        return OrbitMeanElementsMessage.CREATE_TIME_JSON_PROPERTY;
       }
     },
 
@@ -78,7 +78,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "ORIGINATOR";
+        return OrbitMeanElementsMessage.ORIGINATOR_JSON_PROPERTY;
       }
     },
 
@@ -86,7 +86,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NAME";
+        return OrbitMeanElementsMessage.OBJECT_NAME_JSON_PROPERTY;
       }
     },
 
@@ -94,7 +94,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_ID";
+        return OrbitMeanElementsMessage.OBJECT_ID_JSON_PROPERTY;
       }
     },
 
@@ -102,7 +102,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "CENTER_NAME";
+        return OrbitMeanElementsMessage.CENTER_NAME_JSON_PROPERTY;
       }
     },
 
@@ -110,7 +110,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "REF_FRAME";
+        return OrbitMeanElementsMessage.REFERENCE_FRAME_JSON_PROPERTY;
       }
     },
 
@@ -118,7 +118,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "TIME_SYSTEM";
+        return OrbitMeanElementsMessage.TIME_SYSTEM_JSON_PROPERTY;
       }
     },
 
@@ -126,7 +126,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_ELEMENT_THEORY";
+        return OrbitMeanElementsMessage.MEAN_ELEMENT_THEORY_JSON_PROPERTY;
       }
     },
 
@@ -134,7 +134,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "EPOCH";
+        return OrbitMeanElementsMessage.EPOCH_JSON_PROPERTY;
       }
     },
 
@@ -142,7 +142,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION";
+        return OrbitMeanElementsMessage.MEAN_MOTION_JSON_PROPERTY;
       }
     },
 
@@ -150,7 +150,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "ECCENTRICITY";
+        return OrbitMeanElementsMessage.ECCENTRICITY_JSON_PROPERTY;
       }
     },
 
@@ -158,7 +158,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "INCLINATION";
+        return OrbitMeanElementsMessage.INCLINATION_JSON_PROPERTY;
       }
     },
 
@@ -166,7 +166,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "RA_OF_ASC_NODE";
+        return OrbitMeanElementsMessage.RIGHT_ASC_OF_NODE_JSON_PROPERTY;
       }
     },
 
@@ -174,7 +174,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "ARG_OF_PERICENTER";
+        return OrbitMeanElementsMessage.ARG_OF_PERIGEE_JSON_PROPERTY;
       }
     },
 
@@ -182,7 +182,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_ANOMALY";
+        return OrbitMeanElementsMessage.MEAN_ANOMALY_JSON_PROPERTY;
       }
     },
 
@@ -190,7 +190,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "EPHEMERIS_TYPE";
+        return OrbitMeanElementsMessage.EPHEMERIS_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -198,7 +198,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "CLASSIFICATION_TYPE";
+        return OrbitMeanElementsMessage.CLASSIFICATION_JSON_PROPERTY;
       }
     },
 
@@ -206,7 +206,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return OrbitMeanElementsMessage.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -214,7 +214,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "ELEMENT_SET_NO";
+        return OrbitMeanElementsMessage.ELEMENT_SET_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -222,7 +222,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "REV_AT_EPOCH";
+        return OrbitMeanElementsMessage.REV_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -230,7 +230,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "BSTAR";
+        return OrbitMeanElementsMessage.BSTAR_JSON_PROPERTY;
       }
     },
 
@@ -238,7 +238,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION_DOT";
+        return OrbitMeanElementsMessage.MEAN_MOTION_DOT_JSON_PROPERTY;
       }
     },
 
@@ -246,7 +246,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION_DDOT";
+        return OrbitMeanElementsMessage.MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY;
       }
     },
 
@@ -254,7 +254,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE0";
+        return OrbitMeanElementsMessage.TLE_LINE_0_JSON_PROPERTY;
       }
     },
 
@@ -262,7 +262,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE1";
+        return OrbitMeanElementsMessage.TLE_LINE_1_JSON_PROPERTY;
       }
     },
 
@@ -270,7 +270,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE2";
+        return OrbitMeanElementsMessage.TLE_LINE_2_JSON_PROPERTY;
       }
     },
 
@@ -278,7 +278,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "SEMIMAJOR_AXIS";
+        return OrbitMeanElementsMessage.SEMI_MAJOR_AXIS_JSON_PROPERTY;
       }
     },
 
@@ -286,7 +286,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "PERIOD";
+        return OrbitMeanElementsMessage.PERIOD_JSON_PROPERTY;
       }
     },
 
@@ -294,7 +294,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "APOAPSIS";
+        return OrbitMeanElementsMessage.APOGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -302,7 +302,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "PERIAPSIS";
+        return OrbitMeanElementsMessage.PERIGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -310,7 +310,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_TYPE";
+        return OrbitMeanElementsMessage.OBJECT_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -318,7 +318,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
 
       @Override
       public String getQueryFieldName() {
-        return "DECAYED";
+        return OrbitMeanElementsMessage.DECAYED_JSON_PROPERTY;
       }
     }
   }
@@ -336,113 +336,149 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class OrbitMeanElementsMessage {
 
-    @JsonProperty("CCSDS_OMM_VERS")
+    private static final String CCSDS_OMM_VERSION_JSON_PROPERTY = "CCSDS_OMM_VERS";
+    private static final String COMMENT_JSON_PROPERTY = "COMMENT";
+    private static final String CREATE_TIME_JSON_PROPERTY = "CREATION_DATE";
+    private static final String ORIGINATOR_JSON_PROPERTY = "ORIGINATOR";
+    private static final String OBJECT_NAME_JSON_PROPERTY = "OBJECT_NAME";
+    private static final String OBJECT_ID_JSON_PROPERTY = "OBJECT_ID";
+    private static final String CENTER_NAME_JSON_PROPERTY = "CENTER_NAME";
+    private static final String REFERENCE_FRAME_JSON_PROPERTY = "REF_FRAME";
+    private static final String TIME_SYSTEM_JSON_PROPERTY = "TIME_SYSTEM";
+    private static final String MEAN_ELEMENT_THEORY_JSON_PROPERTY = "MEAN_ELEMENT_THEORY";
+    private static final String EPOCH_JSON_PROPERTY = "EPOCH";
+    private static final String MEAN_MOTION_JSON_PROPERTY = "MEAN_MOTION";
+    private static final String ECCENTRICITY_JSON_PROPERTY = "ECCENTRICITY";
+    private static final String INCLINATION_JSON_PROPERTY = "INCLINATION";
+    private static final String RIGHT_ASC_OF_NODE_JSON_PROPERTY = "RA_OF_ASC_NODE";
+    private static final String ARG_OF_PERIGEE_JSON_PROPERTY = "ARG_OF_PERICENTER";
+    private static final String MEAN_ANOMALY_JSON_PROPERTY = "MEAN_ANOMALY";
+    private static final String EPHEMERIS_TYPE_JSON_PROPERTY = "EPHEMERIS_TYPE";
+    private static final String CLASSIFICATION_JSON_PROPERTY = "CLASSIFICATION_TYPE";
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+    private static final String ELEMENT_SET_NUMBER_JSON_PROPERTY = "ELEMENT_SET_NO";
+    private static final String REV_NUMBER_JSON_PROPERTY = "REV_AT_EPOCH";
+    private static final String BSTAR_JSON_PROPERTY = "BSTAR";
+    private static final String MEAN_MOTION_DOT_JSON_PROPERTY = "MEAN_MOTION_DOT";
+    private static final String MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY = "MEAN_MOTION_DDOT";
+    private static final String TLE_LINE_0_JSON_PROPERTY = "TLE_LINE0";
+    private static final String TLE_LINE_1_JSON_PROPERTY = "TLE_LINE1";
+    private static final String TLE_LINE_2_JSON_PROPERTY = "TLE_LINE2";
+    private static final String SEMI_MAJOR_AXIS_JSON_PROPERTY = "SEMIMAJOR_AXIS";
+    private static final String PERIOD_JSON_PROPERTY = "PERIOD";
+    private static final String APOGEE_HEIGHT_JSON_PROPERTY = "APOAPSIS";
+    private static final String PERIGEE_HEIGHT_JSON_PROPERTY = "PERIAPSIS";
+    private static final String OBJECT_TYPE_JSON_PROPERTY = "OBJECT_TYPE";
+    private static final String DECAYED_JSON_PROPERTY = "DECAYED";
+
+
+    @JsonProperty(CCSDS_OMM_VERSION_JSON_PROPERTY)
     private String ccsdsOmmVersion;
 
-    @JsonProperty("COMMENT")
+    @JsonProperty(COMMENT_JSON_PROPERTY)
     private String comment;
 
-    @JsonProperty("CREATION_DATE")
+    @JsonProperty(CREATE_TIME_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
     private UtcInstant createTime;
 
-    @JsonProperty("ORIGINATOR")
+    @JsonProperty(ORIGINATOR_JSON_PROPERTY)
     private String originator;
 
-    @JsonProperty("OBJECT_NAME")
+    @JsonProperty(OBJECT_NAME_JSON_PROPERTY)
     private String objectName;
 
-    @JsonProperty("OBJECT_ID")
+    @JsonProperty(OBJECT_ID_JSON_PROPERTY)
     private Optional<String> objectId;
 
-    @JsonProperty("CENTER_NAME")
+    @JsonProperty(CENTER_NAME_JSON_PROPERTY)
     private String centerName;
 
-    @JsonProperty("REF_FRAME")
+    @JsonProperty(REFERENCE_FRAME_JSON_PROPERTY)
     private String referenceFrame;
 
-    @JsonProperty("TIME_SYSTEM")
+    @JsonProperty(TIME_SYSTEM_JSON_PROPERTY)
     private String timeSystem;
 
-    @JsonProperty("MEAN_ELEMENT_THEORY")
+    @JsonProperty(MEAN_ELEMENT_THEORY_JSON_PROPERTY)
     private String meanElementTheory;
 
-    @JsonProperty("EPOCH")
+    @JsonProperty(EPOCH_JSON_PROPERTY)
     private Optional<String> epoch;
 
-    @JsonProperty("MEAN_MOTION")
+    @JsonProperty(MEAN_MOTION_JSON_PROPERTY)
     private Double meanMotionRevsPerDay;
 
-    @JsonProperty("ECCENTRICITY")
+    @JsonProperty(ECCENTRICITY_JSON_PROPERTY)
     private Double eccentricity;
 
-    @JsonProperty("INCLINATION")
+    @JsonProperty(INCLINATION_JSON_PROPERTY)
     private Double inclinationDegrees;
 
-    @JsonProperty("RA_OF_ASC_NODE")
+    @JsonProperty(RIGHT_ASC_OF_NODE_JSON_PROPERTY)
     private Double rightAscOfNodeDegrees;
 
-    @JsonProperty("ARG_OF_PERICENTER")
+    @JsonProperty(ARG_OF_PERIGEE_JSON_PROPERTY)
     private Double argOfPerigeeDegrees;
 
-    @JsonProperty("MEAN_ANOMALY")
+    @JsonProperty(MEAN_ANOMALY_JSON_PROPERTY)
     private Double meanAnomalyDegrees;
 
-    @JsonProperty("EPHEMERIS_TYPE")
+    @JsonProperty(EPHEMERIS_TYPE_JSON_PROPERTY)
     private Integer ephemerisType;
 
-    @JsonProperty("CLASSIFICATION_TYPE")
+    @JsonProperty(CLASSIFICATION_JSON_PROPERTY)
     private String classification;
 
-    @JsonProperty("NORAD_CAT_ID")
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
-    @JsonProperty("ELEMENT_SET_NO")
+    @JsonProperty(ELEMENT_SET_NUMBER_JSON_PROPERTY)
     private Integer elementSetNumber;
 
-    @JsonProperty("REV_AT_EPOCH")
+    @JsonProperty(REV_NUMBER_JSON_PROPERTY)
     private Float revNumber;
 
-    @JsonProperty("BSTAR")
+    @JsonProperty(BSTAR_JSON_PROPERTY)
     private Double bstar;
 
-    @JsonProperty("MEAN_MOTION_DOT")
+    @JsonProperty(MEAN_MOTION_DOT_JSON_PROPERTY)
     private Double meanMotionDot;
 
-    @JsonProperty("MEAN_MOTION_DDOT")
+    @JsonProperty(MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY)
     private Double meanMotionDoubleDot;
 
-    @JsonProperty("TLE_LINE0")
+    @JsonProperty(TLE_LINE_0_JSON_PROPERTY)
     private String tleLine0;
 
-    @JsonProperty("TLE_LINE1")
+    @JsonProperty(TLE_LINE_1_JSON_PROPERTY)
     private String tleLine1;
 
-    @JsonProperty("TLE_LINE2")
+    @JsonProperty(TLE_LINE_2_JSON_PROPERTY)
     private String tleLine2;
 
-    @JsonProperty("SEMIMAJOR_AXIS")
+    @JsonProperty(SEMI_MAJOR_AXIS_JSON_PROPERTY)
     private Double semiMajorAxisKilometers;
 
-    @JsonProperty("PERIOD")
+    @JsonProperty(PERIOD_JSON_PROPERTY)
     private Optional<Double> periodMinutes;
 
     /**
      * Approximate height of the apogee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
-    @JsonProperty("APOAPSIS")
+    @JsonProperty(APOGEE_HEIGHT_JSON_PROPERTY)
     private Double apogeeHeightKilometers;
 
     /**
      * Approximate height of the perigee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
-    @JsonProperty("PERIAPSIS")
+    @JsonProperty(PERIGEE_HEIGHT_JSON_PROPERTY)
     private Double perigeeHeightKilometers;
 
-    @JsonProperty("OBJECT_TYPE")
+    @JsonProperty(OBJECT_TYPE_JSON_PROPERTY)
     private Optional<String> objectType;
 
-    @JsonProperty("DECAYED")
+    @JsonProperty(DECAYED_JSON_PROPERTY)
     @JsonDeserialize(using = DecimalToIntegerDeserializer.class) // TODO: the Space-Track model says this type is "decimal(3,0)", which doesn't make sense at all
     private Integer decayed;
 

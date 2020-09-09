@@ -52,7 +52,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return Decay.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -60,7 +60,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NUMBER";
+        return Decay.OBJECT_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -68,7 +68,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NAME";
+        return Decay.OBJECT_NAME_JSON_PROPERTY;
       }
     },
 
@@ -76,7 +76,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "INTLDES";
+        return Decay.INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
 
@@ -84,7 +84,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_ID";
+        return Decay.OBJECT_ID_JSON_PROPERTY;
       }
     },
 
@@ -92,7 +92,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "RCS";
+        return Decay.RCS_JSON_PROPERTY;
       }
     },
 
@@ -100,7 +100,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "RCS_SIZE";
+        return Decay.RCS_CHARACTERIZATION_JSON_PROPERTY;
       }
     },
 
@@ -108,7 +108,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "COUNTRY";
+        return Decay.COUNTRY_JSON_PROPERTY;
       }
     },
 
@@ -116,7 +116,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "MSG_EPOCH";
+        return Decay.MESSAGE_EPOCH_JSON_PROPERTY;
       }
     },
 
@@ -124,7 +124,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "DECAY_EPOCH";
+        return Decay.DECAY_EPOCH_JSON_PROPERTY;
       }
     },
 
@@ -132,7 +132,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "SOURCE";
+        return Decay.SOURCE_JSON_PROPERTY;
       }
     },
 
@@ -140,7 +140,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "MSG_TYPE";
+        return Decay.MESSAGE_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -148,7 +148,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "PRECEDENCE";
+        return Decay.DECAY_STAGE_JSON_PROPERTY;
       }
     }
   }
@@ -166,44 +166,59 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Decay {
 
-    @JsonProperty("NORAD_CAT_ID")
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+    private static final String OBJECT_NUMBER_JSON_PROPERTY = "OBJECT_NUMBER";
+    private static final String OBJECT_NAME_JSON_PROPERTY = "OBJECT_NAME";
+    private static final String INTERNATIONAL_DESIGNATOR_JSON_PROPERTY = "INTLDES";
+    private static final String OBJECT_ID_JSON_PROPERTY = "OBJECT_ID";
+    private static final String RCS_JSON_PROPERTY = "RCS";
+    private static final String RCS_CHARACTERIZATION_JSON_PROPERTY = "RCS_SIZE";
+    private static final String COUNTRY_JSON_PROPERTY = "COUNTRY";
+    private static final String MESSAGE_EPOCH_JSON_PROPERTY = "MSG_EPOCH";
+    private static final String DECAY_EPOCH_JSON_PROPERTY = "DECAY_EPOCH";
+    private static final String SOURCE_JSON_PROPERTY = "SOURCE";
+    private static final String MESSAGE_TYPE_JSON_PROPERTY = "MSG_TYPE";
+    private static final String DECAY_STAGE_JSON_PROPERTY = "PRECEDENCE";
+
+
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
-    @JsonProperty("OBJECT_NUMBER")
+    @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
     private Optional<Integer> objectNumber;
 
-    @JsonProperty("OBJECT_NAME")
+    @JsonProperty(OBJECT_NAME_JSON_PROPERTY)
     private String objectName;
 
-    @JsonProperty("INTLDES")
+    @JsonProperty(INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
     private String internationalDesignator;
 
-    @JsonProperty("OBJECT_ID")
+    @JsonProperty(OBJECT_ID_JSON_PROPERTY)
     private String objectId;
 
-    @JsonProperty("RCS")
+    @JsonProperty(RCS_JSON_PROPERTY)
     private Integer rcsMetersSquared;
 
-    @JsonProperty("RCS_SIZE")
+    @JsonProperty(RCS_CHARACTERIZATION_JSON_PROPERTY)
     private Optional<String> rcsCharacterization;
 
-    @JsonProperty("COUNTRY")
+    @JsonProperty(COUNTRY_JSON_PROPERTY)
     private String country;
 
-    @JsonProperty("MSG_EPOCH")
+    @JsonProperty(MESSAGE_EPOCH_JSON_PROPERTY)
     @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
     private Optional<UtcInstant> messageEpoch;
 
-    @JsonProperty("DECAY_EPOCH")
+    @JsonProperty(DECAY_EPOCH_JSON_PROPERTY)
     private Optional<String> decayEpoch;
 
-    @JsonProperty("SOURCE")
+    @JsonProperty(SOURCE_JSON_PROPERTY)
     private String source;
 
-    @JsonProperty("MSG_TYPE")
+    @JsonProperty(MESSAGE_TYPE_JSON_PROPERTY)
     private String messageType;
 
-    @JsonProperty("PRECEDENCE")
+    @JsonProperty(DECAY_STAGE_JSON_PROPERTY)
     private Long decayStage;
 
   }

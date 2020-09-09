@@ -50,7 +50,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "COUNTRY";
+        return CountryBoxScore.COUNTRY_JSON_PROPERTY;
       }
     },
 
@@ -58,7 +58,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "SPADOC_CD";
+        return CountryBoxScore.SPADOC_COUNTRY_DESIGNATOR_JSON_PROPERTY;
       }
     },
 
@@ -66,7 +66,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "ORBITAL_TBA";
+        return CountryBoxScore.ORBITAL_UNASSIGNED_TYPE_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -74,7 +74,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "ORBITAL_PAYLOAD_COUNT";
+        return CountryBoxScore.ORBITAL_PAYLOAD_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -82,7 +82,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "ORBITAL_ROCKET_BODY_COUNT";
+        return CountryBoxScore.ORBITAL_ROCKET_BODY_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -90,7 +90,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "ORBITAL_DEBRIS_COUNT";
+        return CountryBoxScore.ORBITAL_DEBRIS_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -98,7 +98,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "ORBITAL_TOTAL_COUNT";
+        return CountryBoxScore.ORBITAL_TOTAL_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -106,7 +106,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "DECAYED_PAYLOAD_COUNT";
+        return CountryBoxScore.DECAYED_PAYLOAD_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -114,7 +114,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "DECAYED_ROCKET_BODY_COUNT";
+        return CountryBoxScore.DECAYED_ROCKET_BODY_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -122,7 +122,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "DECAYED_DEBRIS_COUNT";
+        return CountryBoxScore.DECAYED_DEBRIS_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -130,7 +130,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "DECAYED_TOTAL_COUNT";
+        return CountryBoxScore.DECAYED_TOTAL_COUNT_JSON_PROPERTY;
       }
     },
 
@@ -138,7 +138,7 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
 
       @Override
       public String getQueryFieldName() {
-        return "COUNTRY_TOTAL";
+        return CountryBoxScore.TOTAL_COUNT_JSON_PROPERTY;
       }
     }
   }
@@ -156,40 +156,54 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class CountryBoxScore {
 
-    @JsonProperty("COUNTRY")
+    private static final String COUNTRY_JSON_PROPERTY = "COUNTRY";
+    private static final String SPADOC_COUNTRY_DESIGNATOR_JSON_PROPERTY = "SPADOC_CD";
+    private static final String ORBITAL_UNASSIGNED_TYPE_COUNT_JSON_PROPERTY = "ORBITAL_TBA";
+    private static final String ORBITAL_PAYLOAD_COUNT_JSON_PROPERTY = "ORBITAL_PAYLOAD_COUNT";
+    private static final String ORBITAL_ROCKET_BODY_COUNT_JSON_PROPERTY = "ORBITAL_ROCKET_BODY_COUNT";
+    private static final String ORBITAL_DEBRIS_COUNT_JSON_PROPERTY = "ORBITAL_DEBRIS_COUNT";
+    private static final String ORBITAL_TOTAL_COUNT_JSON_PROPERTY = "ORBITAL_TOTAL_COUNT";
+    private static final String DECAYED_PAYLOAD_COUNT_JSON_PROPERTY = "DECAYED_PAYLOAD_COUNT";
+    private static final String DECAYED_ROCKET_BODY_COUNT_JSON_PROPERTY = "DECAYED_ROCKET_BODY_COUNT";
+    private static final String DECAYED_DEBRIS_COUNT_JSON_PROPERTY = "DECAYED_DEBRIS_COUNT";
+    private static final String DECAYED_TOTAL_COUNT_JSON_PROPERTY = "DECAYED_TOTAL_COUNT";
+    private static final String TOTAL_COUNT_JSON_PROPERTY = "COUNTRY_TOTAL";
+
+
+    @JsonProperty(COUNTRY_JSON_PROPERTY)
     private String country;
 
-    @JsonProperty("SPADOC_CD")
+    @JsonProperty(SPADOC_COUNTRY_DESIGNATOR_JSON_PROPERTY)
     private Optional<String> spadocCountryDesignator;
 
-    @JsonProperty("ORBITAL_TBA")
+    @JsonProperty(ORBITAL_UNASSIGNED_TYPE_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> orbitalUnassignedTypeCount;
 
-    @JsonProperty("ORBITAL_PAYLOAD_COUNT")
+    @JsonProperty(ORBITAL_PAYLOAD_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> orbitalPayloadCount;
 
-    @JsonProperty("ORBITAL_ROCKET_BODY_COUNT")
+    @JsonProperty(ORBITAL_ROCKET_BODY_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> orbitalRocketBodyCount;
 
-    @JsonProperty("ORBITAL_DEBRIS_COUNT")
+    @JsonProperty(ORBITAL_DEBRIS_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> orbitalDebrisCount;
 
-    @JsonProperty("ORBITAL_TOTAL_COUNT")
+    @JsonProperty(ORBITAL_TOTAL_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> orbitalTotalCount;
 
-    @JsonProperty("DECAYED_PAYLOAD_COUNT")
+    @JsonProperty(DECAYED_PAYLOAD_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> decayedPayloadCount;
 
-    @JsonProperty("DECAYED_ROCKET_BODY_COUNT")
+    @JsonProperty(DECAYED_ROCKET_BODY_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> decayedRocketBodyCount;
 
-    @JsonProperty("DECAYED_DEBRIS_COUNT")
+    @JsonProperty(DECAYED_DEBRIS_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> decayedDebrisCount;
 
-    @JsonProperty("DECAYED_TOTAL_COUNT")
+    @JsonProperty(DECAYED_TOTAL_COUNT_JSON_PROPERTY)
     private Optional<BigInteger> decayedTotalCount;
 
-    @JsonProperty("COUNTRY_TOTAL")
+    @JsonProperty(TOTAL_COUNT_JSON_PROPERTY)
     private Long totalCount;
 
   }

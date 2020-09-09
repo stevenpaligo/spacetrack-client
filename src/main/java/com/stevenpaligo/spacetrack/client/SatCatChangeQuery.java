@@ -54,7 +54,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return SatCatChange.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -62,7 +62,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NUMBER";
+        return SatCatChange.OBJECT_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -70,7 +70,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "CURRENT_NAME";
+        return SatCatChange.CURRENT_NAME_JSON_PROPERTY;
       }
     },
 
@@ -78,7 +78,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "PREVIOUS_NAME";
+        return SatCatChange.PREVIOUS_NAME_JSON_PROPERTY;
       }
     },
 
@@ -86,7 +86,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "CURRENT_INTLDES";
+        return SatCatChange.CURRENT_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
 
@@ -94,7 +94,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "PREVIOUS_INTLDES";
+        return SatCatChange.PREVIOUS_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
 
@@ -102,7 +102,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "CURRENT_COUNTRY";
+        return SatCatChange.CURRENT_COUNTRY_JSON_PROPERTY;
       }
     },
 
@@ -110,7 +110,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "PREVIOUS_COUNTRY";
+        return SatCatChange.PREVIOUS_COUNTRY_JSON_PROPERTY;
       }
     },
 
@@ -118,7 +118,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "CURRENT_LAUNCH";
+        return SatCatChange.CURRENT_LAUNCH_DATE_JSON_PROPERTY;
       }
     },
 
@@ -126,7 +126,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "PREVIOUS_LAUNCH";
+        return SatCatChange.PREVIOUS_LAUNCH_DATE_JSON_PROPERTY;
       }
     },
 
@@ -134,7 +134,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "CURRENT_DECAY";
+        return SatCatChange.CURRENT_DECAY_DATE_JSON_PROPERTY;
       }
     },
 
@@ -142,7 +142,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "PREVIOUS_DECAY";
+        return SatCatChange.PREVIOUS_DECAY_DATE_JSON_PROPERTY;
       }
     },
 
@@ -150,7 +150,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
       @Override
       public String getQueryFieldName() {
-        return "CHANGE_MADE";
+        return SatCatChange.UPDATE_TIME_JSON_PROPERTY;
       }
     }
   }
@@ -168,47 +168,62 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class SatCatChange {
 
-    @JsonProperty("NORAD_CAT_ID")
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+    private static final String OBJECT_NUMBER_JSON_PROPERTY = "OBJECT_NUMBER";
+    private static final String CURRENT_NAME_JSON_PROPERTY = "CURRENT_NAME";
+    private static final String PREVIOUS_NAME_JSON_PROPERTY = "PREVIOUS_NAME";
+    private static final String CURRENT_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY = "CURRENT_INTLDES";
+    private static final String PREVIOUS_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY = "PREVIOUS_INTLDES";
+    private static final String CURRENT_COUNTRY_JSON_PROPERTY = "CURRENT_COUNTRY";
+    private static final String PREVIOUS_COUNTRY_JSON_PROPERTY = "PREVIOUS_COUNTRY";
+    private static final String CURRENT_LAUNCH_DATE_JSON_PROPERTY = "CURRENT_LAUNCH";
+    private static final String PREVIOUS_LAUNCH_DATE_JSON_PROPERTY = "PREVIOUS_LAUNCH";
+    private static final String CURRENT_DECAY_DATE_JSON_PROPERTY = "CURRENT_DECAY";
+    private static final String PREVIOUS_DECAY_DATE_JSON_PROPERTY = "PREVIOUS_DECAY";
+    private static final String UPDATE_TIME_JSON_PROPERTY = "CHANGE_MADE";
+
+
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
-    @JsonProperty("OBJECT_NUMBER")
+    @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
     private Optional<Integer> objectNumber;
 
-    @JsonProperty("CURRENT_NAME")
+    @JsonProperty(CURRENT_NAME_JSON_PROPERTY)
     private String currentName;
 
-    @JsonProperty("PREVIOUS_NAME")
+    @JsonProperty(PREVIOUS_NAME_JSON_PROPERTY)
     private Optional<String> previousName;
 
-    @JsonProperty("CURRENT_INTLDES")
+    @JsonProperty(CURRENT_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
     private String currentInternationalDesignator;
 
-    @JsonProperty("PREVIOUS_INTLDES")
+    @JsonProperty(PREVIOUS_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
     private Optional<String> previousInternationalDesignator;
 
-    @JsonProperty("CURRENT_COUNTRY")
+    @JsonProperty(CURRENT_COUNTRY_JSON_PROPERTY)
     private String currentCountry;
 
-    @JsonProperty("PREVIOUS_COUNTRY")
+    @JsonProperty(PREVIOUS_COUNTRY_JSON_PROPERTY)
     private Optional<String> previousCountry;
 
-    @JsonProperty("CURRENT_LAUNCH")
+    @JsonProperty(CURRENT_LAUNCH_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     private Optional<LocalDate> currentLaunchDate;
 
-    @JsonProperty("PREVIOUS_LAUNCH")
+    @JsonProperty(PREVIOUS_LAUNCH_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     private Optional<LocalDate> previousLaunchDate;
 
-    @JsonProperty("CURRENT_DECAY")
+    @JsonProperty(CURRENT_DECAY_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     private Optional<LocalDate> currentDecayDate;
 
-    @JsonProperty("PREVIOUS_DECAY")
+    @JsonProperty(PREVIOUS_DECAY_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     private Optional<LocalDate> previousDecayDate;
 
-    @JsonProperty("CHANGE_MADE")
+    @JsonProperty(UPDATE_TIME_JSON_PROPERTY)
     @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
     private Optional<UtcInstant> updateTime;
 

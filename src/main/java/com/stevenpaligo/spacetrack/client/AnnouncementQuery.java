@@ -51,7 +51,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
-        return "announcement_type";
+        return Announcement.TYPE_JSON_PROPERTY;
       }
     },
 
@@ -59,7 +59,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
-        return "announcement_text";
+        return Announcement.TEXT_JSON_PROPERTY;
       }
     },
 
@@ -67,7 +67,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
-        return "announcement_start";
+        return Announcement.START_TIME_JSON_PROPERTY;
       }
     },
 
@@ -75,7 +75,7 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
 
       @Override
       public String getQueryFieldName() {
-        return "announcement_end";
+        return Announcement.END_TIME_JSON_PROPERTY;
       }
     }
   }
@@ -93,17 +93,23 @@ public class AnnouncementQuery extends Query<AnnouncementQueryField, Announcemen
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Announcement {
 
-    @JsonProperty("announcement_type")
+    private static final String TYPE_JSON_PROPERTY = "announcement_type";
+    private static final String TEXT_JSON_PROPERTY = "announcement_text";
+    private static final String START_TIME_JSON_PROPERTY = "announcement_start";
+    private static final String END_TIME_JSON_PROPERTY = "announcement_end";
+
+
+    @JsonProperty(TYPE_JSON_PROPERTY)
     private String type;
 
-    @JsonProperty("announcement_text")
+    @JsonProperty(TEXT_JSON_PROPERTY)
     private String text;
 
-    @JsonProperty("announcement_start")
+    @JsonProperty(START_TIME_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
     private UtcInstant startTime;
 
-    @JsonProperty("announcement_end")
+    @JsonProperty(END_TIME_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
     private UtcInstant endTime;
 

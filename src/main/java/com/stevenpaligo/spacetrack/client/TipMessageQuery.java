@@ -53,7 +53,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return TipMessage.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -61,7 +61,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "MSG_EPOCH";
+        return TipMessage.MESSAGE_EPOCH_JSON_PROPERTY;
       }
     },
 
@@ -69,7 +69,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "INSERT_EPOCH";
+        return TipMessage.INSERT_EPOCH_JSON_PROPERTY;
       }
     },
 
@@ -77,7 +77,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "DECAY_EPOCH";
+        return TipMessage.DECAY_EPOCH_JSON_PROPERTY;
       }
     },
 
@@ -85,7 +85,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "WINDOW";
+        return TipMessage.WINDOW_SIZE_JSON_PROPERTY;
       }
     },
 
@@ -93,7 +93,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "REV";
+        return TipMessage.REV_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -101,7 +101,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "DIRECTION";
+        return TipMessage.DIRECTION_JSON_PROPERTY;
       }
     },
 
@@ -109,7 +109,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "LAT";
+        return TipMessage.TEN_KM_LATITUDE_JSON_PROPERTY;
       }
     },
 
@@ -117,7 +117,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "LON";
+        return TipMessage.TEN_KM_LONGITUDE_JSON_PROPERTY;
       }
     },
 
@@ -125,7 +125,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "INCL";
+        return TipMessage.INCLINATION_JSON_PROPERTY;
       }
     },
 
@@ -133,7 +133,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "NEXT_REPORT";
+        return TipMessage.NEXT_REPORT_TIME_JSON_PROPERTY;
       }
     },
 
@@ -141,7 +141,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "ID";
+        return TipMessage.MESSAGE_ID_JSON_PROPERTY;
       }
     },
 
@@ -149,7 +149,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "HIGH_INTEREST";
+        return TipMessage.HIGH_INTEREST_JSON_PROPERTY;
       }
     },
 
@@ -157,7 +157,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NUMBER";
+        return TipMessage.OBJECT_NUMBER_JSON_PROPERTY;
       }
     }
   }
@@ -175,50 +175,66 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class TipMessage {
 
-    @JsonProperty("NORAD_CAT_ID")
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+    private static final String MESSAGE_EPOCH_JSON_PROPERTY = "MSG_EPOCH";
+    private static final String INSERT_EPOCH_JSON_PROPERTY = "INSERT_EPOCH";
+    private static final String DECAY_EPOCH_JSON_PROPERTY = "DECAY_EPOCH";
+    private static final String WINDOW_SIZE_JSON_PROPERTY = "WINDOW";
+    private static final String REV_NUMBER_JSON_PROPERTY = "REV";
+    private static final String DIRECTION_JSON_PROPERTY = "DIRECTION";
+    private static final String TEN_KM_LATITUDE_JSON_PROPERTY = "LAT";
+    private static final String TEN_KM_LONGITUDE_JSON_PROPERTY = "LON";
+    private static final String INCLINATION_JSON_PROPERTY = "INCL";
+    private static final String NEXT_REPORT_TIME_JSON_PROPERTY = "NEXT_REPORT";
+    private static final String MESSAGE_ID_JSON_PROPERTY = "ID";
+    private static final String HIGH_INTEREST_JSON_PROPERTY = "HIGH_INTEREST";
+    private static final String OBJECT_NUMBER_JSON_PROPERTY = "OBJECT_NUMBER";
+
+
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
-    @JsonProperty("MSG_EPOCH")
+    @JsonProperty(MESSAGE_EPOCH_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
     private UtcInstant messageEpoch;
 
-    @JsonProperty("INSERT_EPOCH")
+    @JsonProperty(INSERT_EPOCH_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
     private UtcInstant insertEpoch;
 
-    @JsonProperty("DECAY_EPOCH")
+    @JsonProperty(DECAY_EPOCH_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
     private UtcInstant decayEpoch;
 
-    @JsonProperty("WINDOW")
+    @JsonProperty(WINDOW_SIZE_JSON_PROPERTY)
     private Integer windowSizeMinutes;
 
-    @JsonProperty("REV")
+    @JsonProperty(REV_NUMBER_JSON_PROPERTY)
     private Integer revNumber;
 
-    @JsonProperty("DIRECTION")
+    @JsonProperty(DIRECTION_JSON_PROPERTY)
     private Optional<String> direction;
 
-    @JsonProperty("LAT")
+    @JsonProperty(TEN_KM_LATITUDE_JSON_PROPERTY)
     private Float tenKmLatitudeDegrees;
 
-    @JsonProperty("LON")
+    @JsonProperty(TEN_KM_LONGITUDE_JSON_PROPERTY)
     private Float tenKmLongitudeDegrees;
 
-    @JsonProperty("INCL")
+    @JsonProperty(INCLINATION_JSON_PROPERTY)
     private Float inclinationDegrees;
 
-    @JsonProperty("NEXT_REPORT")
+    @JsonProperty(NEXT_REPORT_TIME_JSON_PROPERTY)
     private Integer nextReportTimeHours;
 
-    @JsonProperty("ID")
+    @JsonProperty(MESSAGE_ID_JSON_PROPERTY)
     private Integer messageId;
 
-    @JsonProperty("HIGH_INTEREST")
+    @JsonProperty(HIGH_INTEREST_JSON_PROPERTY)
     @JsonDeserialize(using = OptionalBooleanYesNoDeserializer.class)
     private Optional<Boolean> highInterest;
 
-    @JsonProperty("OBJECT_NUMBER")
+    @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
     private Optional<Integer> objectNumber;
 
   }

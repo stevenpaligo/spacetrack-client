@@ -52,7 +52,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
-        return "PUBLISH_EPOCH";
+        return PublishedTle.PUBLISH_TIME_JSON_PROPERTY;
       }
     },
 
@@ -60,7 +60,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE1";
+        return PublishedTle.TLE_LINE_1_JSON_PROPERTY;
       }
     },
 
@@ -68,7 +68,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE2";
+        return PublishedTle.TLE_LINE_2_JSON_PROPERTY;
       }
     },
 
@@ -76,7 +76,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return PublishedTle.CATALOG_NUMBER_JSON_PROPERTY;
       }
     }
   }
@@ -94,17 +94,23 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class PublishedTle {
 
-    @JsonProperty("PUBLISH_EPOCH")
+    private static final String PUBLISH_TIME_JSON_PROPERTY = "PUBLISH_EPOCH";
+    private static final String TLE_LINE_1_JSON_PROPERTY = "TLE_LINE1";
+    private static final String TLE_LINE_2_JSON_PROPERTY = "TLE_LINE2";
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+
+
+    @JsonProperty(PUBLISH_TIME_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
     private UtcInstant publishTime;
 
-    @JsonProperty("TLE_LINE1")
+    @JsonProperty(TLE_LINE_1_JSON_PROPERTY)
     private String tleLine1;
 
-    @JsonProperty("TLE_LINE2")
+    @JsonProperty(TLE_LINE_2_JSON_PROPERTY)
     private String tleLine2;
 
-    @JsonProperty("NORAD_CAT_ID")
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
   }

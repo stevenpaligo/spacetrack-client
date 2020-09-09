@@ -52,7 +52,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "COMMENT";
+        return Tle.COMMENT_JSON_PROPERTY;
       }
     },
 
@@ -60,7 +60,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "ORIGINATOR";
+        return Tle.ORIGINATOR_JSON_PROPERTY;
       }
     },
 
@@ -68,7 +68,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return Tle.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -76,7 +76,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NAME";
+        return Tle.OBJECT_NAME_JSON_PROPERTY;
       }
     },
 
@@ -84,7 +84,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_TYPE";
+        return Tle.OBJECT_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -92,7 +92,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "CLASSIFICATION_TYPE";
+        return Tle.CLASSIFICATION_JSON_PROPERTY;
       }
     },
 
@@ -100,7 +100,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "INTLDES";
+        return Tle.INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
 
@@ -108,7 +108,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "EPOCH";
+        return Tle.EPOCH_YMD_HMS_JSON_PROPERTY;
       }
     },
 
@@ -116,7 +116,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "EPOCH_MICROSECONDS";
+        return Tle.EPOCH_MICROSECONDS_JSON_PROPERTY;
       }
     },
 
@@ -124,7 +124,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION";
+        return Tle.MEAN_MOTION_JSON_PROPERTY;
       }
     },
 
@@ -132,7 +132,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "ECCENTRICITY";
+        return Tle.ECCENTRICITY_JSON_PROPERTY;
       }
     },
 
@@ -140,7 +140,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "INCLINATION";
+        return Tle.INCLINATION_JSON_PROPERTY;
       }
     },
 
@@ -148,7 +148,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "RA_OF_ASC_NODE";
+        return Tle.RIGHT_ASC_OF_NODE_JSON_PROPERTY;
       }
     },
 
@@ -156,7 +156,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "ARG_OF_PERICENTER";
+        return Tle.ARG_OF_PERIGEE_JSON_PROPERTY;
       }
     },
 
@@ -164,7 +164,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_ANOMALY";
+        return Tle.MEAN_ANOMALY_JSON_PROPERTY;
       }
     },
 
@@ -172,7 +172,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "EPHEMERIS_TYPE";
+        return Tle.EPHEMERIS_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -180,7 +180,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "ELEMENT_SET_NO";
+        return Tle.ELEMENT_SET_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -188,7 +188,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "REV_AT_EPOCH";
+        return Tle.REV_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -196,7 +196,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "BSTAR";
+        return Tle.BSTAR_JSON_PROPERTY;
       }
     },
 
@@ -204,7 +204,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION_DOT";
+        return Tle.MEAN_MOTION_DOT_JSON_PROPERTY;
       }
     },
 
@@ -212,7 +212,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION_DDOT";
+        return Tle.MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY;
       }
     },
 
@@ -220,7 +220,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "FILE";
+        return Tle.FILE_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -228,7 +228,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE0";
+        return Tle.TLE_LINE_0_JSON_PROPERTY;
       }
     },
 
@@ -236,7 +236,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE1";
+        return Tle.TLE_LINE_1_JSON_PROPERTY;
       }
     },
 
@@ -244,7 +244,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE2";
+        return Tle.TLE_LINE_2_JSON_PROPERTY;
       }
     },
 
@@ -252,7 +252,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_ID";
+        return Tle.OBJECT_ID_JSON_PROPERTY;
       }
     },
 
@@ -260,7 +260,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NUMBER";
+        return Tle.OBJECT_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -268,7 +268,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "SEMIMAJOR_AXIS";
+        return Tle.SEMI_MAJOR_AXIS_JSON_PROPERTY;
       }
     },
 
@@ -276,7 +276,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "PERIOD";
+        return Tle.PERIOD_JSON_PROPERTY;
       }
     },
 
@@ -284,7 +284,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "APOGEE";
+        return Tle.APOGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -292,7 +292,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "PERIGEE";
+        return Tle.PERIGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -300,7 +300,7 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
       @Override
       public String getQueryFieldName() {
-        return "DECAYED";
+        return Tle.DECAYED_JSON_PROPERTY;
       }
     }
   }
@@ -318,107 +318,141 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Tle {
 
-    @JsonProperty("COMMENT")
+    private static final String COMMENT_JSON_PROPERTY = "COMMENT";
+    private static final String ORIGINATOR_JSON_PROPERTY = "ORIGINATOR";
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+    private static final String OBJECT_NAME_JSON_PROPERTY = "OBJECT_NAME";
+    private static final String OBJECT_TYPE_JSON_PROPERTY = "OBJECT_TYPE";
+    private static final String CLASSIFICATION_JSON_PROPERTY = "CLASSIFICATION_TYPE";
+    private static final String INTERNATIONAL_DESIGNATOR_JSON_PROPERTY = "INTLDES";
+    private static final String EPOCH_YMD_HMS_JSON_PROPERTY = "EPOCH";
+    private static final String EPOCH_MICROSECONDS_JSON_PROPERTY = "EPOCH_MICROSECONDS";
+    private static final String MEAN_MOTION_JSON_PROPERTY = "MEAN_MOTION";
+    private static final String ECCENTRICITY_JSON_PROPERTY = "ECCENTRICITY";
+    private static final String INCLINATION_JSON_PROPERTY = "INCLINATION";
+    private static final String RIGHT_ASC_OF_NODE_JSON_PROPERTY = "RA_OF_ASC_NODE";
+    private static final String ARG_OF_PERIGEE_JSON_PROPERTY = "ARG_OF_PERICENTER";
+    private static final String MEAN_ANOMALY_JSON_PROPERTY = "MEAN_ANOMALY";
+    private static final String EPHEMERIS_TYPE_JSON_PROPERTY = "EPHEMERIS_TYPE";
+    private static final String ELEMENT_SET_NUMBER_JSON_PROPERTY = "ELEMENT_SET_NO";
+    private static final String REV_NUMBER_JSON_PROPERTY = "REV_AT_EPOCH";
+    private static final String BSTAR_JSON_PROPERTY = "BSTAR";
+    private static final String MEAN_MOTION_DOT_JSON_PROPERTY = "MEAN_MOTION_DOT";
+    private static final String MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY = "MEAN_MOTION_DDOT";
+    private static final String FILE_NUMBER_JSON_PROPERTY = "FILE";
+    private static final String TLE_LINE_0_JSON_PROPERTY = "TLE_LINE0";
+    private static final String TLE_LINE_1_JSON_PROPERTY = "TLE_LINE1";
+    private static final String TLE_LINE_2_JSON_PROPERTY = "TLE_LINE2";
+    private static final String OBJECT_ID_JSON_PROPERTY = "OBJECT_ID";
+    private static final String OBJECT_NUMBER_JSON_PROPERTY = "OBJECT_NUMBER";
+    private static final String SEMI_MAJOR_AXIS_JSON_PROPERTY = "SEMIMAJOR_AXIS";
+    private static final String PERIOD_JSON_PROPERTY = "PERIOD";
+    private static final String APOGEE_HEIGHT_JSON_PROPERTY = "APOGEE";
+    private static final String PERIGEE_HEIGHT_JSON_PROPERTY = "PERIGEE";
+    private static final String DECAYED_JSON_PROPERTY = "DECAYED";
+
+
+    @JsonProperty(COMMENT_JSON_PROPERTY)
     private String comment;
 
-    @JsonProperty("ORIGINATOR")
+    @JsonProperty(ORIGINATOR_JSON_PROPERTY)
     private String originator;
 
-    @JsonProperty("NORAD_CAT_ID")
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
-    @JsonProperty("OBJECT_NAME")
+    @JsonProperty(OBJECT_NAME_JSON_PROPERTY)
     private String objectName;
 
-    @JsonProperty("OBJECT_TYPE")
+    @JsonProperty(OBJECT_TYPE_JSON_PROPERTY)
     private Optional<String> objectType;
 
-    @JsonProperty("CLASSIFICATION_TYPE")
+    @JsonProperty(CLASSIFICATION_JSON_PROPERTY)
     private String classification;
 
-    @JsonProperty("INTLDES")
+    @JsonProperty(INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
     private Optional<String> internationalDesignator;
 
-    @JsonProperty("EPOCH")
+    @JsonProperty(EPOCH_YMD_HMS_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
     private Instant epochYmdHms;
 
-    @JsonProperty("EPOCH_MICROSECONDS")
+    @JsonProperty(EPOCH_MICROSECONDS_JSON_PROPERTY)
     private Integer epochMicroseconds;
 
-    @JsonProperty("MEAN_MOTION")
+    @JsonProperty(MEAN_MOTION_JSON_PROPERTY)
     private Double meanMotionRevsPerDay;
 
-    @JsonProperty("ECCENTRICITY")
+    @JsonProperty(ECCENTRICITY_JSON_PROPERTY)
     private Double eccentricity;
 
-    @JsonProperty("INCLINATION")
+    @JsonProperty(INCLINATION_JSON_PROPERTY)
     private Double inclinationDegrees;
 
-    @JsonProperty("RA_OF_ASC_NODE")
+    @JsonProperty(RIGHT_ASC_OF_NODE_JSON_PROPERTY)
     private Double rightAscOfNodeDegrees;
 
-    @JsonProperty("ARG_OF_PERICENTER")
+    @JsonProperty(ARG_OF_PERIGEE_JSON_PROPERTY)
     private Double argOfPerigeeDegrees;
 
-    @JsonProperty("MEAN_ANOMALY")
+    @JsonProperty(MEAN_ANOMALY_JSON_PROPERTY)
     private Double meanAnomalyDegrees;
 
-    @JsonProperty("EPHEMERIS_TYPE")
+    @JsonProperty(EPHEMERIS_TYPE_JSON_PROPERTY)
     private Integer ephemerisType;
 
-    @JsonProperty("ELEMENT_SET_NO")
+    @JsonProperty(ELEMENT_SET_NUMBER_JSON_PROPERTY)
     private Integer elementSetNumber;
 
-    @JsonProperty("REV_AT_EPOCH")
+    @JsonProperty(REV_NUMBER_JSON_PROPERTY)
     private Float revNumber;
 
-    @JsonProperty("BSTAR")
+    @JsonProperty(BSTAR_JSON_PROPERTY)
     private Double bstar;
 
-    @JsonProperty("MEAN_MOTION_DOT")
+    @JsonProperty(MEAN_MOTION_DOT_JSON_PROPERTY)
     private Double meanMotionDot;
 
-    @JsonProperty("MEAN_MOTION_DDOT")
+    @JsonProperty(MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY)
     private Double meanMotionDoubleDot;
 
-    @JsonProperty("FILE")
+    @JsonProperty(FILE_NUMBER_JSON_PROPERTY)
     private Integer fileNumber;
 
-    @JsonProperty("TLE_LINE0")
+    @JsonProperty(TLE_LINE_0_JSON_PROPERTY)
     private String tleLine0;
 
-    @JsonProperty("TLE_LINE1")
+    @JsonProperty(TLE_LINE_1_JSON_PROPERTY)
     private String tleLine1;
 
-    @JsonProperty("TLE_LINE2")
+    @JsonProperty(TLE_LINE_2_JSON_PROPERTY)
     private String tleLine2;
 
-    @JsonProperty("OBJECT_ID")
+    @JsonProperty(OBJECT_ID_JSON_PROPERTY)
     private Optional<String> objectId;
 
-    @JsonProperty("OBJECT_NUMBER")
+    @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
     private Optional<Integer> objectNumber;
 
-    @JsonProperty("SEMIMAJOR_AXIS")
+    @JsonProperty(SEMI_MAJOR_AXIS_JSON_PROPERTY)
     private Double semiMajorAxisKilometers;
 
-    @JsonProperty("PERIOD")
+    @JsonProperty(PERIOD_JSON_PROPERTY)
     private Optional<Double> periodMinutes;
 
     /**
      * Approximate height of the apogee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
-    @JsonProperty("APOGEE")
+    @JsonProperty(APOGEE_HEIGHT_JSON_PROPERTY)
     private Double apogeeHeightKilometers;
 
     /**
      * Approximate height of the perigee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
-    @JsonProperty("PERIGEE")
+    @JsonProperty(PERIGEE_HEIGHT_JSON_PROPERTY)
     private Double perigeeHeightKilometers;
 
-    @JsonProperty("DECAYED")
+    @JsonProperty(DECAYED_JSON_PROPERTY)
     private Optional<Integer> decayed;
 
 

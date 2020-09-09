@@ -19,7 +19,7 @@ limitations under the License.
 
   <groupId>com.stevenpaligo</groupId>
   <artifactId>spacetrack-client</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
 
 
   <name>SpaceTrack Client</name>
@@ -254,6 +254,29 @@ limitations under the License.
             </goals>
           </execution>
         </executions>      
+      </plugin>
+
+
+      <!-- Check code coverage checks -->
+      <plugin>
+        <groupId>org.openclover</groupId>
+        <artifactId>clover-maven-plugin</artifactId>
+        <version>4.4.1</version>
+        <configuration>
+          <alwaysReport>true</alwaysReport>
+          <targetPercentage>90%</targetPercentage>
+        </configuration>
+        <executions>
+          <execution>
+            <id>verify-code-coverage</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>instrument-test</goal>
+              <goal>clover</goal>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
 

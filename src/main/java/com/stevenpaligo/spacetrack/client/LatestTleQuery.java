@@ -52,7 +52,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "ORDINAL";
+        return LatestTle.ORDINAL_JSON_PROPERTY;
       }
     },
 
@@ -60,7 +60,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "COMMENT";
+        return LatestTle.COMMENT_JSON_PROPERTY;
       }
     },
 
@@ -68,7 +68,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "ORIGINATOR";
+        return LatestTle.ORIGINATOR_JSON_PROPERTY;
       }
     },
 
@@ -76,7 +76,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "NORAD_CAT_ID";
+        return LatestTle.CATALOG_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -84,7 +84,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NAME";
+        return LatestTle.OBJECT_NAME_JSON_PROPERTY;
       }
     },
 
@@ -92,7 +92,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_TYPE";
+        return LatestTle.OBJECT_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -100,7 +100,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "CLASSIFICATION_TYPE";
+        return LatestTle.CLASSIFICATION_JSON_PROPERTY;
       }
     },
 
@@ -108,7 +108,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "INTLDES";
+        return LatestTle.INTERNATIONAL_DESIGNATOR_JSON_PROPERTY;
       }
     },
 
@@ -116,7 +116,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "EPOCH";
+        return LatestTle.EPOCH_YMD_HMS_JSON_PROPERTY;
       }
     },
 
@@ -124,7 +124,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "EPOCH_MICROSECONDS";
+        return LatestTle.EPOCH_MICROSECONDS_JSON_PROPERTY;
       }
     },
 
@@ -132,7 +132,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION";
+        return LatestTle.MEAN_MOTION_JSON_PROPERTY;
       }
     },
 
@@ -140,7 +140,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "ECCENTRICITY";
+        return LatestTle.ECCENTRICITY_JSON_PROPERTY;
       }
     },
 
@@ -148,7 +148,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "INCLINATION";
+        return LatestTle.INCLINATION_JSON_PROPERTY;
       }
     },
 
@@ -156,7 +156,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "RA_OF_ASC_NODE";
+        return LatestTle.RIGHT_ASC_OF_NODE_JSON_PROPERTY;
       }
     },
 
@@ -164,7 +164,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "ARG_OF_PERICENTER";
+        return LatestTle.ARG_OF_PERIGEE_JSON_PROPERTY;
       }
     },
 
@@ -172,7 +172,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_ANOMALY";
+        return LatestTle.MEAN_ANOMALY_JSON_PROPERTY;
       }
     },
 
@@ -180,7 +180,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "EPHEMERIS_TYPE";
+        return LatestTle.EPHEMERIS_TYPE_JSON_PROPERTY;
       }
     },
 
@@ -188,7 +188,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "ELEMENT_SET_NO";
+        return LatestTle.ELEMENT_SET_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -196,7 +196,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "REV_AT_EPOCH";
+        return LatestTle.REV_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -204,7 +204,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "BSTAR";
+        return LatestTle.BSTAR_JSON_PROPERTY;
       }
     },
 
@@ -212,7 +212,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION_DOT";
+        return LatestTle.MEAN_MOTION_DOT_JSON_PROPERTY;
       }
     },
 
@@ -220,7 +220,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "MEAN_MOTION_DDOT";
+        return LatestTle.MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY;
       }
     },
 
@@ -228,7 +228,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "FILE";
+        return LatestTle.FILE_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -236,7 +236,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE0";
+        return LatestTle.TLE_LINE_0_JSON_PROPERTY;
       }
     },
 
@@ -244,7 +244,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE1";
+        return LatestTle.TLE_LINE_1_JSON_PROPERTY;
       }
     },
 
@@ -252,7 +252,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "TLE_LINE2";
+        return LatestTle.TLE_LINE_2_JSON_PROPERTY;
       }
     },
 
@@ -260,7 +260,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_ID";
+        return LatestTle.OBJECT_ID_JSON_PROPERTY;
       }
     },
 
@@ -268,7 +268,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "OBJECT_NUMBER";
+        return LatestTle.OBJECT_NUMBER_JSON_PROPERTY;
       }
     },
 
@@ -276,7 +276,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "SEMIMAJOR_AXIS";
+        return LatestTle.SEMI_MAJOR_AXIS_JSON_PROPERTY;
       }
     },
 
@@ -284,7 +284,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "PERIOD";
+        return LatestTle.PERIOD_JSON_PROPERTY;
       }
     },
 
@@ -292,7 +292,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "APOGEE";
+        return LatestTle.APOGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -300,7 +300,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "PERIGEE";
+        return LatestTle.PERIGEE_HEIGHT_JSON_PROPERTY;
       }
     },
 
@@ -308,7 +308,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
       @Override
       public String getQueryFieldName() {
-        return "DECAYED";
+        return LatestTle.DECAYED_JSON_PROPERTY;
       }
     }
   }
@@ -326,110 +326,145 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class LatestTle {
 
-    @JsonProperty("ORDINAL")
+    private static final String ORDINAL_JSON_PROPERTY = "ORDINAL";
+    private static final String COMMENT_JSON_PROPERTY = "COMMENT";
+    private static final String ORIGINATOR_JSON_PROPERTY = "ORIGINATOR";
+    private static final String CATALOG_NUMBER_JSON_PROPERTY = "NORAD_CAT_ID";
+    private static final String OBJECT_NAME_JSON_PROPERTY = "OBJECT_NAME";
+    private static final String OBJECT_TYPE_JSON_PROPERTY = "OBJECT_TYPE";
+    private static final String CLASSIFICATION_JSON_PROPERTY = "CLASSIFICATION_TYPE";
+    private static final String INTERNATIONAL_DESIGNATOR_JSON_PROPERTY = "INTLDES";
+    private static final String EPOCH_YMD_HMS_JSON_PROPERTY = "EPOCH";
+    private static final String EPOCH_MICROSECONDS_JSON_PROPERTY = "EPOCH_MICROSECONDS";
+    private static final String MEAN_MOTION_JSON_PROPERTY = "MEAN_MOTION";
+    private static final String ECCENTRICITY_JSON_PROPERTY = "ECCENTRICITY";
+    private static final String INCLINATION_JSON_PROPERTY = "INCLINATION";
+    private static final String RIGHT_ASC_OF_NODE_JSON_PROPERTY = "RA_OF_ASC_NODE";
+    private static final String ARG_OF_PERIGEE_JSON_PROPERTY = "ARG_OF_PERICENTER";
+    private static final String MEAN_ANOMALY_JSON_PROPERTY = "MEAN_ANOMALY";
+    private static final String EPHEMERIS_TYPE_JSON_PROPERTY = "EPHEMERIS_TYPE";
+    private static final String ELEMENT_SET_NUMBER_JSON_PROPERTY = "ELEMENT_SET_NO";
+    private static final String REV_NUMBER_JSON_PROPERTY = "REV_AT_EPOCH";
+    private static final String BSTAR_JSON_PROPERTY = "BSTAR";
+    private static final String MEAN_MOTION_DOT_JSON_PROPERTY = "MEAN_MOTION_DOT";
+    private static final String MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY = "MEAN_MOTION_DDOT";
+    private static final String FILE_NUMBER_JSON_PROPERTY = "FILE";
+    private static final String TLE_LINE_0_JSON_PROPERTY = "TLE_LINE0";
+    private static final String TLE_LINE_1_JSON_PROPERTY = "TLE_LINE1";
+    private static final String TLE_LINE_2_JSON_PROPERTY = "TLE_LINE2";
+    private static final String OBJECT_ID_JSON_PROPERTY = "OBJECT_ID";
+    private static final String OBJECT_NUMBER_JSON_PROPERTY = "OBJECT_NUMBER";
+    private static final String SEMI_MAJOR_AXIS_JSON_PROPERTY = "SEMIMAJOR_AXIS";
+    private static final String PERIOD_JSON_PROPERTY = "PERIOD";
+    private static final String APOGEE_HEIGHT_JSON_PROPERTY = "APOGEE";
+    private static final String PERIGEE_HEIGHT_JSON_PROPERTY = "PERIGEE";
+    private static final String DECAYED_JSON_PROPERTY = "DECAYED";
+
+
+    @JsonProperty(ORDINAL_JSON_PROPERTY)
     private Integer ordinal;
 
-    @JsonProperty("COMMENT")
+    @JsonProperty(COMMENT_JSON_PROPERTY)
     private String comment;
 
-    @JsonProperty("ORIGINATOR")
+    @JsonProperty(ORIGINATOR_JSON_PROPERTY)
     private String originator;
 
-    @JsonProperty("NORAD_CAT_ID")
+    @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
     private Optional<Integer> catalogNumber;
 
-    @JsonProperty("OBJECT_NAME")
+    @JsonProperty(OBJECT_NAME_JSON_PROPERTY)
     private String objectName;
 
-    @JsonProperty("OBJECT_TYPE")
+    @JsonProperty(OBJECT_TYPE_JSON_PROPERTY)
     private Optional<String> objectType;
 
-    @JsonProperty("CLASSIFICATION_TYPE")
+    @JsonProperty(CLASSIFICATION_JSON_PROPERTY)
     private String classification;
 
-    @JsonProperty("INTLDES")
+    @JsonProperty(INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
     private Optional<String> internationalDesignator;
 
-    @JsonProperty("EPOCH")
+    @JsonProperty(EPOCH_YMD_HMS_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
     private Instant epochYmdHms;
 
-    @JsonProperty("EPOCH_MICROSECONDS")
+    @JsonProperty(EPOCH_MICROSECONDS_JSON_PROPERTY)
     private Integer epochMicroseconds;
 
-    @JsonProperty("MEAN_MOTION")
+    @JsonProperty(MEAN_MOTION_JSON_PROPERTY)
     private Double meanMotionRevsPerDay;
 
-    @JsonProperty("ECCENTRICITY")
+    @JsonProperty(ECCENTRICITY_JSON_PROPERTY)
     private Double eccentricity;
 
-    @JsonProperty("INCLINATION")
+    @JsonProperty(INCLINATION_JSON_PROPERTY)
     private Double inclinationDegrees;
 
-    @JsonProperty("RA_OF_ASC_NODE")
+    @JsonProperty(RIGHT_ASC_OF_NODE_JSON_PROPERTY)
     private Double rightAscOfNodeDegrees;
 
-    @JsonProperty("ARG_OF_PERICENTER")
+    @JsonProperty(ARG_OF_PERIGEE_JSON_PROPERTY)
     private Double argOfPerigeeDegrees;
 
-    @JsonProperty("MEAN_ANOMALY")
+    @JsonProperty(MEAN_ANOMALY_JSON_PROPERTY)
     private Double meanAnomalyDegrees;
 
-    @JsonProperty("EPHEMERIS_TYPE")
+    @JsonProperty(EPHEMERIS_TYPE_JSON_PROPERTY)
     private Integer ephemerisType;
 
-    @JsonProperty("ELEMENT_SET_NO")
+    @JsonProperty(ELEMENT_SET_NUMBER_JSON_PROPERTY)
     private Integer elementSetNumber;
 
-    @JsonProperty("REV_AT_EPOCH")
+    @JsonProperty(REV_NUMBER_JSON_PROPERTY)
     private Float revNumber;
 
-    @JsonProperty("BSTAR")
+    @JsonProperty(BSTAR_JSON_PROPERTY)
     private Double bstar;
 
-    @JsonProperty("MEAN_MOTION_DOT")
+    @JsonProperty(MEAN_MOTION_DOT_JSON_PROPERTY)
     private Double meanMotionDot;
 
-    @JsonProperty("MEAN_MOTION_DDOT")
+    @JsonProperty(MEAN_MOTION_DOUBLE_DOT_JSON_PROPERTY)
     private Double meanMotionDoubleDot;
 
-    @JsonProperty("FILE")
+    @JsonProperty(FILE_NUMBER_JSON_PROPERTY)
     private Integer fileNumber;
 
-    @JsonProperty("TLE_LINE0")
+    @JsonProperty(TLE_LINE_0_JSON_PROPERTY)
     private String tleLine0;
 
-    @JsonProperty("TLE_LINE1")
+    @JsonProperty(TLE_LINE_1_JSON_PROPERTY)
     private String tleLine1;
 
-    @JsonProperty("TLE_LINE2")
+    @JsonProperty(TLE_LINE_2_JSON_PROPERTY)
     private String tleLine2;
 
-    @JsonProperty("OBJECT_ID")
+    @JsonProperty(OBJECT_ID_JSON_PROPERTY)
     private Optional<String> objectId;
 
-    @JsonProperty("OBJECT_NUMBER")
+    @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
     private Optional<Integer> objectNumber;
 
-    @JsonProperty("SEMIMAJOR_AXIS")
+    @JsonProperty(SEMI_MAJOR_AXIS_JSON_PROPERTY)
     private Double semiMajorAxisKilometers;
 
-    @JsonProperty("PERIOD")
+    @JsonProperty(PERIOD_JSON_PROPERTY)
     private Optional<Double> periodMinutes;
 
     /**
      * Approximate height of the apogee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
-    @JsonProperty("APOGEE")
+    @JsonProperty(APOGEE_HEIGHT_JSON_PROPERTY)
     private Double apogeeHeightKilometers;
 
     /**
      * Approximate height of the perigee assuming two-body motion and a spherical Earth with radius 6378.135 km
      */
-    @JsonProperty("PERIGEE")
+    @JsonProperty(PERIGEE_HEIGHT_JSON_PROPERTY)
     private Double perigeeHeightKilometers;
 
-    @JsonProperty("DECAYED")
+    @JsonProperty(DECAYED_JSON_PROPERTY)
     private Optional<Integer> decayed;
 
 

@@ -48,7 +48,7 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
 
       @Override
       public String getQueryFieldName() {
-        return "SITE_CODE";
+        return LaunchSite.SITE_CODE_JSON_PROPERTY;
       }
     },
 
@@ -56,7 +56,7 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
 
       @Override
       public String getQueryFieldName() {
-        return "LAUNCH_SITE";
+        return LaunchSite.SITE_NAME_JSON_PROPERTY;
       }
     }
   }
@@ -74,10 +74,14 @@ public class LaunchSiteQuery extends Query<LaunchSiteQueryField, LaunchSite, Lau
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class LaunchSite {
 
-    @JsonProperty("SITE_CODE")
+    private static final String SITE_CODE_JSON_PROPERTY = "SITE_CODE";
+    private static final String SITE_NAME_JSON_PROPERTY = "LAUNCH_SITE";
+
+
+    @JsonProperty(SITE_CODE_JSON_PROPERTY)
     private String siteCode;
 
-    @JsonProperty("LAUNCH_SITE")
+    @JsonProperty(SITE_NAME_JSON_PROPERTY)
     private String siteName;
 
   }
