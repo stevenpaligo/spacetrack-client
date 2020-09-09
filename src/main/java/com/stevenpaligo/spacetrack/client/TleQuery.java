@@ -496,13 +496,13 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
 
     public Double getApogeeRadiusKilometers() {
 
-      return (getSemiMajorAxisKilometers() * (1.0 + getEccentricity()));
+      return (apogeeHeightKilometers + 6378.135);
     }
 
 
     public Double getPerigeeRadiusKilometers() {
 
-      return (getSemiMajorAxisKilometers() * (1.0 - getEccentricity()));
+      return (perigeeHeightKilometers + 6378.135);
     }
   }
 }

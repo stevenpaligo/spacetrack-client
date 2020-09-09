@@ -397,5 +397,30 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
     @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
     private Optional<Integer> objectNumber;
 
+
+    public Optional<Long> getApogeeRadiusKilometers() {
+
+      if (getApogeeHeightKilometers().isPresent()) {
+
+        return Optional.of(getApogeeHeightKilometers().get() + 6378);
+
+      } else {
+
+        return Optional.empty();
+      }
+    }
+
+
+    public Optional<Long> getPerigeeRadiusKilometers() {
+
+      if (getPerigeeHeightKilometers().isPresent()) {
+
+        return Optional.of(getPerigeeHeightKilometers().get() + 6378);
+
+      } else {
+
+        return Optional.empty();
+      }
+    }
   }
 }
