@@ -19,9 +19,11 @@ import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.TleQuery.Tle;
 import com.stevenpaligo.spacetrack.client.TleQuery.TleQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
+import com.stevenpaligo.spacetrack.client.util.OptionalTinyIntToBooleanDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -485,7 +487,8 @@ public class TleQuery extends Query<TleQueryField, Tle, TleQuery> {
     private Double perigeeHeightKilometers;
 
     @JsonProperty(DECAYED_JSON_PROPERTY)
-    private Optional<Integer> decayed;
+    @JsonDeserialize(using = OptionalTinyIntToBooleanDeserializer.class)
+    private Optional<Boolean> decayed;
 
 
     public Instant getEpoch() {

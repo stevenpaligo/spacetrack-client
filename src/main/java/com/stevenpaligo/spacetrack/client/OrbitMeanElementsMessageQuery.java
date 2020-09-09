@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessage;
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessageQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.util.DecimalToIntegerDeserializer;
+import com.stevenpaligo.spacetrack.client.util.DecimalToBooleanDeserializer;
 import com.stevenpaligo.spacetrack.client.util.UtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -513,8 +513,8 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private Optional<String> objectType;
 
     @JsonProperty(DECAYED_JSON_PROPERTY)
-    @JsonDeserialize(using = DecimalToIntegerDeserializer.class) // TODO: the Space-Track model says this type is "decimal(3,0)", which doesn't make sense at all
-    private Integer decayed;
+    @JsonDeserialize(using = DecimalToBooleanDeserializer.class)
+    private Boolean decayed;
 
 
     public Double getApogeeRadiusKilometers() {
