@@ -16,39 +16,17 @@ package com.stevenpaligo.spacetrack.client;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.net.URL;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTle;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTleQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
-import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Equal;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 
 public class LatestTleQueryTests {
 
-  private static final String SPACETRACK_USER_NAME_PROPERTY = "spacetrack.user.name";
-  private static final String SPACETRACK_PASSWORD_PROPERTY = "spacetrack.password";
-
-
-  private static CredentialProvider credentials;
-
-
-  @BeforeAll
-  protected static void init() throws Exception {
-
-    // verify the SpaceTrack credentials are available as system properties
-    if (System.getProperty(SPACETRACK_USER_NAME_PROPERTY) == null) {
-      throw new Exception("The SpaceTrack user name is missing from the system properties (" + SPACETRACK_USER_NAME_PROPERTY + ")");
-    } else if (System.getProperty(SPACETRACK_PASSWORD_PROPERTY) == null) {
-      throw new Exception("The SpaceTrack password is missing from the system properties (" + SPACETRACK_PASSWORD_PROPERTY + ")");
-    }
-
-
-    // save the SpaceTrack credentials
-    credentials = new DefaultCredentialProvider(System.getProperty(SPACETRACK_USER_NAME_PROPERTY), System.getProperty(SPACETRACK_PASSWORD_PROPERTY));
-  }
+  private static CredentialProvider credentials = TestUtils.getCredentials();
 
 
   @Test
