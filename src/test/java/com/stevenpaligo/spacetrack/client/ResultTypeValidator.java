@@ -14,6 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -48,6 +49,13 @@ public class ResultTypeValidator {
 
     for (Field resultTypeField : resultType.getDeclaredFields()) {
 
+      // exclude static fields
+      if (Modifier.isStatic(resultTypeField.getModifiers())) {
+
+        continue;
+      }
+
+
       // get the JsonProperty annotation
       JsonProperty jsonProperty = resultTypeField.getAnnotation(JsonProperty.class);
 
@@ -81,7 +89,7 @@ public class ResultTypeValidator {
 
 
     // verify the result type matches the schema
-    if (resultType.getDeclaredFields().length != schema.size()) {
+    if (jsonNameToResultTypeField.size() != schema.size()) {
 
       throw new Exception("The schema and result type have different numbers of fields (schema: " + schema.size() + ", result type: " + resultType.getDeclaredFields().length + ")");
     }

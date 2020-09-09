@@ -14,6 +14,7 @@
 package com.stevenpaligo.spacetrack.client;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,6 +35,13 @@ public class QueryFieldEnumValidator {
     Map<String, Field> jsonNameToResultTypeField = new HashMap<>();
 
     for (Field resultTypeField : resultType.getDeclaredFields()) {
+
+      // exclude static fields
+      if (Modifier.isStatic(resultTypeField.getModifiers())) {
+
+        continue;
+      }
+
 
       // get the JsonProperty annotation
       JsonProperty jsonProperty = resultTypeField.getAnnotation(JsonProperty.class);
