@@ -75,8 +75,8 @@ public class TleQueryTests {
 
     // setup
     Tle tle = new Tle();
-    tle.setEccentricity(0.0006616);
-    tle.setSemiMajorAxisKilometers(6794.632);
+    tle.setApogeeHeightKilometers(420.992);
+    tle.setPerigeeHeightKilometers(412.002);
 
 
     // apogee radius
