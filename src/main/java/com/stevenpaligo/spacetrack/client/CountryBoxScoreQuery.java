@@ -186,34 +186,34 @@ public class CountryBoxScoreQuery extends Query<CountryBoxScoreQueryField, Count
     private String country;
 
     @JsonProperty(SPADOC_COUNTRY_DESIGNATOR_JSON_PROPERTY)
-    private Optional<String> spadocCountryDesignator;
+    private Optional<String> spadocCountryDesignator = Optional.empty();
 
     @JsonProperty(ORBITAL_UNASSIGNED_TYPE_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> orbitalUnassignedTypeCount;
+    private Optional<BigInteger> orbitalUnassignedTypeCount = Optional.empty();
 
     @JsonProperty(ORBITAL_PAYLOAD_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> orbitalPayloadCount;
+    private Optional<BigInteger> orbitalPayloadCount = Optional.empty();
 
     @JsonProperty(ORBITAL_ROCKET_BODY_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> orbitalRocketBodyCount;
+    private Optional<BigInteger> orbitalRocketBodyCount = Optional.empty();
 
     @JsonProperty(ORBITAL_DEBRIS_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> orbitalDebrisCount;
+    private Optional<BigInteger> orbitalDebrisCount = Optional.empty();
 
     @JsonProperty(ORBITAL_TOTAL_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> orbitalTotalCount;
+    private Optional<BigInteger> orbitalTotalCount = Optional.empty();
 
     @JsonProperty(DECAYED_PAYLOAD_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> decayedPayloadCount;
+    private Optional<BigInteger> decayedPayloadCount = Optional.empty();
 
     @JsonProperty(DECAYED_ROCKET_BODY_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> decayedRocketBodyCount;
+    private Optional<BigInteger> decayedRocketBodyCount = Optional.empty();
 
     @JsonProperty(DECAYED_DEBRIS_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> decayedDebrisCount;
+    private Optional<BigInteger> decayedDebrisCount = Optional.empty();
 
     @JsonProperty(DECAYED_TOTAL_COUNT_JSON_PROPERTY)
-    private Optional<BigInteger> decayedTotalCount;
+    private Optional<BigInteger> decayedTotalCount = Optional.empty();
 
     @JsonProperty(TOTAL_COUNT_JSON_PROPERTY)
     private Long totalCount;

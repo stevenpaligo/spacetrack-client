@@ -197,48 +197,48 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
 
 
     @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> catalogNumber;
+    private Optional<Integer> catalogNumber = Optional.empty();
 
     @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> objectNumber;
+    private Optional<Integer> objectNumber = Optional.empty();
 
     @JsonProperty(CURRENT_NAME_JSON_PROPERTY)
     private String currentName;
 
     @JsonProperty(PREVIOUS_NAME_JSON_PROPERTY)
-    private Optional<String> previousName;
+    private Optional<String> previousName = Optional.empty();
 
     @JsonProperty(CURRENT_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
     private String currentInternationalDesignator;
 
     @JsonProperty(PREVIOUS_INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
-    private Optional<String> previousInternationalDesignator;
+    private Optional<String> previousInternationalDesignator = Optional.empty();
 
     @JsonProperty(CURRENT_COUNTRY_JSON_PROPERTY)
     private String currentCountry;
 
     @JsonProperty(PREVIOUS_COUNTRY_JSON_PROPERTY)
-    private Optional<String> previousCountry;
+    private Optional<String> previousCountry = Optional.empty();
 
     @JsonProperty(CURRENT_LAUNCH_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
-    private Optional<LocalDate> currentLaunchDate;
+    private Optional<LocalDate> currentLaunchDate = Optional.empty();
 
     @JsonProperty(PREVIOUS_LAUNCH_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
-    private Optional<LocalDate> previousLaunchDate;
+    private Optional<LocalDate> previousLaunchDate = Optional.empty();
 
     @JsonProperty(CURRENT_DECAY_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
-    private Optional<LocalDate> currentDecayDate;
+    private Optional<LocalDate> currentDecayDate = Optional.empty();
 
     @JsonProperty(PREVIOUS_DECAY_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
-    private Optional<LocalDate> previousDecayDate;
+    private Optional<LocalDate> previousDecayDate = Optional.empty();
 
     @JsonProperty(UPDATE_TIME_JSON_PROPERTY)
     @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
-    private Optional<UtcInstant> updateTime;
+    private Optional<UtcInstant> updateTime = Optional.empty();
 
   }
 }

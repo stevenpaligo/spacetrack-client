@@ -310,10 +310,10 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
     private String internationalDesignator;
 
     @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> catalogNumber;
+    private Optional<Integer> catalogNumber = Optional.empty();
 
     @JsonProperty(OBJECT_TYPE_JSON_PROPERTY)
-    private Optional<String> objectType;
+    private Optional<String> objectType = Optional.empty();
 
     @JsonProperty(SAT_NAME_JSON_PROPERTY)
     private String satName;
@@ -323,38 +323,38 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
 
     @JsonProperty(LAUNCH_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
-    private Optional<LocalDate> launchDate;
+    private Optional<LocalDate> launchDate = Optional.empty();
 
     @JsonProperty(LAUNCH_SITE_JSON_PROPERTY)
-    private Optional<String> launchSite;
+    private Optional<String> launchSite = Optional.empty();
 
     @JsonProperty(DECAY_DATE_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
-    private Optional<LocalDate> decayDate;
+    private Optional<LocalDate> decayDate = Optional.empty();
 
     @JsonProperty(PERIOD_JSON_PROPERTY)
-    private Optional<BigDecimal> periodMinutes;
+    private Optional<BigDecimal> periodMinutes = Optional.empty();
 
     @JsonProperty(INCLINATION_JSON_PROPERTY)
-    private Optional<BigDecimal> inclinationDegrees;
+    private Optional<BigDecimal> inclinationDegrees = Optional.empty();
 
     @JsonProperty(APOGEE_HEIGHT_JSON_PROPERTY)
-    private Optional<Long> apogeeHeightKilometers;
+    private Optional<Long> apogeeHeightKilometers = Optional.empty();
 
     @JsonProperty(PERIGEE_HEIGHT_JSON_PROPERTY)
-    private Optional<Long> perigeeHeightKilometers;
+    private Optional<Long> perigeeHeightKilometers = Optional.empty();
 
     @JsonProperty(COMMENT_JSON_PROPERTY)
-    private Optional<String> comment;
+    private Optional<String> comment = Optional.empty();
 
     @JsonProperty(COMMENT_CODE_JSON_PROPERTY)
-    private Optional<Integer> commentCode;
+    private Optional<Integer> commentCode = Optional.empty();
 
     @JsonProperty(RCS_JSON_PROPERTY)
     private Integer rcsMetersSquared;
 
     @JsonProperty(RCS_CHARACTERIZATION_JSON_PROPERTY)
-    private Optional<String> rcsCharacterization;
+    private Optional<String> rcsCharacterization = Optional.empty();
 
     @JsonProperty(FILE_NUMBER_JSON_PROPERTY)
     private Integer fileNumber;
@@ -379,7 +379,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
     private String objectId;
 
     @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> objectNumber;
+    private Optional<Integer> objectNumber = Optional.empty();
 
 
     public Optional<Long> getApogeeRadiusKilometers() {

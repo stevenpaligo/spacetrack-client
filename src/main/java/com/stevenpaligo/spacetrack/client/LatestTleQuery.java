@@ -406,19 +406,19 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
     private String originator;
 
     @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> catalogNumber;
+    private Optional<Integer> catalogNumber = Optional.empty();
 
     @JsonProperty(OBJECT_NAME_JSON_PROPERTY)
     private String objectName;
 
     @JsonProperty(OBJECT_TYPE_JSON_PROPERTY)
-    private Optional<String> objectType;
+    private Optional<String> objectType = Optional.empty();
 
     @JsonProperty(CLASSIFICATION_JSON_PROPERTY)
     private String classification;
 
     @JsonProperty(INTERNATIONAL_DESIGNATOR_JSON_PROPERTY)
-    private Optional<String> internationalDesignator;
+    private Optional<String> internationalDesignator = Optional.empty();
 
     @JsonProperty(EPOCH_YMD_HMS_JSON_PROPERTY)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
@@ -476,16 +476,16 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
     private String tleLine2;
 
     @JsonProperty(OBJECT_ID_JSON_PROPERTY)
-    private Optional<String> objectId;
+    private Optional<String> objectId = Optional.empty();
 
     @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> objectNumber;
+    private Optional<Integer> objectNumber = Optional.empty();
 
     @JsonProperty(SEMI_MAJOR_AXIS_JSON_PROPERTY)
     private Double semiMajorAxisKilometers;
 
     @JsonProperty(PERIOD_JSON_PROPERTY)
-    private Optional<Double> periodMinutes;
+    private Optional<Double> periodMinutes = Optional.empty();
 
     /**
      * Approximate height of the apogee assuming two-body motion and a spherical Earth with radius 6378.135 km
@@ -501,7 +501,7 @@ public class LatestTleQuery extends Query<LatestTleQueryField, LatestTle, Latest
 
     @JsonProperty(DECAYED_JSON_PROPERTY)
     @JsonDeserialize(using = OptionalTinyIntToBooleanDeserializer.class)
-    private Optional<Boolean> decayed;
+    private Optional<Boolean> decayed = Optional.empty();
 
 
     public Instant getEpoch() {

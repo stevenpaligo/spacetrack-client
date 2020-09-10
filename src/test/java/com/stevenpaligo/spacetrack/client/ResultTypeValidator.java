@@ -47,7 +47,7 @@ public class ResultTypeValidator {
 
     // filter the result type's fields down to those needing validation
     // (the static fields are the JSON property names)
-    Field[] resultTypeFields = Arrays.stream(resultType.getDeclaredFields()).map(f -> Modifier.isStatic(f.getModifiers()) == false).toArray(Field[]::new);
+    Field[] resultTypeFields = Arrays.stream(resultType.getDeclaredFields()).filter(f -> Modifier.isStatic(f.getModifiers()) == false).toArray(Field[]::new);
 
 
     // index the result type fields by their JSON property names
@@ -235,6 +235,21 @@ public class ResultTypeValidator {
 
           throw new Exception("Unsupported schema field type: " + schemaFieldType);
         }
+      }
+    }
+
+
+    // verify any optional fields in the result type are initialized by default
+    Object resultTypeInstance = resultType.newInstance();
+
+    for (Field resultTypeField : resultTypeFields) {
+
+      resultTypeField.setAccessible(true);
+
+
+      if (resultTypeField.getType().equals(Optional.class) && resultTypeField.get(resultTypeInstance) == null) {
+
+        throw new Exception("A result field's data type is an `Optional`, but it is not initialized by default: " + resultTypeField.getName());
       }
     }
   }

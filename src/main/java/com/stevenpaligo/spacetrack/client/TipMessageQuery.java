@@ -206,7 +206,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
 
     @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> catalogNumber;
+    private Optional<Integer> catalogNumber = Optional.empty();
 
     @JsonProperty(MESSAGE_EPOCH_JSON_PROPERTY)
     @JsonDeserialize(using = UtcInstantDeserializer.class)
@@ -227,7 +227,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
     private Integer revNumber;
 
     @JsonProperty(DIRECTION_JSON_PROPERTY)
-    private Optional<String> direction;
+    private Optional<String> direction = Optional.empty();
 
     @JsonProperty(TEN_KM_LATITUDE_JSON_PROPERTY)
     private Float tenKmLatitudeDegrees;
@@ -246,10 +246,10 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
 
     @JsonProperty(HIGH_INTEREST_JSON_PROPERTY)
     @JsonDeserialize(using = OptionalBooleanYesNoDeserializer.class)
-    private Optional<Boolean> highInterest;
+    private Optional<Boolean> highInterest = Optional.empty();
 
     @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> objectNumber;
+    private Optional<Integer> objectNumber = Optional.empty();
 
   }
 }

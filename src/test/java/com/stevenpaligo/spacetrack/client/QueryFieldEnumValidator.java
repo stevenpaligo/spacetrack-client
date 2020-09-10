@@ -34,7 +34,7 @@ public class QueryFieldEnumValidator {
 
     // filter the result type's fields down to those needing validation
     // (the static fields are the JSON property names)
-    Field[] resultTypeFields = Arrays.stream(resultType.getDeclaredFields()).map(f -> Modifier.isStatic(f.getModifiers()) == false).toArray(Field[]::new);
+    Field[] resultTypeFields = Arrays.stream(resultType.getDeclaredFields()).filter(f -> Modifier.isStatic(f.getModifiers()) == false).toArray(Field[]::new);
 
 
     // index the result type fields by their JSON property names

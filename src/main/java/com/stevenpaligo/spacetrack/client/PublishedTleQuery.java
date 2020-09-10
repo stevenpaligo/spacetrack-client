@@ -115,7 +115,7 @@ public class PublishedTleQuery extends Query<PublishedTleQueryField, PublishedTl
     private String tleLine2;
 
     @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> catalogNumber;
+    private Optional<Integer> catalogNumber = Optional.empty();
 
   }
 }

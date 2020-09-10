@@ -423,7 +423,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private String objectName;
 
     @JsonProperty(OBJECT_ID_JSON_PROPERTY)
-    private Optional<String> objectId;
+    private Optional<String> objectId = Optional.empty();
 
     @JsonProperty(CENTER_NAME_JSON_PROPERTY)
     private String centerName;
@@ -438,7 +438,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private String meanElementTheory;
 
     @JsonProperty(EPOCH_JSON_PROPERTY)
-    private Optional<String> epoch;
+    private Optional<String> epoch = Optional.empty();
 
     @JsonProperty(MEAN_MOTION_JSON_PROPERTY)
     private Double meanMotionRevsPerDay;
@@ -465,7 +465,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private String classification;
 
     @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> catalogNumber;
+    private Optional<Integer> catalogNumber = Optional.empty();
 
     @JsonProperty(ELEMENT_SET_NUMBER_JSON_PROPERTY)
     private Integer elementSetNumber;
@@ -495,7 +495,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private Double semiMajorAxisKilometers;
 
     @JsonProperty(PERIOD_JSON_PROPERTY)
-    private Optional<Double> periodMinutes;
+    private Optional<Double> periodMinutes = Optional.empty();
 
     /**
      * Approximate height of the apogee assuming two-body motion and a spherical Earth with radius 6378.135 km
@@ -510,7 +510,7 @@ public class OrbitMeanElementsMessageQuery extends Query<OrbitMeanElementsMessag
     private Double perigeeHeightKilometers;
 
     @JsonProperty(OBJECT_TYPE_JSON_PROPERTY)
-    private Optional<String> objectType;
+    private Optional<String> objectType = Optional.empty();
 
     @JsonProperty(DECAYED_JSON_PROPERTY)
     @JsonDeserialize(using = DecimalToBooleanDeserializer.class)

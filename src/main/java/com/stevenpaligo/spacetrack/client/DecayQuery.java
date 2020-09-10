@@ -195,10 +195,10 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
 
 
     @JsonProperty(CATALOG_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> catalogNumber;
+    private Optional<Integer> catalogNumber = Optional.empty();
 
     @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)
-    private Optional<Integer> objectNumber;
+    private Optional<Integer> objectNumber = Optional.empty();
 
     @JsonProperty(OBJECT_NAME_JSON_PROPERTY)
     private String objectName;
@@ -213,17 +213,17 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
     private Integer rcsMetersSquared;
 
     @JsonProperty(RCS_CHARACTERIZATION_JSON_PROPERTY)
-    private Optional<String> rcsCharacterization;
+    private Optional<String> rcsCharacterization = Optional.empty();
 
     @JsonProperty(COUNTRY_JSON_PROPERTY)
     private String country;
 
     @JsonProperty(MESSAGE_EPOCH_JSON_PROPERTY)
     @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
-    private Optional<UtcInstant> messageEpoch;
+    private Optional<UtcInstant> messageEpoch = Optional.empty();
 
     @JsonProperty(DECAY_EPOCH_JSON_PROPERTY)
-    private Optional<String> decayEpoch;
+    private Optional<String> decayEpoch = Optional.empty();
 
     @JsonProperty(SOURCE_JSON_PROPERTY)
     private String source;
