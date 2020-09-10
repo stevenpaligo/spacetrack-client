@@ -91,7 +91,7 @@ public class ResultTypeValidator {
     // verify the result type matches the schema
     if (jsonNameToResultTypeField.size() != schema.size()) {
 
-      throw new Exception("The schema and result type have different numbers of fields (schema: " + schema.size() + ", result type: " + resultType.getDeclaredFields().length + ")");
+      throw new Exception("The schema and result type have different numbers of fields (schema: " + schema.size() + ", result type: " + jsonNameToResultTypeField.size() + ")");
     }
 
     for (int i = 0; i < schema.size(); i++) {
