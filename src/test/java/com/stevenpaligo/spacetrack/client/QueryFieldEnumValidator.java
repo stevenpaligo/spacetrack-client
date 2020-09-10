@@ -15,6 +15,7 @@ package com.stevenpaligo.spacetrack.client;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +31,11 @@ public class QueryFieldEnumValidator {
 
 
   public static void validate(@NonNull Class<? extends QueryField> queryFieldEnum, @NonNull Class<?> resultType) throws Exception {
+
+    // filter the result type's fields down to those needing validation
+    // (the static fields are the JSON property names)
+    Field[] resultTypeFields = Arrays.stream(resultType.getDeclaredFields()).map(f -> Modifier.isStatic(f.getModifiers()) == false).toArray(Field[]::new);
+
 
     // index the result type fields by their JSON property names
     Map<String, Field> jsonNameToResultTypeField = new HashMap<>();
@@ -72,9 +78,9 @@ public class QueryFieldEnumValidator {
 
 
     // verify the query field enum matches the result type
-    if (queryFieldEnum.getEnumConstants().length != jsonNameToResultTypeField.size()) {
+    if (queryFieldEnum.getEnumConstants().length != resultTypeFields.length) {
 
-      throw new Exception("The query field enum and result type have different numbers of fields (query field enum: " + queryFieldEnum.getEnumConstants().length + ", result type: " + jsonNameToResultTypeField.size() + ")");
+      throw new Exception("The query field enum and result type have different numbers of fields (query field enum: " + queryFieldEnum.getEnumConstants().length + ", result type: " + resultTypeFields.length + ")");
     }
 
     for (QueryField enumValue : queryFieldEnum.getEnumConstants()) {

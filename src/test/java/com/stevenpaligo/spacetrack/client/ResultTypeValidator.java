@@ -21,6 +21,7 @@ import java.math.BigInteger;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -44,17 +45,15 @@ public class ResultTypeValidator {
 
   public static void validate(@NonNull Class<?> resultType, @NonNull URL schemaUrl) throws Exception {
 
+    // filter the result type's fields down to those needing validation
+    // (the static fields are the JSON property names)
+    Field[] resultTypeFields = Arrays.stream(resultType.getDeclaredFields()).map(f -> Modifier.isStatic(f.getModifiers()) == false).toArray(Field[]::new);
+
+
     // index the result type fields by their JSON property names
     Map<String, Field> jsonNameToResultTypeField = new HashMap<>();
 
-    for (Field resultTypeField : resultType.getDeclaredFields()) {
-
-      // exclude static fields
-      if (Modifier.isStatic(resultTypeField.getModifiers())) {
-
-        continue;
-      }
-
+    for (Field resultTypeField : resultTypeFields) {
 
       // get the JsonProperty annotation
       JsonProperty jsonProperty = resultTypeField.getAnnotation(JsonProperty.class);
@@ -89,9 +88,9 @@ public class ResultTypeValidator {
 
 
     // verify the result type matches the schema
-    if (jsonNameToResultTypeField.size() != schema.size()) {
+    if (resultTypeFields.length != schema.size()) {
 
-      throw new Exception("The schema and result type have different numbers of fields (schema: " + schema.size() + ", result type: " + jsonNameToResultTypeField.size() + ")");
+      throw new Exception("The schema and result type have different numbers of fields (schema: " + schema.size() + ", result type: " + resultTypeFields.length + ")");
     }
 
     for (int i = 0; i < schema.size(); i++) {
