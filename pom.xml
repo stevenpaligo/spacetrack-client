@@ -113,7 +113,7 @@ limitations under the License.
     <dependency>
       <groupId>com.mikesamuel</groupId>
       <artifactId>json-sanitizer</artifactId>
-      <version>1.2.1</version>
+      <version>1.2.2</version>
     </dependency>
 
 
