@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCat;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.util.BooleanYesNoDeserializer;
+import com.stevenpaligo.spacetrack.client.util.YesNoEnumToBooleanDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -369,7 +369,7 @@ public class SatCatQuery extends Query<SatCatQueryField, SatCat, SatCatQuery> {
     private String launchPiece;
 
     @JsonProperty(CURRENT_RECORD_JSON_PROPERTY)
-    @JsonDeserialize(using = BooleanYesNoDeserializer.class)
+    @JsonDeserialize(using = YesNoEnumToBooleanDeserializer.class)
     private Boolean currentRecord;
 
     @JsonProperty(OBJECT_NAME_JSON_PROPERTY)

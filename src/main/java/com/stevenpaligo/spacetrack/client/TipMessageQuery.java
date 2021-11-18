@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.TipMessageQuery.TipMessage;
 import com.stevenpaligo.spacetrack.client.TipMessageQuery.TipMessageQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.util.OptionalBooleanYesNoDeserializer;
+import com.stevenpaligo.spacetrack.client.util.OptionalYesNoEnumToBooleanDeserializer;
 import com.stevenpaligo.spacetrack.client.util.UtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -245,7 +245,7 @@ public class TipMessageQuery extends Query<TipMessageQueryField, TipMessage, Tip
     private Integer messageId;
 
     @JsonProperty(HIGH_INTEREST_JSON_PROPERTY)
-    @JsonDeserialize(using = OptionalBooleanYesNoDeserializer.class)
+    @JsonDeserialize(using = OptionalYesNoEnumToBooleanDeserializer.class)
     private Optional<Boolean> highInterest = Optional.empty();
 
     @JsonProperty(OBJECT_NUMBER_JSON_PROPERTY)

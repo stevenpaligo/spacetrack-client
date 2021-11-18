@@ -27,6 +27,6 @@ public class DecimalToBooleanDeserializer extends StdDeserializer<Boolean> {
   @Override
   public Boolean deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
 
-    return (jsonParser.getDecimalValue().compareTo(BigDecimal.ZERO) != 0); // 0.0 = false, anything else = true
+    return (new BigDecimal(jsonParser.getText()).compareTo(BigDecimal.ZERO) != 0); // 0.0 = false, anything else = true
   }
 }

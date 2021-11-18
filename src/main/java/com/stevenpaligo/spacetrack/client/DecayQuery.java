@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.DecayQuery.Decay;
 import com.stevenpaligo.spacetrack.client.DecayQuery.DecayQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.util.OptionalUtcInstantDeserializer;
+import com.stevenpaligo.spacetrack.client.util.OptionalDateTimeToUtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -219,7 +219,7 @@ public class DecayQuery extends Query<DecayQueryField, Decay, DecayQuery> {
     private String country;
 
     @JsonProperty(MESSAGE_EPOCH_JSON_PROPERTY)
-    @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
+    @JsonDeserialize(using = OptionalDateTimeToUtcInstantDeserializer.class)
     private Optional<UtcInstant> messageEpoch = Optional.empty();
 
     @JsonProperty(DECAY_EPOCH_JSON_PROPERTY)

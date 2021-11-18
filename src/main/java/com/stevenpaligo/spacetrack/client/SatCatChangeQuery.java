@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatChangeQuery.SatCatChange;
 import com.stevenpaligo.spacetrack.client.SatCatChangeQuery.SatCatChangeQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.util.OptionalUtcInstantDeserializer;
+import com.stevenpaligo.spacetrack.client.util.OptionalDateTimeToUtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -237,7 +237,7 @@ public class SatCatChangeQuery extends Query<SatCatChangeQueryField, SatCatChang
     private Optional<LocalDate> previousDecayDate = Optional.empty();
 
     @JsonProperty(UPDATE_TIME_JSON_PROPERTY)
-    @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
+    @JsonDeserialize(using = OptionalDateTimeToUtcInstantDeserializer.class)
     private Optional<UtcInstant> updateTime = Optional.empty();
 
   }

@@ -6,18 +6,18 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class BooleanYesNoDeserializer extends StdDeserializer<Boolean> {
+public class YesNoEnumToBooleanDeserializer extends StdDeserializer<Boolean> {
 
   private static final long serialVersionUID = 1L;
 
 
-  public BooleanYesNoDeserializer() {
+  public YesNoEnumToBooleanDeserializer() {
 
     this(null);
   }
 
 
-  public BooleanYesNoDeserializer(Class<?> clazz) {
+  public YesNoEnumToBooleanDeserializer(Class<?> clazz) {
 
     super(clazz);
   }

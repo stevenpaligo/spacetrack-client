@@ -24,8 +24,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevenpaligo.spacetrack.client.SatCatDebutQuery.SatCatDebut;
 import com.stevenpaligo.spacetrack.client.SatCatDebutQuery.SatCatDebutQueryField;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
-import com.stevenpaligo.spacetrack.client.util.BooleanYesNoDeserializer;
-import com.stevenpaligo.spacetrack.client.util.OptionalUtcInstantDeserializer;
+import com.stevenpaligo.spacetrack.client.util.YesNoEnumToBooleanDeserializer;
+import com.stevenpaligo.spacetrack.client.util.OptionalDateTimeToUtcInstantDeserializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -331,7 +331,7 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
     private String satName;
 
     @JsonProperty(DEBUT_TIME_JSON_PROPERTY)
-    @JsonDeserialize(using = OptionalUtcInstantDeserializer.class)
+    @JsonDeserialize(using = OptionalDateTimeToUtcInstantDeserializer.class)
     private Optional<UtcInstant> debutTime = Optional.empty();
 
     @JsonProperty(COUNTRY_JSON_PROPERTY)
@@ -385,7 +385,7 @@ public class SatCatDebutQuery extends Query<SatCatDebutQueryField, SatCatDebut, 
     private String launchPiece;
 
     @JsonProperty(CURRENT_RECORD_JSON_PROPERTY)
-    @JsonDeserialize(using = BooleanYesNoDeserializer.class)
+    @JsonDeserialize(using = YesNoEnumToBooleanDeserializer.class)
     private Boolean currentRecord;
 
     @JsonProperty(OBJECT_NAME_JSON_PROPERTY)

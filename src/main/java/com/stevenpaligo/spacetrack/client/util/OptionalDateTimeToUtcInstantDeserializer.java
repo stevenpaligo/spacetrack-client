@@ -8,18 +8,18 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class OptionalUtcInstantDeserializer extends StdDeserializer<Optional<UtcInstant>> {
+public class OptionalDateTimeToUtcInstantDeserializer extends StdDeserializer<Optional<UtcInstant>> {
 
   private static final long serialVersionUID = 1L;
 
 
-  public OptionalUtcInstantDeserializer() {
+  public OptionalDateTimeToUtcInstantDeserializer() {
 
     this(null);
   }
 
 
-  public OptionalUtcInstantDeserializer(Class<Optional<UtcInstant>> clazz) {
+  public OptionalDateTimeToUtcInstantDeserializer(Class<Optional<UtcInstant>> clazz) {
 
     super(clazz);
   }

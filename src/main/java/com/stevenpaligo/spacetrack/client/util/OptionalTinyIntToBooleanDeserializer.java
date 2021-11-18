@@ -27,6 +27,6 @@ public class OptionalTinyIntToBooleanDeserializer extends StdDeserializer<Option
   @Override
   public Optional<Boolean> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
 
-    return Optional.of(jsonParser.getIntValue() != 0); // 0 = false, anything else = true
+    return Optional.of(Integer.parseInt(jsonParser.getText()) != 0); // 0 = false, anything else = true
   }
 }
