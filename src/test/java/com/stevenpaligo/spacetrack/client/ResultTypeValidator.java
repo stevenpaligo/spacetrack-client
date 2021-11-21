@@ -13,6 +13,13 @@
  */
 package com.stevenpaligo.spacetrack.client;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.NonNull;
+import org.threeten.extra.scale.UtcInstant;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
@@ -25,12 +32,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import org.threeten.extra.scale.UtcInstant;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.NonNull;
 
 public class ResultTypeValidator {
 
@@ -174,8 +175,15 @@ public class ResultTypeValidator {
 
             throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
           }
+        } else if (schemaFieldType.startsWith("datetime(")) {
 
-        } else if (schemaFieldType.startsWith("decimal(") && schemaFieldType.endsWith(",0)")) {
+          if (resultFieldDataType != UtcInstant.class && resultFieldDataType != Instant.class) {
+
+            throw new Exception("A result field's data type is incompatible with the schema field's type: " + resultTypeField.getName());
+          }
+
+        }
+        else if (schemaFieldType.startsWith("decimal(") && schemaFieldType.endsWith(",0)")) {
 
           if (resultFieldDataType != BigInteger.class) {
 
