@@ -83,7 +83,7 @@ public class ResultTypeValidator {
     }
 
 
-    // download the schema from SpaceTrack as JSON
+    // download the schema from Space-Track as JSON
     JsonNode schema = jsonMapper.readTree(schemaUrl).get("data");
 
 

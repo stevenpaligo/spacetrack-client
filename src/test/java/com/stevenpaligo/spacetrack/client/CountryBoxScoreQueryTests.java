@@ -35,7 +35,7 @@ public class CountryBoxScoreQueryTests {
 
 
   @Test
-  @DisplayName("CountryBoxScoreQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("CountryBoxScoreQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

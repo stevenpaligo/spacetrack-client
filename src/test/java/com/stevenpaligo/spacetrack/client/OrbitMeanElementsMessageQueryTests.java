@@ -38,7 +38,7 @@ public class OrbitMeanElementsMessageQueryTests {
 
 
   @Test
-  @DisplayName("OrbitMeanElementsMessageQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("OrbitMeanElementsMessageQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

@@ -325,10 +325,10 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
       String userName = credentials.getUserName();
       String queryString = getQueryString();
-      log.debug("Querying SpaceTrack (user: {}, query: {})", userName, queryString);
+      log.debug("Querying Space-Track (user: {}, query: {})", userName, queryString);
 
 
-      // connect to the SpaceTrack API
+      // connect to the Space-Track API
       URL url = new URL("https://www.space-track.org/ajaxauth/login");
 
       connection = (HttpsURLConnection) url.openConnection();
@@ -347,17 +347,17 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
       // read the entire response
       String response = IOUtils.toString(connection.getInputStream(), charsetUtf8);
-      log.debug("SpaceTrack response message: {}", connection.getResponseMessage());
-      log.debug("SpaceTrack response body: {}", response);
+      log.debug("Space-Track response message: {}", connection.getResponseMessage());
+      log.debug("Space-Track response body: {}", response);
 
       if (response.length() == 0) {
 
-        throw new IOException("SpaceTrack returned an empty response");
+        throw new IOException("Space-Track returned an empty response");
       }
 
       if (connection.getResponseCode() != HttpsURLConnection.HTTP_OK) {
 
-        throw new IOException("SpaceTrack returned an unsuccessful response: " + connection.getResponseMessage());
+        throw new IOException("Space-Track returned an unsuccessful response: " + connection.getResponseMessage());
       }
 
 
@@ -369,7 +369,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
       JavaType listType = jsonMapper.getTypeFactory().constructCollectionType(List.class, resultType);
       List<R> results = jsonMapper.readValue(wellFormedResponse, listType);
 
-      log.debug("SpaceTrack returned {} {} results", results.size(), queryClass);
+      log.debug("Space-Track returned {} {} results", results.size(), queryClass);
 
 
       return results;
@@ -385,7 +385,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
       } catch (Exception e) {
 
-        log.error("An exception occurred while closing the SpaceTrack request stream", e);
+        log.error("An exception occurred while closing the Space-Track request stream", e);
       }
 
       try {
@@ -394,7 +394,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
       } catch (Exception e) {
 
-        log.error("An exception occurred while disconnecting from the SpaceTrack API", e);
+        log.error("An exception occurred while disconnecting from the Space-Track API", e);
       }
     }
   }

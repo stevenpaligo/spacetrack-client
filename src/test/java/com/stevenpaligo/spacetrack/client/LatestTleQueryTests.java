@@ -36,7 +36,7 @@ public class LatestTleQueryTests {
 
 
   @Test
-  @DisplayName("LatestTleQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("LatestTleQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

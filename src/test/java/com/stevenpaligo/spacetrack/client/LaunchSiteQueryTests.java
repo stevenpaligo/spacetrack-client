@@ -35,7 +35,7 @@ public class LaunchSiteQueryTests {
 
 
   @Test
-  @DisplayName("LaunchSiteQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("LaunchSiteQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

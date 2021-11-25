@@ -38,7 +38,7 @@ public class AnnouncementQueryTests {
 
 
   @Test
-  @DisplayName("AnnouncementQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("AnnouncementQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

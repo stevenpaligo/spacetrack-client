@@ -36,7 +36,7 @@ public class TipMessageQueryTests {
 
 
   @Test
-  @DisplayName("TipMessageQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("TipMessageQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

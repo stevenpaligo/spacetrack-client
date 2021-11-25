@@ -6,8 +6,8 @@ import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
 
 public class TestUtils {
 
-  private static final String SPACETRACK_USER_NAME_PROPERTY = "spacetrack.user.name";
-  private static final String SPACETRACK_USER_PASSWORD_PROPERTY = "spacetrack.user.password";
+  private static final String SPACE_TRACK_USER_NAME_PROPERTY = "space-track.user.name";
+  private static final String SPACE_TRACK_USER_PASSWORD_PROPERTY = "space-track.user.password";
 
 
   private TestUtils() {
@@ -18,19 +18,19 @@ public class TestUtils {
 
   public static CredentialProvider getCredentials() {
 
-    // verify the SpaceTrack credentials are available as system properties
-    if (System.getProperty(SPACETRACK_USER_NAME_PROPERTY) == null) {
+    // verify the Space-Track credentials are available as system properties
+    if (System.getProperty(SPACE_TRACK_USER_NAME_PROPERTY) == null) {
 
-      throw new RuntimeException("The SpaceTrack user name is missing from the system properties (" + SPACETRACK_USER_NAME_PROPERTY + ")");
+      throw new RuntimeException("The Space-Track user name is missing from the system properties (" + SPACE_TRACK_USER_NAME_PROPERTY + ")");
 
-    } else if (System.getProperty(SPACETRACK_USER_PASSWORD_PROPERTY) == null) {
+    } else if (System.getProperty(SPACE_TRACK_USER_PASSWORD_PROPERTY) == null) {
 
-      throw new RuntimeException("The SpaceTrack user password is missing from the system properties (" + SPACETRACK_USER_PASSWORD_PROPERTY + ")");
+      throw new RuntimeException("The Space-Track user password is missing from the system properties (" + SPACE_TRACK_USER_PASSWORD_PROPERTY + ")");
     }
 
 
-    // return the SpaceTrack credentials
-    return new DefaultCredentialProvider(System.getProperty(SPACETRACK_USER_NAME_PROPERTY), System.getProperty(SPACETRACK_USER_PASSWORD_PROPERTY));
+    // return the Space-Track credentials
+    return new DefaultCredentialProvider(System.getProperty(SPACE_TRACK_USER_NAME_PROPERTY), System.getProperty(SPACE_TRACK_USER_PASSWORD_PROPERTY));
   }
 
 

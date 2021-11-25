@@ -1,4 +1,4 @@
-# SpaceTrack Client
+# Space-Track Client
 This project is a Java client for querying space data (satellites, two-line element sets, etc.) from the [Space-Track.org](https://www.space-track.org/) REST API. It uses builder objects to construct queries and automatically deserializes the results into convenient data model objects.
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.stevenpaligo/spacetrack-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.stevenpaligo/spacetrack-client)
@@ -11,11 +11,11 @@ This project is a Java client for querying space data (satellites, two-line elem
 
 
 ### Prerequisites
-SpaceTrack Client requires Java 8+ and uses [SLF4J](https://www.slf4j.org/) for logging.
+Space-Track Client requires Java 8+ and uses [SLF4J](https://www.slf4j.org/) for logging.
 
 
 ### Installation
-To include SpaceTrack Client in a [Maven](https://maven.apache.org/) project, add the following dependency:
+To include Space-Track Client in a [Maven](https://maven.apache.org/) project, add the following dependency:
 
 ```xml
 <dependencies>
@@ -38,7 +38,7 @@ The following is a quick "Hello World" example of querying data. The example que
 
 ```java {.line-numbers}
 /*
-   Define the credentials for the service call. SpaceTrack Client includes the `DefaultCredentialProvider`
+   Define the credentials for the service call. Space-Track Client includes the `DefaultCredentialProvider`
    class which takes and stores the credentials as simple strings. If a different implementation is
    required (e.g. store an encrypted password), just implement the `CredentialProvider` interface and pass
    that to the query instead. The implementation can be anything as long as it can provide the credentials

@@ -34,7 +34,7 @@ public class SatCatQueryTests {
 
 
   @Test
-  @DisplayName("SatCatQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("SatCatQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

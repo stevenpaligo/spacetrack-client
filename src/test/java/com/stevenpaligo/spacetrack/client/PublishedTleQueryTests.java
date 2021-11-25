@@ -40,7 +40,7 @@ public class PublishedTleQueryTests {
 
 
   @Test
-  @DisplayName("PublishedTleQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("PublishedTleQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {

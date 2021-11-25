@@ -35,7 +35,7 @@ public class DecayQueryTests {
 
 
   @Test
-  @DisplayName("DecayQuery: Result type matches the SpaceTrack schema")
+  @DisplayName("DecayQuery: Result type matches the Space-Track schema")
   public void test1() {
 
     assertDoesNotThrow(() -> {
