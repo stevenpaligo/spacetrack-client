@@ -1,5 +1,5 @@
 # Space-Track Client
-This project is a Java client for querying space data (satellites, two-line element sets, etc.) from the [Space-Track.org](https://www.space-track.org/) REST API. It uses builder objects to construct queries and automatically deserializes the results into convenient data model objects.
+This project is a Java client for querying space data (satellites, two-line element sets, etc.) from the "basicspacedata" controller of the [Space-Track.org](https://www.space-track.org/) REST API. It uses builder objects to construct queries and automatically deserializes the results into convenient data model objects.
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.stevenpaligo/spacetrack-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.stevenpaligo/spacetrack-client)
 [![Javadoc](https://javadoc.io/badge/com.stevenpaligo/spacetrack-client.svg)](http://www.javadoc.io/doc/com.stevenpaligo/spacetrack-client)
