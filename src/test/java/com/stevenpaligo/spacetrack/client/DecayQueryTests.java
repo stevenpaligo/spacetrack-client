@@ -63,6 +63,7 @@ public class DecayQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<DecayQueryField> predicate = new Equal<>(DecayQueryField.CATALOG_NUMBER, 1);
+
       new DecayQuery().setCredentials(credentials).addPredicate(predicate).execute();
     });
   }

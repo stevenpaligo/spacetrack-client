@@ -68,6 +68,7 @@ public class PublishedTleQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<PublishedTleQueryField> predicate = new GreaterThan<>(PublishedTleQueryField.PUBLISH_TIME, new CurrentDateTimeOffset(Duration.ofMinutes(-15)));
+
       new PublishedTleQuery().setCredentials(credentials).addPredicate(predicate).addSort(new Sort<>(PublishedTleQueryField.PUBLISH_TIME, Direction.DESC)).setLimit(Limit.ONE).execute();
     });
   }

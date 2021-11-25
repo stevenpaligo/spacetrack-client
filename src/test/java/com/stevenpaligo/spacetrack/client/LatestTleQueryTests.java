@@ -64,6 +64,7 @@ public class LatestTleQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<LatestTleQueryField> predicate = new Equal<>(LatestTleQueryField.CATALOG_NUMBER, 25544);
+
       new LatestTleQuery().setCredentials(credentials).addPredicate(predicate).execute();
     });
   }

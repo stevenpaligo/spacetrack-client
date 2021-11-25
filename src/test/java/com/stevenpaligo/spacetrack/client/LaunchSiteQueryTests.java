@@ -63,6 +63,7 @@ public class LaunchSiteQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<LaunchSiteQueryField> predicate = new Equal<>(LaunchSiteQueryField.SITE_CODE, "AFETR");
+
       new LaunchSiteQuery().setCredentials(credentials).addPredicate(predicate).execute();
     });
   }

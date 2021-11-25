@@ -63,6 +63,7 @@ public class CountryBoxScoreQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<CountryBoxScoreQueryField> predicate = new Equal<>(CountryBoxScoreQueryField.COUNTRY, "ISS");
+
       new CountryBoxScoreQuery().setCredentials(credentials).addPredicate(predicate).execute();
     });
   }

@@ -66,6 +66,7 @@ public class SatCatDebutQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<SatCatDebutQueryField> predicate = new GreaterThan<>(SatCatDebutQueryField.DEBUT_TIME, new CurrentDateTimeOffset(Duration.ofDays(-30)));
+
       new SatCatDebutQuery().setCredentials(credentials).addPredicate(predicate).setLimit(Limit.ONE).execute();
     });
   }

@@ -70,6 +70,7 @@ public class TleQueryTests {
 
       Predicate<TleQueryField> predicate1 = new Equal<>(TleQueryField.CATALOG_NUMBER, 25544);
       Predicate<TleQueryField> predicate2 = new GreaterThan<>(TleQueryField.EPOCH_YMD_HMS, new CurrentDateTimeOffset(Duration.ofDays(-5)));
+
       new TleQuery().setCredentials(credentials).addPredicates(Arrays.asList(predicate1, predicate2)).setLimit(Limit.ONE).execute();
     });
   }

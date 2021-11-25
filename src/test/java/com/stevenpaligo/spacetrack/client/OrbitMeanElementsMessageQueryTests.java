@@ -66,6 +66,7 @@ public class OrbitMeanElementsMessageQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<OrbitMeanElementsMessageQueryField> predicate = new Equal<>(OrbitMeanElementsMessageQueryField.CATALOG_NUMBER, 25544);
+
       new OrbitMeanElementsMessageQuery().setCredentials(credentials).addPredicate(predicate).addSort(new Sort<>(OrbitMeanElementsMessageQueryField.EPOCH, Direction.DESC)).setLimit(Limit.ONE).execute();
     });
   }

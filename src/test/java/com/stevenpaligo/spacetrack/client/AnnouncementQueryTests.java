@@ -66,6 +66,7 @@ public class AnnouncementQueryTests {
     assertDoesNotThrow(() -> {
 
       Predicate<AnnouncementQueryField> predicate = new GreaterThan<>(AnnouncementQueryField.START_TIME, new CurrentDateTimeOffset(Duration.ofDays(-365)));
+
       new AnnouncementQuery().setCredentials(credentials).addPredicate(predicate).setLimit(Limit.ONE).execute();
     });
   }
