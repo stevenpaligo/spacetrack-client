@@ -16,12 +16,20 @@ package com.stevenpaligo.spacetrack.client.predicate;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import com.stevenpaligo.spacetrack.client.SatCatQuery;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
+import com.stevenpaligo.spacetrack.client.TestUtils;
+import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
 public class StartsWithTests {
+
+  private static CredentialProvider credentials = TestUtils.getCredentials();
+
 
   @Test
   @DisplayName("StartsWith: Constructor parameter validation")
@@ -79,6 +87,18 @@ public class StartsWithTests {
 
     // value
     assertEquals("ABC", new StartsWith<>(new TestQueryField(), "ABC").getValue());
+  }
+
+
+  @Disabled // TODO: this fails because of a bug in Space-Track (it has been reported)
+  @Test
+  @DisplayName("StartsWith: Successful call")
+  public void test4() {
+
+    assertDoesNotThrow(() -> {
+
+      new SatCatQuery().setCredentials(credentials).addPredicate(new StartsWith<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR, "2021-069")).execute();
+    });
   }
 
 
