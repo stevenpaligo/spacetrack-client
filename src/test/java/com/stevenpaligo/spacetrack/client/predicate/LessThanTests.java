@@ -23,10 +23,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
+import com.stevenpaligo.spacetrack.client.SatCatQuery;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
+import com.stevenpaligo.spacetrack.client.TestUtils;
+import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
 public class LessThanTests {
+
+  private static CredentialProvider credentials = TestUtils.getCredentials();
+
 
   @Test
   @DisplayName("LessThan: Constructor parameter validation")
@@ -164,6 +171,17 @@ public class LessThanTests {
 
     // value
     assertEquals("ABC", new LessThan<>(new TestQueryField(), "ABC").getValue());
+  }
+
+
+  @Test
+  @DisplayName("LessThan: Successful call")
+  public void test4() {
+
+    assertDoesNotThrow(() -> {
+
+      new SatCatQuery().setCredentials(credentials).addPredicate(new LessThan<>(SatCatQueryField.INCLINATION_DEGREES, 2.0)).execute();
+    });
   }
 
 

@@ -18,10 +18,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import com.stevenpaligo.spacetrack.client.SatCatQuery;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
+import com.stevenpaligo.spacetrack.client.TestUtils;
+import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
 public class IsNotNullTests {
+
+  private static CredentialProvider credentials = TestUtils.getCredentials();
+
 
   @Test
   @DisplayName("IsNotNull: Constructor parameter validation")
@@ -54,6 +61,17 @@ public class IsNotNullTests {
 
     // field
     assertEquals(new TestQueryField(), new IsNotNull<>(new TestQueryField()).getField());
+  }
+
+
+  @Test
+  @DisplayName("IsNotNull: Successful call")
+  public void test4() {
+
+    assertDoesNotThrow(() -> {
+
+      new SatCatQuery().setCredentials(credentials).addPredicate(new IsNotNull<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR)).execute();
+    });
   }
 
 

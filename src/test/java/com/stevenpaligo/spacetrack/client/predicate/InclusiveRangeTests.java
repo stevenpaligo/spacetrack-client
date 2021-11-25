@@ -23,10 +23,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
+import com.stevenpaligo.spacetrack.client.SatCatQuery;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
+import com.stevenpaligo.spacetrack.client.TestUtils;
+import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
 public class InclusiveRangeTests {
+
+  private static CredentialProvider credentials = TestUtils.getCredentials();
+
 
   @Test
   @DisplayName("InclusiveRange: Constructor parameter validation")
@@ -337,6 +344,17 @@ public class InclusiveRangeTests {
 
     // upper value
     assertEquals("2", new InclusiveRange<>(new TestQueryField(), 1, 2).getUpperValue());
+  }
+
+
+  @Test
+  @DisplayName("InclusiveRange: Successful call")
+  public void test4() {
+
+    assertDoesNotThrow(() -> {
+
+      new SatCatQuery().setCredentials(credentials).addPredicate(new InclusiveRange<>(SatCatQueryField.INCLINATION_DEGREES, 45.0, 50.0)).execute();
+    });
   }
 
 

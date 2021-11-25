@@ -24,10 +24,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
+import com.stevenpaligo.spacetrack.client.SatCatQuery;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
+import com.stevenpaligo.spacetrack.client.TestUtils;
+import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
 public class InTests {
+
+  private static CredentialProvider credentials = TestUtils.getCredentials();
+
 
   @Test
   @DisplayName("In: Constructor parameter validation")
@@ -161,6 +168,17 @@ public class InTests {
 
     // values
     assertEquals("ABC", new In<>(new TestQueryField(), "ABC").getValues());
+  }
+
+
+  @Test
+  @DisplayName("In: Successful call")
+  public void test5() {
+
+    assertDoesNotThrow(() -> {
+
+      new SatCatQuery().setCredentials(credentials).addPredicate(new In<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR, "2021-068", "2021-069")).execute();
+    });
   }
 
 

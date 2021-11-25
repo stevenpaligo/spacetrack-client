@@ -23,10 +23,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
+import com.stevenpaligo.spacetrack.client.SatCatQuery;
+import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
+import com.stevenpaligo.spacetrack.client.TestUtils;
+import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
 public class NotEqualTests {
+
+  private static CredentialProvider credentials = TestUtils.getCredentials();
+
 
   @Test
   @DisplayName("NotEqual: Constructor parameter validation")
@@ -164,6 +171,17 @@ public class NotEqualTests {
 
     // value
     assertEquals("ABC", new NotEqual<>(new TestQueryField(), "ABC").getValue());
+  }
+
+
+  @Test
+  @DisplayName("NotEqual: Successful call")
+  public void test4() {
+
+    assertDoesNotThrow(() -> {
+
+      new SatCatQuery().setCredentials(credentials).addPredicate(new NotEqual<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR, "2021-069A")).execute();
+    });
   }
 
 
