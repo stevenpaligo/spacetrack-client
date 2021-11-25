@@ -360,6 +360,11 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
         throw new IOException("Space-Track returned an unsuccessful response: " + connection.getResponseMessage());
       }
 
+      if (response.contains("Horribly Wrong")) { // currently Space-Track returns an HTML page when there is an error instead of using a proper HTTP response code - TODO: this is brittle
+
+        throw new IOException("Space-Track returned an unsuccessful response");
+      }
+
 
       // ensure the response is well-formed JSON
       String wellFormedResponse = JsonSanitizer.sanitize(response);
