@@ -334,6 +334,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
       connection = (HttpsURLConnection) url.openConnection();
       connection.setDoOutput(true);
       connection.setRequestMethod("POST");
+      connection.addRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
 
       // send the request (log in and query at the same time)
