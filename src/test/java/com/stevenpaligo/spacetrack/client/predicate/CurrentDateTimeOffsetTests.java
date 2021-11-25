@@ -21,9 +21,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
+import com.stevenpaligo.spacetrack.TestUtils;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTleQueryField;
-import com.stevenpaligo.spacetrack.client.TestUtils;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 
 @ExtendWith(DelayBeforeEachTestExtension.class)

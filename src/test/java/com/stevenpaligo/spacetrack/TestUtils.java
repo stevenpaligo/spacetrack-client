@@ -1,4 +1,4 @@
-package com.stevenpaligo.spacetrack.client;
+package com.stevenpaligo.spacetrack;
 
 
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
