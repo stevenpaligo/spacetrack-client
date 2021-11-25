@@ -34,6 +34,7 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.json.JsonSanitizer;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
+import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
@@ -78,7 +79,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
 
   /**
-   * Adds credentials to the query
+   * Adds credentials to the query using a credential provider
    * 
    * @param credentials A non-null object providing credentials for the query
    * @return This query, for use in the builder pattern
@@ -88,6 +89,19 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
     this.credentials = credentials;
     return (Q) this;
+  }
+
+
+  /**
+   * Adds credentials to the query using an explicit user name and password
+   * 
+   * @param userName A non-null user name for authenticating the query
+   * @param password A non-null password for authenticating the query
+   * @return This query, for use in the builder pattern
+   */
+  public Q setCredentials(@NonNull String userName, @NonNull String password) {
+
+    return setCredentials(new DefaultCredentialProvider(userName, password));
   }
 
 
