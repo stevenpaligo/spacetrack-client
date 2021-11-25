@@ -17,11 +17,14 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import java.net.URL;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCat;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Equal;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class SatCatQueryTests {
 
   private static CredentialProvider credentials = TestUtils.getCredentials();

@@ -19,11 +19,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.time.Duration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTleQueryField;
 import com.stevenpaligo.spacetrack.client.TestUtils;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class CurrentDateTimeOffsetTests {
 
   private static CredentialProvider credentials = TestUtils.getCredentials();

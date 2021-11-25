@@ -20,9 +20,12 @@ import java.time.Instant;
 import java.util.Date;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.threeten.extra.scale.TaiInstant;
 import org.threeten.extra.scale.UtcInstant;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class SpaceTrackDateTimeFormatterTests {
 
   @Test

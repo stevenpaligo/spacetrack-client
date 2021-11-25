@@ -18,6 +18,8 @@ import java.net.URL;
 import java.time.Duration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.AnnouncementQuery.Announcement;
 import com.stevenpaligo.spacetrack.client.AnnouncementQuery.AnnouncementQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
@@ -26,6 +28,7 @@ import com.stevenpaligo.spacetrack.client.predicate.GreaterThan;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 import com.stevenpaligo.spacetrack.client.query.Limit;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class AnnouncementQueryTests {
 
   private static CredentialProvider credentials = TestUtils.getCredentials();

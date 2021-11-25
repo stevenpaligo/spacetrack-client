@@ -18,9 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.query.Sort.Direction;
 import lombok.EqualsAndHashCode;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class SortTests {
 
   @Test

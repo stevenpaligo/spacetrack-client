@@ -18,6 +18,8 @@ import java.net.URL;
 import java.time.Duration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.PublishedTleQuery.PublishedTle;
 import com.stevenpaligo.spacetrack.client.PublishedTleQuery.PublishedTleQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
@@ -28,6 +30,7 @@ import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.Sort;
 import com.stevenpaligo.spacetrack.client.query.Sort.Direction;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class PublishedTleQueryTests {
 
   private static CredentialProvider credentials = TestUtils.getCredentials();

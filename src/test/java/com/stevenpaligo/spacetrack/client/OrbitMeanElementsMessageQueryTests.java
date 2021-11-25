@@ -17,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import java.net.URL;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessage;
 import com.stevenpaligo.spacetrack.client.OrbitMeanElementsMessageQuery.OrbitMeanElementsMessageQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
@@ -26,6 +28,7 @@ import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.Sort;
 import com.stevenpaligo.spacetrack.client.query.Sort.Direction;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class OrbitMeanElementsMessageQueryTests {
 
   private static CredentialProvider credentials = TestUtils.getCredentials();

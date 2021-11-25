@@ -17,12 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import java.net.URL;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSite;
 import com.stevenpaligo.spacetrack.client.LaunchSiteQuery.LaunchSiteQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.predicate.Equal;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class LaunchSiteQueryTests {
 
   private static CredentialProvider credentials = TestUtils.getCredentials();

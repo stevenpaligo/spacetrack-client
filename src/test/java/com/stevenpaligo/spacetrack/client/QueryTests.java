@@ -24,8 +24,10 @@ import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.stevenpaligo.spacetrack.DelayBeforeEachTestExtension;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCat;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
@@ -35,6 +37,7 @@ import com.stevenpaligo.spacetrack.client.query.QueryField;
 import com.stevenpaligo.spacetrack.client.query.Sort;
 import lombok.NonNull;
 
+@ExtendWith(DelayBeforeEachTestExtension.class)
 public class QueryTests {
 
   private static CredentialProvider credentials = TestUtils.getCredentials();
