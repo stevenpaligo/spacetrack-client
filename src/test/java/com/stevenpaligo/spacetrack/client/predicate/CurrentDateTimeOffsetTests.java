@@ -19,8 +19,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.time.Duration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import com.stevenpaligo.spacetrack.client.LatestTleQuery;
+import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTleQueryField;
+import com.stevenpaligo.spacetrack.client.TestUtils;
+import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 
 public class CurrentDateTimeOffsetTests {
+
+  private static CredentialProvider credentials = TestUtils.getCredentials();
+
 
   @Test
   @DisplayName("CurrentDateTimeOffset: Constructor parameter validation")
@@ -60,5 +67,16 @@ public class CurrentDateTimeOffsetTests {
 
     // offset
     assertEquals(Duration.ofDays(1), new CurrentDateTimeOffset(Duration.ofDays(1)).getOffset());
+  }
+
+
+  @Test
+  @DisplayName("CurrentDateTimeOffset: Successful call")
+  public void test4() {
+
+    assertDoesNotThrow(() -> {
+
+      new LatestTleQuery().setCredentials(credentials).addPredicate(new InclusiveRange<>(LatestTleQueryField.EPOCH_YMD_HMS, new CurrentDateTimeOffset(Duration.ofMinutes(144)), new CurrentDateTimeOffset(Duration.ofMinutes(0)))).execute();
+    });
   }
 }
