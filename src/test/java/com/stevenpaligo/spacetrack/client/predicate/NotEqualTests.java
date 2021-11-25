@@ -29,6 +29,7 @@ import com.stevenpaligo.spacetrack.TestUtils;
 import com.stevenpaligo.spacetrack.client.SatCatQuery;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
+import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
@@ -183,7 +184,7 @@ public class NotEqualTests {
 
     assertDoesNotThrow(() -> {
 
-      new SatCatQuery().setCredentials(credentials).addPredicate(new NotEqual<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR, "2021-069A")).execute();
+      new SatCatQuery().setCredentials(credentials).addPredicate(new NotEqual<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR, "2021-069A")).setLimit(Limit.ONE).execute();
     });
   }
 

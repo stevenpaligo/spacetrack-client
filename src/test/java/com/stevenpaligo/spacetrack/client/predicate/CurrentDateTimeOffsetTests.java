@@ -25,6 +25,7 @@ import com.stevenpaligo.spacetrack.TestUtils;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery;
 import com.stevenpaligo.spacetrack.client.LatestTleQuery.LatestTleQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
+import com.stevenpaligo.spacetrack.client.query.Limit;
 
 @ExtendWith(DelayBeforeEachTestExtension.class)
 public class CurrentDateTimeOffsetTests {
@@ -79,7 +80,10 @@ public class CurrentDateTimeOffsetTests {
 
     assertDoesNotThrow(() -> {
 
-      new LatestTleQuery().setCredentials(credentials).addPredicate(new InclusiveRange<>(LatestTleQueryField.EPOCH_YMD_HMS, new CurrentDateTimeOffset(Duration.ofMinutes(144)), new CurrentDateTimeOffset(Duration.ofMinutes(0)))).execute();
+      CurrentDateTimeOffset min = new CurrentDateTimeOffset(Duration.ofMinutes(144));
+      CurrentDateTimeOffset max = new CurrentDateTimeOffset(Duration.ofMinutes(0));
+
+      new LatestTleQuery().setCredentials(credentials).addPredicate(new InclusiveRange<>(LatestTleQueryField.EPOCH_YMD_HMS, min, max)).setLimit(Limit.ONE).execute();
     });
   }
 }

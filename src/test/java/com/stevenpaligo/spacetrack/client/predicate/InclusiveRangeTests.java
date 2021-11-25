@@ -29,6 +29,7 @@ import com.stevenpaligo.spacetrack.TestUtils;
 import com.stevenpaligo.spacetrack.client.SatCatQuery;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
+import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
@@ -356,7 +357,7 @@ public class InclusiveRangeTests {
 
     assertDoesNotThrow(() -> {
 
-      new SatCatQuery().setCredentials(credentials).addPredicate(new InclusiveRange<>(SatCatQueryField.INCLINATION_DEGREES, 45.0, 50.0)).execute();
+      new SatCatQuery().setCredentials(credentials).addPredicate(new InclusiveRange<>(SatCatQueryField.INCLINATION_DEGREES, 45.0, 50.0)).setLimit(Limit.ONE).execute();
     });
   }
 

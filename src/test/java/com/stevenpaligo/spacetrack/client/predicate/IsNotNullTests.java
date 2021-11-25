@@ -24,6 +24,7 @@ import com.stevenpaligo.spacetrack.TestUtils;
 import com.stevenpaligo.spacetrack.client.SatCatQuery;
 import com.stevenpaligo.spacetrack.client.SatCatQuery.SatCatQueryField;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
+import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import lombok.EqualsAndHashCode;
 
@@ -73,7 +74,7 @@ public class IsNotNullTests {
 
     assertDoesNotThrow(() -> {
 
-      new SatCatQuery().setCredentials(credentials).addPredicate(new IsNotNull<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR)).execute();
+      new SatCatQuery().setCredentials(credentials).addPredicate(new IsNotNull<>(SatCatQueryField.INTERNATIONAL_DESIGNATOR)).setLimit(Limit.ONE).execute();
     });
   }
 
