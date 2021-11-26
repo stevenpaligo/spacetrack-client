@@ -17,7 +17,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.time.Instant;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +27,8 @@ import java.util.Optional;
 import java.util.Set;
 import javax.net.ssl.HttpsURLConnection;
 import org.apache.commons.io.IOUtils;
+import org.threeten.extra.scale.TaiInstant;
+import org.threeten.extra.scale.UtcInstant;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -35,7 +39,18 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.json.JsonSanitizer;
 import com.stevenpaligo.spacetrack.client.credential.CredentialProvider;
 import com.stevenpaligo.spacetrack.client.credential.DefaultCredentialProvider;
+import com.stevenpaligo.spacetrack.client.predicate.Contains;
+import com.stevenpaligo.spacetrack.client.predicate.CurrentDateTimeOffset;
+import com.stevenpaligo.spacetrack.client.predicate.Equal;
+import com.stevenpaligo.spacetrack.client.predicate.GreaterThan;
+import com.stevenpaligo.spacetrack.client.predicate.In;
+import com.stevenpaligo.spacetrack.client.predicate.InclusiveRange;
+import com.stevenpaligo.spacetrack.client.predicate.IsNotNull;
+import com.stevenpaligo.spacetrack.client.predicate.IsNull;
+import com.stevenpaligo.spacetrack.client.predicate.LessThan;
+import com.stevenpaligo.spacetrack.client.predicate.NotEqual;
 import com.stevenpaligo.spacetrack.client.predicate.Predicate;
+import com.stevenpaligo.spacetrack.client.predicate.StartsWith;
 import com.stevenpaligo.spacetrack.client.query.Limit;
 import com.stevenpaligo.spacetrack.client.query.QueryField;
 import com.stevenpaligo.spacetrack.client.query.Sort;
@@ -147,6 +162,734 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
 
   /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field contains the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q contains(@NonNull T field, @NonNull String value) {
+
+    return addPredicate(new Contains<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field contains the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q contains(@NonNull T field, @NonNull Number value) {
+
+    return addPredicate(new Contains<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field equals the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q equal(@NonNull T field, @NonNull String value) {
+
+    return addPredicate(new Equal<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field equals the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q equal(@NonNull T field, @NonNull Number value) {
+
+    return addPredicate(new Equal<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field equals the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q equal(@NonNull T field, @NonNull Date value) {
+
+    return addPredicate(new Equal<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field equals the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q equal(@NonNull T field, @NonNull Instant value) {
+
+    return addPredicate(new Equal<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field equals the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q equal(@NonNull T field, @NonNull UtcInstant value) {
+
+    return addPredicate(new Equal<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field equals the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q equal(@NonNull T field, @NonNull TaiInstant value) {
+
+    return addPredicate(new Equal<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field equals the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q equal(@NonNull T field, @NonNull CurrentDateTimeOffset value) {
+
+    return addPredicate(new Equal<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is greater than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q greaterThan(@NonNull T field, @NonNull String value) {
+
+    return addPredicate(new GreaterThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is greater than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q greaterThan(@NonNull T field, @NonNull Number value) {
+
+    return addPredicate(new GreaterThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is greater than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q greaterThan(@NonNull T field, @NonNull Date value) {
+
+    return addPredicate(new GreaterThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is greater than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q greaterThan(@NonNull T field, @NonNull Instant value) {
+
+    return addPredicate(new GreaterThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is greater than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q greaterThan(@NonNull T field, @NonNull UtcInstant value) {
+
+    return addPredicate(new GreaterThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is greater than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q greaterThan(@NonNull T field, @NonNull TaiInstant value) {
+
+    return addPredicate(new GreaterThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is greater than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q greaterThan(@NonNull T field, @NonNull CurrentDateTimeOffset value) {
+
+    return addPredicate(new GreaterThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The collection of values to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q in(@NonNull T field, String... values) {
+
+    return addPredicate(new In<>(field, values));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The collection of values to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q in(@NonNull T field, Date... values) {
+
+    return addPredicate(new In<>(field, values));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The collection of values to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q in(@NonNull T field, Instant... values) {
+
+    return addPredicate(new In<>(field, values));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The collection of values to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q in(@NonNull T field, UtcInstant... values) {
+
+    return addPredicate(new In<>(field, values));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The collection of values to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q in(@NonNull T field, TaiInstant... values) {
+
+    return addPredicate(new In<>(field, values));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The collection of values to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q in(@NonNull T field, Number... values) {
+
+    return addPredicate(new In<>(field, values));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is equal to any one of the given values
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null collections of value to test against
+   * @param valueType The type of values in the collection
+   * @return This query, for use in the builder pattern
+   */
+  public <V> Q in(@NonNull T field, @NonNull Collection<V> values, @NonNull Class<V> valueType) {
+
+    return addPredicate(new In<>(field, values, valueType));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull Number minValue, @NonNull Number maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull Date minValue, @NonNull Date maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset minValue, @NonNull Date maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull Date minValue, @NonNull CurrentDateTimeOffset maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull Instant minValue, @NonNull Instant maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset minValue, @NonNull Instant maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull Instant minValue, @NonNull CurrentDateTimeOffset maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull UtcInstant minValue, @NonNull UtcInstant maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset minValue, @NonNull UtcInstant maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull UtcInstant minValue, @NonNull CurrentDateTimeOffset maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull TaiInstant minValue, @NonNull TaiInstant maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset minValue, @NonNull TaiInstant maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull TaiInstant minValue, @NonNull CurrentDateTimeOffset maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is within the given range of values (inclusive)
+   * 
+   * @param field The non-null name of the field to test against
+   * @param minValue The minimum value in the range to test against (non-null)
+   * @param maxValue The maximum value in the range to test against (non-null)
+   * @return This query, for use in the builder pattern
+   */
+  public Q inclusiveRange(@NonNull T field, @NonNull CurrentDateTimeOffset minValue, @NonNull CurrentDateTimeOffset maxValue) {
+
+    return addPredicate(new InclusiveRange<>(field, minValue, maxValue));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not null
+   * 
+   * @param field The non-null name of the field to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q isNotNull(@NonNull T field) {
+
+    return addPredicate(new IsNotNull<>(field));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is null
+   * 
+   * @param field The non-null name of the field to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q isNull(@NonNull T field) {
+
+    return addPredicate(new IsNull<>(field));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is less than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q lessThan(@NonNull T field, @NonNull String value) {
+
+    return addPredicate(new LessThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is less than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q lessThan(@NonNull T field, @NonNull Number value) {
+
+    return addPredicate(new LessThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is less than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q lessThan(@NonNull T field, @NonNull Date value) {
+
+    return addPredicate(new LessThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is less than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q lessThan(@NonNull T field, @NonNull Instant value) {
+
+    return addPredicate(new LessThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is less than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q lessThan(@NonNull T field, @NonNull UtcInstant value) {
+
+    return addPredicate(new LessThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is less than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q lessThan(@NonNull T field, @NonNull TaiInstant value) {
+
+    return addPredicate(new LessThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is less than the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q lessThan(@NonNull T field, @NonNull CurrentDateTimeOffset value) {
+
+    return addPredicate(new LessThan<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not equal to the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q notEqual(@NonNull T field, @NonNull String value) {
+
+    return addPredicate(new NotEqual<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not equal to the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q notEqual(@NonNull T field, @NonNull Number value) {
+
+    return addPredicate(new NotEqual<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not equal to the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q notEqual(@NonNull T field, @NonNull Date value) {
+
+    return addPredicate(new NotEqual<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not equal to the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q notEqual(@NonNull T field, @NonNull Instant value) {
+
+    return addPredicate(new NotEqual<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not equal to the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q notEqual(@NonNull T field, @NonNull UtcInstant value) {
+
+    return addPredicate(new NotEqual<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not equal to the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q notEqual(@NonNull T field, @NonNull TaiInstant value) {
+
+    return addPredicate(new NotEqual<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field is not equal to the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q notEqual(@NonNull T field, @NonNull CurrentDateTimeOffset value) {
+
+    return addPredicate(new NotEqual<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field starts with the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q startsWith(@NonNull T field, @NonNull String value) {
+
+    return addPredicate(new StartsWith<>(field, value));
+  }
+
+
+  /**
+   * Adds a {@link Predicate} that filters results based on whether or not the given field starts with the given value
+   * 
+   * @param field The non-null name of the field to test against
+   * @param value The non-null value to test against
+   * @return This query, for use in the builder pattern
+   */
+  public Q startsWith(@NonNull T field, @NonNull Number value) {
+
+    return addPredicate(new StartsWith<>(field, value));
+  }
+
+
+  /**
    * Set or remove the query's result limit, based on whether or not the {@link Optional} is empty
    * 
    * @param limit A non-null {@link Optional} that may or may not contain a {@link Limit} object
@@ -188,7 +931,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
 
   /**
-   * Adds a sorting field to the query. The order of the sorting fields does matter. They will be added to the query in the order of the calls to this method and {@link #addSorts(List)}.
+   * Adds a sorting field to the query. The order of the sorting fields <strong>does</strong> matter. They will be added to the query in the order of the calls to this method and {@link #addSorts(List)}.
    * 
    * @param sort A non-null sorting field to add to the query
    * @return This query, for use in the builder pattern
@@ -202,7 +945,7 @@ public abstract class Query<T extends QueryField, R, Q extends Query<T, R, Q>> {
 
 
   /**
-   * Adds a collection of sorting fields to the query. The order of the sorting fields does matter. They will be added to the query in the order of the calls to this method and {@link #addSort(Sort)}.
+   * Adds a collection of sorting fields to the query. The order of the sorting fields <strong>does</strong> matter. They will be added to the query in the order of the calls to this method and {@link #addSort(Sort)}.
    * 
    * @param sorts A non-null collection of sorting fields to add to the query
    * @return This query, for use in the builder pattern
