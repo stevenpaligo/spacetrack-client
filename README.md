@@ -45,8 +45,8 @@ The following is a quick "Hello World" example of querying data. The example que
    number is equal to 25544. Finally, call the `execute()` method to run the query and return results as
    deserialized data model objects.
 */
-List<SatCat> results = new SatCatQuery().setCredentials("user", "password")
-  .addPredicate(new Equal<>(SatCatQueryField.CATALOG_NUMBER, 25544)).execute();
+List<SatCat> results = new SatCatQuery().setCredentials("<user>", "<password>")
+  .equal(SatCatQueryField.CATALOG_NUMBER, 25544).execute();
 
 
 /*
